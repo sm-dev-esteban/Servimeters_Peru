@@ -7,7 +7,7 @@ class DB
         "hostname" => "localhost",
         "username" => "root",
         "password" => "",
-        "database" => "test",
+        "database" => "servimetersPeru",
         "file" => "db.db"
     ];
 
@@ -40,7 +40,7 @@ class DB
     /**
      * @return Mixed Retorna la conexión a la base de datos o un arreglo con el error
      */
-    public function connect()
+    public function connect($createDatabase = false)
     {
         /* No me interesa mucho que obtenga los dns de la conexion asi que mejor lo declaro en el metodo */
         $dns = [];
@@ -58,6 +58,8 @@ class DB
         try {
             $this->con = new PDO($dns[$this->gestor], $this->params["username"], $this->params["password"]);
         } catch (PDOException $th) {
+            if ($createDatabase === true)
+                self::createDatabase();
             return [
                 "error" => $th->getMessage()
             ];
@@ -66,18 +68,57 @@ class DB
         return $this->con;
     }
 
+    public function createDatabase()
+    {
+        switch ($this->gestor) {
+            case 'mysql':
+                $dns = "{$this->gestor}:host={$this->params["hostname"]};";
+
+                try {
+                    $tempCon = new PDO($dns, $this->params["username"], $this->params["password"]);
+                } catch (PDOException $th) {
+                    return false;
+                }
+                $query = self::executeQuery("CREATE DATABASE IF NOT EXISTS {$this->params["database"]}", $tempCon);
+                if (is_array($query) && isset($query["error"])) {
+                    return false;
+                } else {
+                    return true;
+                }
+                break;
+            case 'sqlsrv':
+                $dns = "{$this->gestor}:Server={$this->params["hostname"]};";
+
+                try {
+                    $tempCon = new PDO($dns, $this->params["username"], $this->params["password"]);
+                } catch (PDOException $th) {
+                    return false;
+                }
+                $query = self::executeQuery("CREATE DATABASE IF NOT EXISTS {$this->params["database"]}", $tempCon);
+                if (is_array($query) && isset($query["error"])) {
+                    return false;
+                } else {
+                    return true;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     /**
      * @param String $query recive una consulta de toda la vida, pero al ejecutarla con esta function retorna un error dado el caso para una validacion mas facil
      */
-    public function executeQuery(String $query)
+    public function executeQuery(String $query, mixed $con = false)
     {
+        $con = ($con === false ? $this->con : $con);
         try {
-            if (!$this->con) {
+            if (!$con) {
                 return [
                     "error" => "no connection to database"
                 ];
             }
-            return $this->con->query($query);
+            return $con->query($query);
         } catch (PDOException $th) {
             return [
                 "error" => $th->getMessage()

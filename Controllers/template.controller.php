@@ -1,6 +1,6 @@
 <?php
 
-require_once "../Models/DB.php";
+require_once FOLDERSIDE . "/Models/DB.php";
 
 /**
  * @author Ricardo Enciso Bautista - Esteban serna palacios
@@ -15,7 +15,7 @@ class ControladorTemplate extends DB
     static function router(String $router = "default")
     {
         $db = new DB();
-        $con = $db->connect();
+        $con = $db->connect(true);
 
         $router = $router . (strpos($router, ".php") === false ? ".php" : "");
         $routerFile = $_SERVER['DOCUMENT_ROOT'] . SELF::PATH_VIEWS . $router;
