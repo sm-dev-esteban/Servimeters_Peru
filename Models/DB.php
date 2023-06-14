@@ -59,7 +59,9 @@ class DB
             $this->con = new PDO($dns[$this->gestor], $this->params["username"], $this->params["password"]);
         } catch (PDOException $th) {
             if ($createDatabase === true)
-                self::createDatabase();
+                return self::createDatabase() ? self::connect() : [
+                    "error" => $th->getMessage()
+                ];
             return [
                 "error" => $th->getMessage()
             ];
@@ -102,6 +104,7 @@ class DB
                 }
                 break;
             default:
+                return false;
                 break;
         }
     }

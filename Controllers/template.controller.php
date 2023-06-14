@@ -1,9 +1,8 @@
 <?php
-
-require_once FOLDERSIDE . "/Models/DB.php";
+require_once FOLDERSIDE . "Models/DB.php";
 
 /**
- * @author Ricardo Enciso Bautista - Esteban serna palacios
+ * @author Ricardo Enciso Bautista - Esteban Serna Palacios 😉😜
  */
 
 class ControladorTemplate extends DB

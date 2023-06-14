@@ -34,4 +34,4 @@ function replaceMaster($folder, $search, $replace, $i = 0)
 }
 
 
-echo "<pre>", json_encode(replaceMaster("./*", "SERVERSIDE", "SERVERSIDE"), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), "</pre>";
+echo "<pre>", json_encode(replaceMaster("./*", "<?= SERVERSIDE ?>Auditor", "<?= SERVERSIDE ?>Auditor"), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), "</pre>";
