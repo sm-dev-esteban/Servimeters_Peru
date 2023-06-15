@@ -50,6 +50,9 @@
     <script src="<?= SERVERSIDE ?>Views/resources/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="<?= SERVERSIDE ?>Views/resources/dist/js/demo.js"></script> -->
+    <!-- prueba -->
+    <script src="<?= SERVERSIDE ?>config.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/assets/js/request.js"></script>
 </body>
 
 </html>

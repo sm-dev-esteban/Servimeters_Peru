@@ -34,4 +34,4 @@ function replaceMaster($folder, $search, $replace, $i = 0)
 }
 
 
-echo "<pre>", json_encode(replaceMaster("./*", "", ""), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), "</pre>";
+echo "<pre>", json_encode(replaceMaster("./*", "Esteban Serna Palacios 😉😜", "Esteban Serna Palacios 😉😜 <esteban.serna.p@gmail.com>"), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), "</pre>";

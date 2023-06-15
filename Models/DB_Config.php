@@ -14,7 +14,12 @@ class DB_Config
 
     static function getError(Mixed $error, Bool $returnArray = false)
     {
-        $r = (is_object($error) && method_exists($error, "getMessage") ? $error->getMessage() : (is_array($error) && isset($error["error"]) ? $error["error"] : (is_string($error) ? $error : false)));
-        return ($returnArray ? ["error" => $r]  :  $r);
+        $c = (is_object($error) && method_exists($error, "getCode") ? $error->getCode() : false);
+        $m = (is_object($error) && method_exists($error, "getMessage") ? $error->getMessage() : (is_array($error) && isset($error["error"]) ? $error["error"] : (is_string($error) ? $error : false)));
+
+        return ($returnArray ? [
+            "error" => $m,
+            "code" => $c
+        ]  :  $m);
     }
 }

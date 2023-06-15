@@ -2,7 +2,8 @@
 require_once FOLDERSIDE . "Models/DB.php";
 
 /**
- * @author Ricardo Enciso Bautista - Esteban Serna Palacios 😉😜
+ * @author Ricardo Enciso Bautista
+ * @author Esteban Serna Palacios 😉😜
  */
 
 class ControladorTemplate extends DB
