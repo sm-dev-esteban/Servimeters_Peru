@@ -1,22 +1,17 @@
 <?php
 
-class DB
+require_once FOLDERSIDE . "Models/DB_Config.php";
+
+class DB extends DB_Config
 {
     protected $gestor, $params, $con;
-    const DEFAULT_PARAMS = [
-        "hostname" => "localhost",
-        "username" => "root",
-        "password" => "",
-        "database" => "servimetersPeru",
-        "file" => "db.db"
-    ];
 
     public function __construct(
-        String $gestor = "mysql",
+        String $gestor = self::DEFAULT_GESTOR,
         array $params = []
     ) {
         $this->params = array_merge(self::DEFAULT_PARAMS, $params);
-        $this->gestor = $gestor;
+        $this->gestor = strtolower($gestor);
         $this->con = false;
     }
 
@@ -42,7 +37,7 @@ class DB
      */
     public function connect($createDatabase = false)
     {
-        /* No me interesa mucho que obtenga los dns de la conexion asi que mejor lo declaro en el metodo */
+        /* No me INTeresa mucho que obtenga los dns de la conexion asi que mejor lo declaro en el metodo */
         $dns = [];
 
         $dns["mysql"] = "mysql:host={$this->params["hostname"]};dbname={$this->params["database"]}";
@@ -50,21 +45,15 @@ class DB
         $dns["sqlite"] = "sqlite:{$this->params["file"]}";
 
         if (!in_array($this->gestor, array_keys($dns))) {
-            return [
-                "error" => "administrator not configured: {$this->gestor}"
-            ];
+            return self::getError("administrator not configured: {$this->gestor}", true);
         }
 
         try {
             $this->con = new PDO($dns[$this->gestor], $this->params["username"], $this->params["password"]);
         } catch (PDOException $th) {
             if ($createDatabase === true)
-                return self::createDatabase() ? self::connect() : [
-                    "error" => $th->getMessage()
-                ];
-            return [
-                "error" => $th->getMessage()
-            ];
+                return self::createDatabase() ? self::connect() : self::getError($th, true);
+            return self::getError($th, true);
         }
 
         return $this->con;
@@ -74,34 +63,17 @@ class DB
     {
         switch ($this->gestor) {
             case 'mysql':
-                $dns = "{$this->gestor}:host={$this->params["hostname"]};";
-
-                try {
-                    $tempCon = new PDO($dns, $this->params["username"], $this->params["password"]);
-                } catch (PDOException $th) {
-                    return false;
-                }
-                $query = self::executeQuery("CREATE DATABASE IF NOT EXISTS {$this->params["database"]}", $tempCon);
-                if (is_array($query) && isset($query["error"])) {
-                    return false;
-                } else {
-                    return true;
-                }
-                break;
             case 'sqlsrv':
-                $dns = "{$this->gestor}:Server={$this->params["hostname"]};";
+                $dns = "{$this->gestor}:" . ($this->gestor == "mysql" ? "host" : "Server") . "={$this->params["hostname"]};";
 
                 try {
                     $tempCon = new PDO($dns, $this->params["username"], $this->params["password"]);
                 } catch (PDOException $th) {
                     return false;
                 }
+
                 $query = self::executeQuery("CREATE DATABASE IF NOT EXISTS {$this->params["database"]}", $tempCon);
-                if (is_array($query) && isset($query["error"])) {
-                    return false;
-                } else {
-                    return true;
-                }
+                return (self::getError($query) === false ? true : false);
                 break;
             default:
                 return false;
@@ -109,23 +81,42 @@ class DB
         }
     }
 
+    public function createTable(String $table, Mixed $con = false)
+    {
+        $arrayQuery = [
+            "mysql" => "CREATE TABLE IF NOT EXISTS `{$table}` (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                fechaRegistro DATETIME DEFAULT CURRENT_TIMESTAMP
+            )",
+            "sqlsrv" => "IF NOT EXISTS (
+                SELECT * FROM sys.tables t JOIN sys.schemas s ON (t.schema_id = s.schema_id) WHERE s.name = '{$table}'
+            ) CREATE TABLE '{$table}' (
+                id INT IDENTITY(1,1) PRIMARY KEY,
+                fechaRegistro DATETIME DEFAULT CURRENT_TIMESTAMP
+            );",
+            "sqlite" => "CREATE TABLE `{$table}` (
+                id INT AUTOINCREMENT PRIMARY KEY,
+                fechaRegistro TEXT DEFAULT CURRENT_TIMESTAMP
+            )"
+        ];
+        $query = $arrayQuery[$this->gestor] ?? "";
+        $con = ($con === false ? $this->con : $con);
+        return (is_array(self::executeQuery($query))) ? false : true;
+    }
+
     /**
-     * @param String $query recive una consulta de toda la vida, pero al ejecutarla con esta function retorna un error dado el caso para una validacion mas facil
+     * @param String $query recive una consulta de toda la vida, pero al ejecutarla con esta function retorna un error dado el caso para una validación mas facil
      */
     public function executeQuery(String $query, mixed $con = false)
     {
         $con = ($con === false ? $this->con : $con);
         try {
             if (!$con) {
-                return [
-                    "error" => "no connection to database"
-                ];
+                return self::getError("no connection to database", true);
             }
             return $con->query($query);
         } catch (PDOException $th) {
-            return [
-                "error" => $th->getMessage()
-            ];
+            return self::getError($th, true);
         }
     }
 }

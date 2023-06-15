@@ -14,7 +14,12 @@ class ControladorTemplate extends DB
     static function router(String $router = "default")
     {
         $db = new DB();
-        $con = $db->connect(true);
+        /*valor en true crea la basededatos con la configuracion enviada en la clase DB*/
+        // $con = $db->connect(true);
+        $con = $db->connect();
+
+        echo DB::getError($db) . "\t\n";
+        echo DB::getError($con) . "\t\n";
 
         $router = $router . (strpos($router, ".php") === false ? ".php" : "");
         $routerFile = $_SERVER['DOCUMENT_ROOT'] . SELF::PATH_VIEWS . $router;
