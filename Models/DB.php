@@ -53,6 +53,7 @@ class DB extends DB_Config
         }
 
         try {
+
             $this->con = new PDO($dns[$this->gestor], $this->params["username"], $this->params["password"]);
         } catch (PDOException $th) {
             if ($createDatabase === true)

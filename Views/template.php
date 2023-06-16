@@ -85,6 +85,8 @@
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/dropzone/min/dropzone.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= SERVERSIDE ?>Views/resources/dist/js/adminlte.min.js"></script>
+    <!-- All page -->
+    <script src="<?= SERVERSIDE ?>Views\assets\js\all.page.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="<?= SERVERSIDE ?>Views/resources/dist/js/demo.js"></script> -->
     <!-- prueba -->

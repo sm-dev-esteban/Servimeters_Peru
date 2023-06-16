@@ -15,9 +15,7 @@ class ControladorTemplate extends DB
     static function router(String $router = "default")
     {
         $db = new DB();
-        /*valor en true crea la basededatos con la configuracion enviada en la clase DB*/
-        // $con = $db->connect(true);
-        $con = $db->connect();
+        $con = $db->connect(true);
 
         echo DB::getError($db) . "\t\n";
         echo DB::getError($con) . "\t\n";
