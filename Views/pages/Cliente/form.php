@@ -56,16 +56,18 @@
                                 </div>
                             </div>
                             <div class="bs-stepper-content">
-                                <!--Paso 1 (Introducción) -->
-                                <?php require_once 'forms/capacityForm.php' ?>
-                                <!--Paso 2 (Situación financiera y requisitos legales)-->
-                                <?php require_once 'forms/financialForm.php' ?>
-                                <!--Paso 3 (Capacidad operativa e infraestructura-->
-                                <?php require_once 'forms/managementForm.php' ?>
-                                <!--Paso 4 (Sistema de gestión de calidad-->
-                                <?php require_once 'forms/qualityForm.php' ?>
-                                <!--Paso 5 (Responsabilidad corporativa)-->
-                                <?php require_once 'forms/responsibilityForm.php' ?>
+                                <form id="form">
+                                    <!--Paso 1 (Introducción) -->
+                                    <?php require_once 'forms/capacityForm.php' ?>
+                                    <!--Paso 2 (Situación financiera y requisitos legales)-->
+                                    <?php require_once 'forms/financialForm.php' ?>
+                                    <!--Paso 3 (Capacidad operativa e infraestructura-->
+                                    <?php require_once 'forms/managementForm.php' ?>
+                                    <!--Paso 4 (Sistema de gestión de calidad-->
+                                    <?php require_once 'forms/qualityForm.php' ?>
+                                    <!--Paso 5 (Responsabilidad corporativa)-->
+                                    <?php require_once 'forms/responsibilityForm.php' ?>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -77,5 +79,17 @@
 <script>
     $(document).ready(function() {
         window.stepper = new Stepper($('#stepper').get(0))
+        $("form").on("submit", function(e) {
+            e.preventDefault();
+            console.log("se envia");
+        });
+
+
+        $(`[data-algo]`).on("click", function () {
+            $(":invalid").removeClass("is-valid").addClass("is-invalid");
+            $(":valid").removeClass("is-invalid").addClass("is-valid");
+            stepper.previous()
+            stepper.next()
+        });
     })
 </script>
