@@ -22,4 +22,5 @@
       normativa de desarrollo, respetando los derechos de accesos, rectificación y cancelación. Estos datos se emplearán exclusivamente por
       SERVIMETERS PERÚ S.A.C. y departamentos adjuntos.</p>
    <button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
+   <input type="text" name="name[usuario]" value="1" hidden>
 </div>

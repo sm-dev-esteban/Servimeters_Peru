@@ -8,7 +8,7 @@ require_once FOLDERSIDE . "Models/DB.php";
 
 class ControladorTemplate extends DB
 {
-    const PATH_VIEWS = "/Peru/Views/pages/";
+    const PATH_VIEWS = "/peru/Views/pages/";
     /**
      * @param String $router - mucho texto
      */
