@@ -45,15 +45,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="acceso" class="nav-link">
+                            <a href="<?= SERVERSIDE ?>/Admin/acceso" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Acceso de usuarios</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= SERVERSIDE ?>/Views/resources/index2.html" class="nav-link">
+                            <a href="<?= SERVERSIDE ?>/Admin/usuarios" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Seguimiento de homologaciones</p>
+                                <p>Listado de usuarios</p>
                             </a>
                         </li>
                         <li class="nav-item">

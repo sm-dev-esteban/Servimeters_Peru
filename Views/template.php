@@ -50,6 +50,8 @@
     <script src="<?= SERVERSIDE ?>/Views/resources/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="<?= SERVERSIDE ?>/Views/resources/dist/js/demo.js"></script> -->
+    <!--Master.js-->
+    <script src="<?= SERVERSIDE ?>/Views/resources/dist/js/master/master.js"></script>
 </body>
 
 </html>

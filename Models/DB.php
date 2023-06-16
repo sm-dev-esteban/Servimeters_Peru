@@ -7,7 +7,7 @@ class DB
         "hostname" => "localhost",
         "username" => "root",
         "password" => "",
-        "database" => "test",
+        "database" => "homologacion_peru",
         "file" => "db.db"
     ];
 
@@ -66,10 +66,40 @@ class DB
         return $this->con;
     }
 
+
     /**
-     * @param String $query recive una consulta de toda la vida, pero al ejecutarla con esta function retorna un error dado el caso para una validacion mas facil
+     * @param String $query
+     * 
+     * @return array
      */
     public function executeQuery(String $query)
+    {
+        try {
+            $arrayResults = array();
+            if (!$this->con) {
+                return [
+                    "error" => "no connection to database"
+                ];
+            }
+            $result = $this->con->query($query);
+            while ($usuario = $result->fetch(PDO::FETCH_ASSOC)) {
+                $arrayResults[] = $usuario;
+            }
+            return $arrayResults;
+        } catch (PDOException $th) {
+            return [
+                "error" => $th->getMessage()
+            ];
+        }
+    }
+
+    /**
+     * @param String $query
+     * @param object $object
+     * 
+     * @return boolean | object
+     */
+    public function executePrepareQuery(String $query, $object)
     {
         try {
             if (!$this->con) {
@@ -77,7 +107,13 @@ class DB
                     "error" => "no connection to database"
                 ];
             }
-            return $this->con->query($query);
+            $result = $this->con->prepare($query);
+            $index = 1;
+            foreach ($object as $key => $value) {
+                $result->bindValue($index, $value);
+                $index++;
+            }
+            return $result->execute();
         } catch (PDOException $th) {
             return [
                 "error" => $th->getMessage()
