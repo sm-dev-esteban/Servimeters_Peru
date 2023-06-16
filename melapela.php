@@ -1,37 +1,43 @@
 <?php
-function replaceMaster($folder, $search, $replace, $i = 0)
+
+/* ❗❗ FUNCION PELIGROSA REEMPLAZA CUALQUIER COSA EN TODOS LOS ARCHIUVOS DE LA CARPETA QUE SE LE PASE ❗❗ */
+/* ❗❗ USAR CON MUCHA PRECAUCIÓN ❗❗ */
+function replaceMaster($search, $replace, $folder = "./*", $config = [])
 {
+    $config = array_merge([
+        "returnCount" => true,
+        "dirs" => true
+    ], $config);
+
     $change = [];
     $all_files = glob($folder);
 
-    foreach ($all_files as $recover) {
-        $i += 1;
-        if (is_dir($recover)) {
-            $change = array_merge($change, replaceMaster("{$recover}/*", $search, $replace, $i));
-        } else {
-            $file = "";
-            $newFile = "";
+    foreach ($all_files as $route) {
+        if (strpos(getenv("SCRIPT_NAME"), basename($route)) === false) {
+            if (is_dir($route) && $config["dirs"] === true) {
+                $change = array_merge($change, replaceMaster($search, $replace, "{$route}/*", $config));
+            } else {
+                $oldFile = file_get_contents($route);
+                $newFile = $oldFile;
 
-            $file = file_get_contents($recover);
-            $newFile = $file;
-
-            if (strpos($newFile, $search) !== false && !empty($search)) {
-                $change[$i] = [
-                    "folder" => dirname($recover),
-                    "file" => basename($recover),
-                    "replace" => [
-                        $search => $replace
-                    ]
-                ];
-                $newFile = str_replace($search, $replace, $newFile);
-                file_put_contents($recover, $newFile);
+                if (strpos($newFile, $search) !== false && !empty($search)) {
+                    $change[] = [
+                        "folder" => dirname($route),
+                        "file" => basename($route),
+                        "replace" => [
+                            $search => $replace
+                        ]
+                    ];
+                    $newFile = str_replace($search, $replace, $newFile);
+                    file_put_contents($route, $newFile);
+                }
             }
         }
     }
-    return array_merge($change, [
+    return $config["returnCount"] ? array_merge($change, [
         "count" => count($change) - 1
-    ]);
+    ]) : $change;
 }
 
 
-echo "<pre>", json_encode(replaceMaster("./*", "<div", "<div"), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), "</pre>";
+echo "<pre>", json_encode(replaceMaster("", ""), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), "</pre>";
