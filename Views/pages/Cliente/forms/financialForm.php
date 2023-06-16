@@ -5,7 +5,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>¿La empresa declara la veracidad de la información que suministrará en este formulario?</label>
-                <select class="form-control" name="veracity">
+                <select class="form-control" name="name[veracity]">
                     <option>Si</option>
                     <option>No</option>
                 </select>
@@ -27,7 +27,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Razón Social</label>
-                <input type="text" name="text" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="name[razon]" class="form-control" id="###" placeholder="Enter email">
             </div>
         </div>
         <!--Campo Nombre Comercial-->
@@ -184,7 +184,7 @@
                         </div>
                     </div> -->
                     <div class="mb-3">
-                        <input type="file" name="" id="" class="form-control">
+                        <input type="file" name="file[adjuntos][]" id="" class="form-control" multiple>
                     </div>
                     <!-- <div class="table table-striped files" id="previews">
                         <div id="template" class="row mt-2">
@@ -244,9 +244,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td contenteditable="true">2020</td>
-                                            <td contenteditable="true">Sector A</td>
-                                            <td contenteditable="true">$100,000</td>
+                                            <td><input type="text" placeholder="año"></td>
+                                            <td><input type="text" placeholder="Sector"></td>
+                                            <td><input type="number" placeholder="$"></td>
                                         </tr>
                                         <tr>
                                             <td contenteditable="true">2020</td>
@@ -283,7 +283,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td contenteditable="true">2020</td>
+                                            <td contenteditable="true" name="name[anno]">2020</td>
                                             <td contenteditable="true">Sector A</td>
                                             <td contenteditable="true">$100,000</td>
                                         </tr>
