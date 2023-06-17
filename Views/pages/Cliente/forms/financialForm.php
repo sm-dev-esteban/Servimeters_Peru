@@ -1,11 +1,15 @@
+<?php
+  require_once 'Controllers/admin.controller.php';
+  ?>
 <div id="test-l-2" class="content">
     <h5 class="text-center p-3">Situación financiera y Requisitos legales</h5>
+    <form id="financialForm" action="customerForm.js" method="post">
     <div class="row">
         <!--Campo Empresa-->
         <div class="col-md-6">
             <div class="form-group">
                 <label>¿La empresa declara la veracidad de la información que suministrará en este formulario?</label>
-                <select class="form-control" name="name[veracity]">
+                <select class="form-control" name="data[veracity]">
                     <option>Si</option>
                     <option>No</option>
                 </select>
@@ -19,7 +23,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
-                    <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" name="date" data-mask>
+                    <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" name="data[date]" data-mask required>
                 </div>
             </div>
         </div>
@@ -27,70 +31,70 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Razón Social</label>
-                <input type="text" name="name[razon]" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[social]" class="form-control" id="###" placeholder="Enter email" >
             </div>
         </div>
         <!--Campo Nombre Comercial-->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Nombre Comercial</label>
-                <input type="text" name="tradeName" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[tradeName]" class="form-control" id="###" placeholder="Enter email" >
             </div>
         </div>
         <!--Campo RUC / CIF / NIF ( Por Favor especificar)-->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">RUC / CIF / NIF ( Por Favor especificar)</label>
-                <input type="text" name="nif" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[nif]" class="form-control" id="###" placeholder="Enter email" >
             </div>
         </div>
         <!--Campo Domicilio Fiscal-->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Domicilio Fiscal</label>
-                <input type="text" name="taxResidence" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[taxResidence]" class="form-control" id="###" placeholder="Enter email">
             </div>
         </div>
         <!--Campo Código Postal-->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Código Postal</label>
-                <input type="text" name="postalCode" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[postalCode]" class="form-control" id="###" placeholder="Enter email">
             </div>
         </div>
         <!--Campo Providencia/Población/Pais-->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Providencia/Población/Pais</label>
-                <input type="text" name="country" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[country]" class="form-control" id="###" placeholder="Enter email">
             </div>
         </div>
         <!--Campo Llenado por -->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Llenado por:</label>
-                <input type="text" name="filledBy" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[filledBy]" class="form-control" id="###" placeholder="Enter email">
             </div>
         </div>
         <!--Campo Télefono -->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Télefono:</label>
-                <input type="text" name="phone" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[phone]" class="form-control" id="###" placeholder="Enter email">
             </div>
         </div>
         <!--Campo Actividad Económica(Código CIIU): -->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Actividad Económica(Código CIIU)</label>
-                <input type="text" name="economicActivity" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[economicActivity]" class="form-control" id="###" placeholder="Enter email">
             </div>
         </div>
         <!--Campo ¿Acepta Facturación Electrónica?: -->
         <div class="col-md-6">
             <div class="form-group">
                 <label>¿Acepta Facturación Electrónica?</label>
-                <select class="form-control" name="electronic">
+                <select class="form-control" name="data[electronic]">
                     <option>Si</option>
                     <option>No</option>
                 </select>
@@ -100,14 +104,14 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Escriba el tipo de servicio o producto a homologar, adicional, especifique si lo subcontrata.</label>
-                <input type="text" name="service" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[service]" class="form-control" id="###" placeholder="Enter email">
             </div>
         </div>
         <!--Campo Tipo de servicio-->
         <div class="col-md-6">
             <div class="form-group" style="margin-top: 1.5rem;">
                 <label>¿Tiene servicio postventa?</label>
-                <select class="form-control" name="afterSales">
+                <select class="form-control" name="data[afterSales]">
                     <option>Si</option>
                     <option>No</option>
                 </select>
@@ -117,26 +121,31 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label for="###">Capital Social de la empresa en Dólares</label>
-                <input type="text" name="socialCapital" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[socialCapital]" class="form-control" id="###" placeholder="Enter email">
             </div>
         </div>
         <!--Campo Capital Social de la empresa en Dólares-->
         <div class="col-md-12">
             <div class="form-group">
                 <label for="###">Número de clientes en los últimos dos años(2021/2022)</label>
-                <input type="text" name="numberCustomer" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" name="data[numberCustomer]" class="form-control" id="###" placeholder="Enter email">
             </div>
         </div>
         <!--Campo Capital Social de la empresa en Dólares-->
         <div class="col-md-12">
             <div class="form-group">
                 <label>¿Se encuentra o se ha encontrado en algún tipo de litigio judicial relacionado con el desarrollo de su actividad?</label>
-                <select class="form-control" name="">
+                <select class="form-control" name="data[litigation]">
                     <option>Si</option>
                     <option>No</option>
                 </select>
             </div>
         </div>
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary m-3">Enviar</button>
+        </div>
+        </form>
+
         <!--Adjunto de archivos-->
         <div class="col-md-12">
             <div class="card card-default">
@@ -183,9 +192,15 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="mb-3">
-                        <input type="file" name="file[adjuntos][]" id="" class="form-control" multiple>
+                    <div class="mb-3 text-center">
+                        <form id="financialDocument" action="customerForm.js" method="post">
+                        <input type="file" name="file[adjuntos][]" id="" class="form-control" required>
+                        <button type="submit" class="btn btn-primary text-center m-3">Enviar</button>
+                        </form>
+                        <?php $result = AdminController::createRecord(); ?>
+
                     </div>
+
                     <!-- <div class="table table-striped files" id="previews">
                         <div id="template" class="row mt-2">
                             <div class="col-auto">
@@ -394,7 +409,6 @@
         </div>
         <div class="col-md-12">
             <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-            <button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
         </div>
     </div>
 </div>
