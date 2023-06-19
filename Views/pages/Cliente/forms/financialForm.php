@@ -1,20 +1,22 @@
 <?php
-  require_once 'Controllers/admin.controller.php';
-  ?>
+  require_once 'Controllers/customer.controller.php';
+?>
 <div id="test-l-2" class="content">
     <h5 class="text-center p-3">Situación financiera y Requisitos legales</h5>
-    <form id="financialForm" action="customerForm.js" method="post">
+    <form id="financialForm" method="post">
     <div class="row">
+
         <!--Campo Empresa-->
         <div class="col-md-6">
             <div class="form-group">
                 <label>¿La empresa declara la veracidad de la información que suministrará en este formulario?</label>
-                <select class="form-control" name="data[veracity]">
+                <select class="form-control" name="data[pregunta_veracidad]">
                     <option>Si</option>
                     <option>No</option>
                 </select>
             </div>
         </div>
+
         <!-- Campo Fecha -->
         <div class="col-md-6">
             <div class="form-group">
@@ -23,219 +25,200 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
-                    <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" name="data[date]" data-mask required>
+                    <input type="date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy"  data-mask required >
                 </div>
             </div>
         </div>
+
         <!--Campo Razón Social-->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Razón Social</label>
-                <input type="text" name="data[social]" class="form-control" id="###" placeholder="Enter email" >
+                <input type="text" name="data[razon_social]" class="form-control" id="###" placeholder="Ingrese razón social" required >
             </div>
         </div>
+
         <!--Campo Nombre Comercial-->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Nombre Comercial</label>
-                <input type="text" name="data[tradeName]" class="form-control" id="###" placeholder="Enter email" >
+                <input type="text" name="data[nombre_comercial]" class="form-control" id="###" placeholder="Ingrese el nombre comercial" required>
             </div>
         </div>
+
         <!--Campo RUC / CIF / NIF ( Por Favor especificar)-->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">RUC / CIF / NIF ( Por Favor especificar)</label>
-                <input type="text" name="data[nif]" class="form-control" id="###" placeholder="Enter email" >
+                <input type="text" class="form-control" name="data[ruc_cif_nif]" id="###" placeholder="Ingrese el datos que se especifica" required>
             </div>
         </div>
+
         <!--Campo Domicilio Fiscal-->
         <div class="col-md-6">
             <div class="form-group">
-                <label for="###">Domicilio Fiscal</label>
-                <input type="text" name="data[taxResidence]" class="form-control" id="###" placeholder="Enter email">
+                <label for="###">Domicilio Fiscal*</label>
+                <input type="text" class="form-control" name="data[domicilio_fiscal]" id="###" placeholder="Ingrese el domicilio fiscal" required>
             </div>
         </div>
+
         <!--Campo Código Postal-->
         <div class="col-md-6">
             <div class="form-group">
-                <label for="###">Código Postal</label>
-                <input type="text" name="data[postalCode]" class="form-control" id="###" placeholder="Enter email">
+                <label for="###">Código Postal*</label>
+                <input type="text" class="form-control" name="data[codigo_postal]" id="###" placeholder="Ingrese el código postal" required>
             </div>
         </div>
+
         <!--Campo Providencia/Población/Pais-->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Providencia/Población/Pais</label>
-                <input type="text" name="data[country]" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" class="form-control" name="data[providencia_poblacion_pais]" id="###" placeholder="Ingrese las siguientes opciones" required>
             </div>
         </div>
+
         <!--Campo Llenado por -->
         <div class="col-md-6">
             <div class="form-group">
-                <label for="###">Llenado por:</label>
-                <input type="text" name="data[filledBy]" class="form-control" id="###" placeholder="Enter email">
+                <label for="###">Llenado por*:</label>
+                <input type="text" class="form-control" name="data[llenado_por]" id="###" placeholder="Ingrese su nombre" required>
             </div>
         </div>
+
         <!--Campo Télefono -->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Télefono:</label>
-                <input type="text" name="data[phone]" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" class="form-control" name="data[telefono]" id="###" placeholder="Ingrese el télefono" required>
             </div>
         </div>
+
         <!--Campo Actividad Económica(Código CIIU): -->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Actividad Económica(Código CIIU)</label>
-                <input type="text" name="data[economicActivity]" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" class="form-control" name="data[actividad_economica]" id="###" placeholder="Ingrese su actividad económica" required>
             </div>
         </div>
+
         <!--Campo ¿Acepta Facturación Electrónica?: -->
         <div class="col-md-6">
             <div class="form-group">
                 <label>¿Acepta Facturación Electrónica?</label>
-                <select class="form-control" name="data[electronic]">
+                <select class="form-control" name="data[acepta_facturacion]">
                     <option>Si</option>
                     <option>No</option>
                 </select>
             </div>
         </div>
+
         <!--Campo Tipo de servicio-->
         <div class="col-md-6">
             <div class="form-group">
                 <label for="###">Escriba el tipo de servicio o producto a homologar, adicional, especifique si lo subcontrata.</label>
-                <input type="text" name="data[service]" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" class="form-control" name="data[tipo_servicio_producto]" id="###" placeholder="Ingrese el tipo de servicio o producto a homologar" required>
             </div>
         </div>
+
         <!--Campo Tipo de servicio-->
         <div class="col-md-6">
             <div class="form-group" style="margin-top: 1.5rem;">
                 <label>¿Tiene servicio postventa?</label>
-                <select class="form-control" name="data[afterSales]">
+                <select class="form-control" name="data[servicio_postventa]">
                     <option>Si</option>
                     <option>No</option>
                 </select>
             </div>
         </div>
+
         <!--Campo Capital Social de la empresa en Dólares-->
         <div class="col-md-12">
             <div class="form-group">
                 <label for="###">Capital Social de la empresa en Dólares</label>
-                <input type="text" name="data[socialCapital]" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" class="form-control" name="data[capital_social]" id="###" placeholder="Ingrese la capital social de la mepresa en dólares" required>
             </div>
         </div>
+
         <!--Campo Capital Social de la empresa en Dólares-->
         <div class="col-md-12">
             <div class="form-group">
                 <label for="###">Número de clientes en los últimos dos años(2021/2022)</label>
-                <input type="text" name="data[numberCustomer]" class="form-control" id="###" placeholder="Enter email">
+                <input type="text" class="form-control" name="data[numero_clientes]" id="###" placeholder="Ingrese el número de clientes en los últimos dos años" required>
             </div>
         </div>
+
         <!--Campo Capital Social de la empresa en Dólares-->
         <div class="col-md-12">
             <div class="form-group">
                 <label>¿Se encuentra o se ha encontrado en algún tipo de litigio judicial relacionado con el desarrollo de su actividad?</label>
-                <select class="form-control" name="data[litigation]">
+                <select class="form-control" name="data[litigio_judicial]">
                     <option>Si</option>
                     <option>No</option>
                 </select>
             </div>
         </div>
+        <!--Botón de envio-->
         <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-primary m-3">Enviar</button>
         </div>
         </form>
+        <?php $result = CustomerController::createCustomer(); ?>
 
         <!--Adjunto de archivos-->
         <div class="col-md-12">
-            <div class="card card-default">
-                <div class="card-header">
-                    <h3 class="card-title"><em>Adjuntar los siguientes documentos:</em></h3><br>
-                    <ul>
-                        <li class="nav-item">1. Certificado de Cámara y Comercio no mayor a 30 días.</li>
-                        <li class="nav-item">2. Balance del último año junto con las notas.</li>
-                        <li class="nav-item">4. En un solo archivo los últimos seis meses de pagos a ESSALUD.</li>
-                        <li class="nav-item">5. En un solo archivo los últimos seis meses de pagos a APF / SNP.</li>
-                        <li class="nav-item">6. En un solo archivo los últimos seis meses de planillas de personal.</li>
-                        <li class="nav-item">7. En un solo archivo los últimos seis meses de CTS (Compensación por tiempo de
-                            servicio).</li>
-                        <li class="nav-item">8. Declaración Antisoborno y procedencia de los fondos de la empresa firmada por el
-                            representante legal.</li>
-                        <li class="nav-item">9. Declaración que establezca que la documentación entregada es legítima y que exime a
-                            SM por cualquier daño o perjuicio por la información suministrada firmada por el representante legal.
-                        </li>
-                    </ul>
-                </div>
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title"><em>Adjuntar los siguientes documentos:</em></h3><br>
+                <ul>
+                <form id="financialDocument" method="post">
+
+                    <li class="nav-item">
+                        1. Certificado de Cámara y Comercio no mayor a 30 días.
+                        <input type="file" class="ml-2" name="file[adjunto]" required>
+                    </li>
+
+                    <li class="nav-item">
+                        2. Balance del último año junto con las notas.
+                        <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 2)" >
+                    </li>
+                    
+                    <li class="nav-item">
+                        4. En un solo archivo los últimos seis meses de pagos a ESSALUD.
+                        <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 4)" >
+                    </li>
+                    
+                    <li class="nav-item">
+                        5. En un solo archivo los últimos seis meses de pagos a APF / SNP.
+                        <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 5)" >
+                    </li>
+
+                    <li class="nav-item">
+                        6. En un solo archivo los últimos seis meses de planillas de personal.
+                        <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 6)" >
+                    </li>
+                        
+                    <li class="nav-item">
+                        7. En un solo archivo los últimos seis meses de CTS (Compensación por tiempo de servicio).
+                        <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 7)" >
+                    </li>
+                        
+                    <li class="nav-item">
+                        8. Declaración Antisoborno y procedencia de los fondos de la empresa firmada por el representante legal.
+                        <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 8)" >
+                    </li>
+                    
+                    <li class="nav-item">
+                        9. Declaración que establezca que la documentación entregada es legítima y que exime a SM por cualquier daño o perjuicio por la información suministrada firmada por el representante legal.
+                        <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 9)" >
+                     </li>
+                </ul>
+            </div>
                 <div class="card-body">
-                    <!-- <div id="actions" class="row">
-                        <div class="col-lg-6">
-                            <div class="btn-group w-100">
-                                <span class="btn  col fileinput-button">
-                                    <i class="fas fa-plus"></i>
-                                    <span>Agregar archivos</span>
-                                </span>
-                                <button type="submit" class="btn btn-primary col start">
-                                    <i class="fas fa-upload"></i>
-                                    <span>Subir Archivos</span>
-                                </button>
-                                <button type="reset" class="btn btn-warning col cancel">
-                                    <i class="fas fa-times-circle"></i>
-                                    <span>Cancelar Subida</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 d-flex align-items-center">
-                            <div class="fileupload-process w-100">
-                                <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="mb-3 text-center">
-                        <form id="financialDocument" action="customerForm.js" method="post">
-                        <input type="file" name="file[adjuntos][]" id="" class="form-control" required>
-                        <button type="submit" class="btn btn-primary text-center m-3">Enviar</button>
-                        </form>
-                        <?php $result = AdminController::createRecord(); ?>
-
+                            <button type="submit" class="btn btn-primary text-center m-3">Enviar</button>
+                </form>
                     </div>
-
-                    <!-- <div class="table table-striped files" id="previews">
-                        <div id="template" class="row mt-2">
-                            <div class="col-auto">
-                                <span class="preview"><img src="data:," alt="" data-dz-thumbnail /></span>
-                            </div>
-                            <div class="col d-flex align-items-center">
-                                <p class="mb-0">
-                                    <span class="lead" data-dz-name></span>
-                                    <span data-dz-size></span>
-                                </p>
-                                <strong class="error text-danger" data-dz-errormessage></strong>
-                            </div>
-                            <div class="col-4 d-flex align-items-center">
-                                <div class="progress progress-striped active w-100" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                                </div>
-                            </div>
-                            <div class="col-auto d-flex align-items-center">
-                                <div class="btn-group">
-                                    <button class="btn btn-primary start">
-                                        <i class="fas fa-upload"></i>
-                                        <span>Start</span>
-                                    </button>
-                                    <button data-dz-remove class="btn btn-warning cancel">
-                                        <i class="fas fa-times-circle"></i>
-                                        <span>Cancel</span>
-                                    </button>
-                                    <button data-dz-remove class="btn btn-danger delete">
-                                        <i class="fas fa-trash"></i>
-                                        <span>Delete</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -259,9 +242,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><input type="text" placeholder="año"></td>
-                                            <td><input type="text" placeholder="Sector"></td>
-                                            <td><input type="number" placeholder="$"></td>
+                                            <td>></td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td contenteditable="true">2020</td>
@@ -409,6 +392,8 @@
         </div>
         <div class="col-md-12">
             <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
+            <button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
+
         </div>
     </div>
 </div>

@@ -4,7 +4,6 @@ class CustomerForm {
       this.$conditionBox = $("#conditionBox");
       this.$button = $("#next");
       this.$buttonValidate = $("#nextValidate");
-
       this.$button.prop("disabled", true);
 
     }
@@ -56,11 +55,11 @@ class CustomerForm {
       // Enviar los datos mediante AJAX
       $.ajax({
         type: 'POST',
-        url: '?entity=datosFinancieros',
+        url: '?entity=datosfinancieros',
         data: formData,
         success: function(response) {
           // Manejar la respuesta del servidor
-          console.log(response,"hola");
+          console.log("Formulario enviado exitosamente");
         },
         error: function(xhr, status, error) {
           // Manejar los errores
@@ -70,10 +69,9 @@ class CustomerForm {
     });
   }
 
-
 sendFinancialDocument(){
-  console.log("entro funcion");
-  //Enviar datos seccion 1 situación financiera-->
+
+  //Enviar documentos sección 2 situación financiera-->
   $('#financialDocument').submit(function(event){
 
   // Evitar que se envíe el formulario de manera tradicional
@@ -89,7 +87,7 @@ sendFinancialDocument(){
     data: formData,
     success: function(response) {
       // Manejar la respuesta del servidor
-      console.log(response,"hola");
+      console.log(response,"funciona");
     },
     error: function(xhr, status, error) {
       // Manejar los errores
@@ -98,6 +96,92 @@ sendFinancialDocument(){
   });
 });
 }
+
+sendManagementForm(){
+  console.log("entro");
+
+   //Enviar documentos sección 2 situación financiera-->
+   $('#managementForm').submit(function(event){
+    // Evitar que se envíe el formulario de manera tradicional
+    event.preventDefault();
+  
+    // Obtener los datos del formulario
+    var formData = $(this).serialize();
+  
+    // Enviar los datos mediante AJAX
+    $.ajax({
+      type: 'POST',
+      url: '?entity=equipos',
+      data: formData,
+      success: function(response) {
+        // Manejar la respuesta del servidor
+        console.log(response,"funciona");
+      },
+      error: function(xhr, status, error) {
+        // Manejar los errores
+        console.error(error);
+      }
+    });
+  });
+}
+
+sendquialityForm(){
+
+   //Enviar documentos sección 2 situación financiera-->
+   $('#quialityForm').submit(function(event){
+   
+    // Evitar que se envíe el formulario de manera tradicional
+    event.preventDefault();
+  
+    // Obtener los datos del formulario
+    var formData = $(this).serialize();
+  
+    // Enviar los datos mediante AJAX
+    $.ajax({
+      type: 'POST',
+      url: '?entity=gestion',
+      data: formData,
+      success: function(response) {
+        // Manejar la respuesta del servidor
+        console.log(response,"funciona");
+      },
+      error: function(xhr, status, error) {
+        // Manejar los errores
+        console.error(error);
+      }
+    });
+  });
+}
+
+sendResponsibilityForm(){
+
+   //Enviar documentos sección 2 situación financiera-->
+   $('#resposibilityForm').submit(function(event){
+   
+    // Evitar que se envíe el formulario de manera tradicional
+    event.preventDefault();
+  
+    // Obtener los datos del formulario
+    var formData = $(this).serialize();
+  
+    // Enviar los datos mediante AJAX
+    $.ajax({
+      type: 'POST',
+      url: '?entity=corporacion',
+      data: formData,
+      success: function(response) {
+        // Manejar la respuesta del servidor
+        console.log(response,"funciona");
+      },
+      error: function(xhr, status, error) {
+        // Manejar los errores
+        console.error(error);
+      }
+    });
+  });
+
+}
+
 
 }
 
@@ -108,5 +192,6 @@ $(document).ready(function() {
         formValidate.validateField();
         formValidate.sendFinancialForm();
         formValidate.sendFinancialDocument();
-
+        formValidate.sendManagementForm();
+        formValidate.sendquialityForm();
     });

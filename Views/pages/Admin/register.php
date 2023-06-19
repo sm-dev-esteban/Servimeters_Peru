@@ -33,7 +33,7 @@
               <!--Confirmar contraseña-->
               <div class="form-group">
                 <label for="exampleInputPassword1">Confirmar Contraseña</label>
-                <input type="password" class="form-control" inputmode="text" autocomplete="new-password" placeholder="" required />
+                <input type="password" class="form-control" name="data[confirm_password]" inputmode="text" autocomplete="new-password" placeholder="" required />
               </div>
 
               <!--Rol-->

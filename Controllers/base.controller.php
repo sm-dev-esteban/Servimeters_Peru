@@ -7,7 +7,7 @@ class BaseController
 
     public static function insert($data, $table)
     {
-        $form = new AutomaticForm($data, $table);
+        $form = new AutomaticForm($data, $table, 'INSERT');
         $result = $form->execute();
         return $result;
     }
