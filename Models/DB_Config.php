@@ -5,7 +5,7 @@ class DB_Config
     const DEFAULT_PARAMS = [
         "hostname" => "localhost",
         "username" => "root",
-        "password" => "",
+        "password" => "user",
         "database" => "servimetersPeru",
         "file" => FOLDERSIDE . "db/db.db" /* sqlite */
     ];
