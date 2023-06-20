@@ -85,7 +85,7 @@
         });
 
 
-        $(`[data-algo]`).on("click", function () {
+        $(`[data-algo]`).on("click", function() {
             $(":invalid").removeClass("is-valid").addClass("is-invalid");
             $(":valid").removeClass("is-invalid").addClass("is-valid");
             stepper.previous()

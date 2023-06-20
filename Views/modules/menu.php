@@ -54,7 +54,10 @@
                             <a href="<?= SERVERSIDE ?>Admin/register" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Ingresar Usuarios</p>
-                            </a>
+                                <a href="<?= SERVERSIDE ?>/Admin/usuarios" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Listado de usuarios</p>
+                                </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?= SERVERSIDE ?>Views/resources/index3.html" class="nav-link">

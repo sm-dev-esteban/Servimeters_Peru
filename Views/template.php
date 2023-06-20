@@ -105,6 +105,9 @@
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
     </script>
+    <!-- <script src="<?= SERVERSIDE ?>/Views/resources/dist/js/demo.js"></script> -->
+    <!--Master.js-->
+    <script src="<?= SERVERSIDE ?>/Views/resources/dist/js/master/master.js"></script>
 </body>
 
 </html>

@@ -9,6 +9,13 @@ require_once FOLDERSIDE . "Models/DB_Config.php";
 class DB extends DB_Config
 {
     protected $gestor, $params, $con;
+    const DEFAULT_PARAMS = [
+        "hostname" => "localhost",
+        "username" => "root",
+        "password" => "",
+        "database" => "homologacion_peru",
+        "file" => "db.db"
+    ];
 
     public function __construct(
         String $gestor = self::DEFAULT_GESTOR,
@@ -64,8 +71,11 @@ class DB extends DB_Config
         return $this->con;
     }
 
+
     /**
-     * @return Bool Booleano si se ejecuto o no
+     * @param String $query
+     * 
+     * @return array
      */
     public function createDatabase()
     {
@@ -154,6 +164,45 @@ class DB extends DB_Config
                 return self::getError("no connection to database", true);
             }
             return $con->query($query);
+            $arrayResults = array();
+            if (!$this->con) {
+                return [
+                    "error" => "no connection to database"
+                ];
+            }
+            $result = $this->con->query($query);
+            while ($usuario = $result->fetch(PDO::FETCH_ASSOC)) {
+                $arrayResults[] = $usuario;
+            }
+            return $arrayResults;
+        } catch (PDOException $th) {
+            return [
+                "error" => $th->getMessage()
+            ];
+        }
+    }
+
+    /**
+     * @param String $query
+     * @param object $object
+     * 
+     * @return boolean | object
+     */
+    public function executePrepareQuery(String $query, $object)
+    {
+        try {
+            if (!$this->con) {
+                return [
+                    "error" => "no connection to database"
+                ];
+            }
+            $result = $this->con->prepare($query);
+            $index = 1;
+            foreach ($object as $key => $value) {
+                $result->bindValue($index, $value);
+                $index++;
+            }
+            return $result->execute();
         } catch (PDOException $th) {
             return self::getError($th, true);
         }
