@@ -9,6 +9,11 @@ require_once FOLDERSIDE . "Models/DB.php";
 class ControladorTemplate extends DB
 {
     const PATH_VIEWS = "/peru/Views/pages/";
+    const menu = array(
+        "Admin" => "Admin/register.php|fa-plus|Ingresar Usuarios,Admin/accesos.php|fa-list|Lista de usuarios",
+        "Auditor" => "Auditor/evaluacion.php|fa-marker|Evaluar homologacion",
+        "Cliente" => "Cliente/form.php|fa-user|Homologacion de Cliente"
+    );
     /**
      * @param String $router - mucho texto
      */
@@ -28,5 +33,20 @@ class ControladorTemplate extends DB
         } else {
             include($router404);
         }
+    }
+
+    static function menu()
+    {
+        if (strcmp($_SESSION['rol'], 'Admin') === 0) {
+            $itemsMenu = explode(',', implode(',', self::menu));
+        } else {
+            $itemsMenu = explode(',', self::menu[$_SESSION['rol']]);
+        }
+        $resultMenu = array();
+        foreach ($itemsMenu as $item) {
+            $arrayItem = explode('|', $item);
+            $resultMenu[] = $arrayItem;
+        }
+        return json_encode($resultMenu);
     }
 }
