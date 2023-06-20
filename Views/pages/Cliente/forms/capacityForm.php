@@ -21,6 +21,14 @@
       Y los datos aportados por la empresa son tratados de acuerdo a la Ley Orgánica 15/1999 de Protección de Datos de Carácter Personal y
       normativa de desarrollo, respetando los derechos de accesos, rectificación y cancelación. Estos datos se emplearán exclusivamente por
       SERVIMETERS PERÚ S.A.C. y departamentos adjuntos.</p>
-   <button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
    <input type="text" name="name[usuario]" value="1" hidden>
+     <!--Validación de si acepta las condiciones-->
+     <form>
+         <label>
+            <input type="checkbox" id="conditionBox" required>
+            Acepto las condiciones
+         </label>
+         <br>
+      </form>
+   <button class="btn btn-primary" onclick="stepper.next()" id="next">Siguiente</button>
 </div>

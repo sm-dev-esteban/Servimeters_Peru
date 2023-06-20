@@ -105,6 +105,8 @@
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
     </script>
+    <!--Envio de información del formulario cliente-->
+    <script src="<?= SERVERSIDE ?>Views/assets/js/customerForm.js"></script>
 </body>
 
 </html>
