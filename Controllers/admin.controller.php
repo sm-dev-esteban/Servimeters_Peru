@@ -26,9 +26,9 @@ class AdminController extends BaseController
         }
     }
 
-    public static function getRecords($table)
+    public static function getRecords()
     {
-        $records = parent::getAll($table);
+        $records = parent::getAll();
         return $records;
     }
 }

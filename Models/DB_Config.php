@@ -6,7 +6,7 @@ class DB_Config
         "hostname" => "localhost",
         "username" => "root",
         "password" => "",
-        "database" => "servimetersPeru",
+        "database" => "servimetersperu",
         "file" => FOLDERSIDE . "db/db.db" /* sqlite */
     ];
 

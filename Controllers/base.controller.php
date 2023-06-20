@@ -77,4 +77,14 @@ class BaseController
     {
         return self::$model->getAll();
     }
+
+    /**
+     * @param mixed $condition
+     * 
+     * @return array
+     */
+    public static function getCondition($condition)
+    {
+        return self::$model->getCondition($condition);
+    }
 }

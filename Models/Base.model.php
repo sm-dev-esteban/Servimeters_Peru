@@ -1,6 +1,7 @@
 <?php
 require_once 'interfaces/BD.interface.php';
 require_once 'DB.php';
+require_once 'automaticForm.php';
 class BaseModel implements BDInterface
 {
 
@@ -89,5 +90,11 @@ class BaseModel implements BDInterface
     public function getObjectAsArray()
     {
         return get_object_vars($this);
+    }
+
+    public function getCondition($condition)
+    {
+        $result = AutomaticForm::getDataSql($this->table, $condition);
+        return $result;
     }
 }

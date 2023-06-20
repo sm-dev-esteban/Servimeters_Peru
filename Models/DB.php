@@ -13,7 +13,7 @@ class DB extends DB_Config
         "hostname" => "localhost",
         "username" => "root",
         "password" => "",
-        "database" => "homologacion_peru",
+        "database" => "servimetersperu",
         "file" => "db.db"
     ];
 

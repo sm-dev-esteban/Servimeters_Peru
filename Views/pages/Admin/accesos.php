@@ -1,6 +1,6 @@
 <?php
-require_once 'Controllers/admin.controller.php';
-$usuarios = AdminController::getAll('usuarios');
+include_once('Controllers/Usuario.controller.php');
+$usuarios = UsuarioController::index();
 
 ?>
 <section class="content">

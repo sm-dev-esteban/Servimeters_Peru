@@ -1,17 +1,27 @@
 <?php
 require_once 'Base.controller.php';
 
+if (isset($_GET['path'])) {
+    $path = $_GET['path'];
+    require_once $path . 'config.php';
+} else {
+    require_once 'config.php';
+}
+require_once FOLDERSIDE . 'Models/Usuario.model.php';
+
 class SessionController extends BaseController
 {
     private static $result;
+
     public static function loguin()
     {
 
         if (isset($_POST['user']) && isset($_POST['password'])) {
             session_start();
             self::$result = new stdClass();
+            parent::setModel(new UsuarioModel());
             // Obtener el usuario
-            $user = parent::get('usuarios', "usuario LIKE '%" . $_POST['user'] . "%'");
+            $user = parent::getCondition("usuario LIKE '%" . $_POST['user'] . "%'");
             if (sizeof($user) <= 0) {
                 self::$result->Error = 'Las credenciales no son validas';
                 header('Content-Type: application/json');
