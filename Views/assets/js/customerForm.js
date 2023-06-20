@@ -16,30 +16,6 @@ class CustomerForm {
       });
   }
 
-  sendDataForm(entity, formData) {
-      $.ajax({
-          type: 'POST',
-          url: `?entity=${entity}`,
-          data: formData,
-          processData: false,
-          cache: false,
-          contentType: false,
-          success: function (response) {
-              // Manejar la respuesta del servidor
-              console.log("Formulario enviado exitosamente");
-          },
-          error: function (xhr, status, error) {
-              // Manejar los errores
-              console.error(error);
-          }
-      });
-  }
-
-  validateFieldCompleted(formId) {
-      var requiredFields = $('#' + formId + ' select[required], #' + formId + ' input[required]');
-      console.log(requiredFields);
-  }
-
   sendForm(formId, entity) {
       $('#' + formId).submit(function (event) {
           event.preventDefault();
