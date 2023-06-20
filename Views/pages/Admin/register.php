@@ -51,6 +51,11 @@
                 <input type="checkbox" name="data[habilitado]" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
               </div>
 
+              <!-- Estado inicial -->
+              <div class="form-group">
+                <input type="text" class="form-control" name="data[estado]" inputmode="text" value="homologacion" hidden />
+              </div>
+
               <!--Botón envio-->
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Enviar</button>

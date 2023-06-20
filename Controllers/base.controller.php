@@ -1,5 +1,13 @@
 <?php
 
+if (isset($_GET['path'])) {
+    $path = $_GET['path'];
+    require_once $path . 'config.php';
+} else {
+    require_once 'config.php';
+}
+require_once FOLDERSIDE . 'Models/automaticForm.php';
+
 class BaseController
 {
 
@@ -76,5 +84,11 @@ class BaseController
     public static function getAll()
     {
         return self::$model->getAll();
+    }
+
+    public static function get($table, $condition)
+    {
+        $result = AutomaticForm::getDataSql($table, $condition);
+        return $result;
     }
 }
