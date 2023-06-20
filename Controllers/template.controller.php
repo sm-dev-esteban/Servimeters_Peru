@@ -10,12 +10,14 @@
 class ControladorTemplate
 {
 
-    const PATH_VIEWS = "/peru/Views/pages/";
     const menu = array(
         "Admin" => "Admin/register.php|fa-plus|Ingresar Usuarios,Admin/accesos.php|fa-list|Lista de usuarios",
         "Auditor" => "Auditor/evaluacion.php|fa-marker|Evaluar homologacion",
         "Cliente" => "Cliente/form.php|fa-user|Homologacion de Cliente"
     );
+
+    const PATH_VIEWS = FOLDERSIDE . "Views/pages/";
+
     /**
      * @param String $router - mucho texto
      */
@@ -24,7 +26,7 @@ class ControladorTemplate
         // $db = new DB();
         // $con = $db->connect(); --Lo deshabilite, Perdon :(
         $router = $router . (strpos($router, ".php") === false ? ".php" : "");
-        $routerFile = $_SERVER['DOCUMENT_ROOT'] . SELF::PATH_VIEWS . $router;
+        $routerFile = SELF::PATH_VIEWS . $router;
         $router404 = str_replace($router, "Error/404.php", $routerFile);
         if (file_exists($routerFile)) {
             include($routerFile);

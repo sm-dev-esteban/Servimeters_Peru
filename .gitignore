@@ -5,3 +5,7 @@ config.min.js
 
 # VS
 .vscode
+
+# carpeta donde se cargan los archivos
+files
+
