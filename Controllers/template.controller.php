@@ -8,7 +8,7 @@ require_once FOLDERSIDE . "Models/DB.php";
 
 class ControladorTemplate extends DB
 {
-    const PATH_VIEWS = "/peru/Views/pages/";
+    const PATH_VIEWS = FOLDERSIDE . "Views/pages/";
     /**
      * @param String $router - mucho texto
      */
@@ -21,7 +21,7 @@ class ControladorTemplate extends DB
         echo DB::getError($con) . "\t\n";
 
         $router = $router . (strpos($router, ".php") === false ? ".php" : "");
-        $routerFile = $_SERVER['DOCUMENT_ROOT'] . SELF::PATH_VIEWS . $router;
+        $routerFile = SELF::PATH_VIEWS . $router;
         $router404 = str_replace($router, "Error/404.php", $routerFile);
         if (file_exists($routerFile)) {
             include($routerFile);
