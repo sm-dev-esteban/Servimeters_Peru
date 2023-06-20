@@ -25,7 +25,7 @@ require_once 'Controllers/customer.controller.php';
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                         </div>
-                        <input type="date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask required>
+                        <input type="date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Razón Social</label>
-                    <input type="text" name="data[razon_social]" class="form-control" id="###" placeholder="Ingrese razón social" required>
+                    <input type="text" name="data[razon_social]" class="form-control" id="###" placeholder="Ingrese razón social">
                 </div>
             </div>
 
@@ -42,7 +42,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Nombre Comercial</label>
-                    <input type="text" name="data[nombre_comercial]" class="form-control" id="###" placeholder="Ingrese el nombre comercial" required>
+                    <input type="text" name="data[nombre_comercial]" class="form-control" id="###" placeholder="Ingrese el nombre comercial">
                 </div>
             </div>
 
@@ -50,7 +50,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">RUC / CIF / NIF ( Por Favor especificar)</label>
-                    <input type="text" class="form-control" name="data[ruc_cif_nif]" id="###" placeholder="Ingrese el datos que se especifica" required>
+                    <input type="text" class="form-control" name="data[ruc_cif_nif]" id="###" placeholder="Ingrese el datos que se especifica">
                 </div>
             </div>
 
@@ -58,7 +58,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Domicilio Fiscal*</label>
-                    <input type="text" class="form-control" name="data[domicilio_fiscal]" id="###" placeholder="Ingrese el domicilio fiscal" required>
+                    <input type="text" class="form-control" name="data[domicilio_fiscal]" id="###" placeholder="Ingrese el domicilio fiscal">
                 </div>
             </div>
 
@@ -66,7 +66,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Código Postal*</label>
-                    <input type="text" class="form-control" name="data[codigo_postal]" id="###" placeholder="Ingrese el código postal" required>
+                    <input type="text" class="form-control" name="data[codigo_postal]" id="###" placeholder="Ingrese el código postal">
                 </div>
             </div>
 
@@ -74,7 +74,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Providencia/Población/Pais</label>
-                    <input type="text" class="form-control" name="data[providencia_poblacion_pais]" id="###" placeholder="Ingrese las siguientes opciones" required>
+                    <input type="text" class="form-control" name="data[providencia_poblacion_pais]" id="###" placeholder="Ingrese las siguientes opciones">
                 </div>
             </div>
 
@@ -82,7 +82,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Llenado por*:</label>
-                    <input type="text" class="form-control" name="data[llenado_por]" id="###" placeholder="Ingrese su nombre" required>
+                    <input type="text" class="form-control" name="data[llenado_por]" id="###" placeholder="Ingrese su nombre">
                 </div>
             </div>
 
@@ -90,7 +90,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Télefono:</label>
-                    <input type="text" class="form-control" name="data[telefono]" id="###" placeholder="Ingrese el télefono" required>
+                    <input type="text" class="form-control" name="data[telefono]" id="###" placeholder="Ingrese el télefono">
                 </div>
             </div>
 
@@ -162,6 +162,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-12 text-center">
                 <button type="submit" class="btn btn-primary m-3">Enviar</button>
             </div>
+        </div>
     </form>
     <?php $result = CustomerController::createCustomer(); ?>
 
@@ -174,42 +175,42 @@ require_once 'Controllers/customer.controller.php';
                     <ul>
                         <li class="nav-item">
                             1. Certificado de Cámara y Comercio no mayor a 30 días.
-                            <input type="file" class="ml-2" name="file[adjunto]" required>
+                            <input type="file" class="ml-2" name="file[adjunto_1]" required>
                         </li>
 
                         <li class="nav-item">
                             2. Balance del último año junto con las notas.
-                            <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 2)">
+                            <input type="file" class="ml-2" name="file[adjunto_2]">
                         </li>
 
                         <li class="nav-item">
                             4. En un solo archivo los últimos seis meses de pagos a ESSALUD.
-                            <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 4)">
+                            <input type="file" class="ml-2" name="file[adjunto_4]">
                         </li>
 
                         <li class="nav-item">
                             5. En un solo archivo los últimos seis meses de pagos a APF / SNP.
-                            <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 5)">
+                            <input type="file" class="ml-2" name="file[adjunto_5]">
                         </li>
 
                         <li class="nav-item">
                             6. En un solo archivo los últimos seis meses de planillas de personal.
-                            <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 6)">
+                            <input type="file" class="ml-2" name="file[adjunto_6]">
                         </li>
 
                         <li class="nav-item">
                             7. En un solo archivo los últimos seis meses de CTS (Compensación por tiempo de servicio).
-                            <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 7)">
+                            <input type="file" class="ml-2" name="file[adjunto_7]">
                         </li>
 
                         <li class="nav-item">
                             8. Declaración Antisoborno y procedencia de los fondos de la empresa firmada por el representante legal.
-                            <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 8)">
+                            <input type="file" class="ml-2" name="file[adjunto_8]">
                         </li>
 
                         <li class="nav-item">
                             9. Declaración que establezca que la documentación entregada es legítima y que exime a SM por cualquier daño o perjuicio por la información suministrada firmada por el representante legal.
-                            <input type="file" class="ml-2" onchange="adjuntarDocumento(event, 9)">
+                            <input type="file" class="ml-2" name="file[adjunto_9]">
                         </li>
                     </ul>
                 </div>
@@ -392,7 +393,5 @@ require_once 'Controllers/customer.controller.php';
     <div class="col-md-12">
         <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
         <button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
-
     </div>
-</div>
 </div>

@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label>Las instalaciones utilizadas por la empresa son*:</label>
-                <select class="form-control" name="data[instalaciones]" required>
+                <select class="form-control" name="data[instalaciones]" id="instalaciones" required>
                     <option>Propias</option>
                     <option>Arendadas</option>
                 </select>
