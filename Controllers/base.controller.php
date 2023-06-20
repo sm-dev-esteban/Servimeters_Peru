@@ -86,7 +86,7 @@ class BaseController
         return self::$model->getAll();
     }
 
-    public static function get($table, $condition)
+    public static function getCondition($table, $condition)
     {
         $result = AutomaticForm::getDataSql($table, $condition);
         return $result;
