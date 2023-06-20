@@ -1,6 +1,6 @@
 <?php
-require_once 'Controllers/admin.controller.php';
-$usuarios = AdminController::getAll('usuarios');
+include_once('Controllers/Usuario.controller.php');
+$usuarios = UsuarioController::index();
 
 ?>
 <section class="content">
@@ -23,7 +23,7 @@ $usuarios = AdminController::getAll('usuarios');
                                 Usuario
                             </th>
                             <th style="width: 10%" class="text-center">
-                                Habilitado
+                                Acceso
                             </th>
                             <th style="width: 30%" class="text-center">
                                 Acciones

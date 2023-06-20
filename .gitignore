@@ -1,5 +1,15 @@
+# Config
+config.json
+config.min.js
+
+
+# VS
+.vscode
+
 # carpeta donde se cargan los archivos
 files
+
 # config
 config.min.js
 config.json
+

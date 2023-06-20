@@ -42,6 +42,39 @@ class CustomerForm {
             });
         });
     }
+  
+    sendResponsibilityForm() {
+
+        //Enviar documentos sección 2 situación financiera-->
+        $('#resposibilityForm').submit(function (event) {
+
+            // Evitar que se envíe el formulario de manera tradicional
+            event.preventDefault();
+
+            // Obtener los datos del formulario
+            var formData = $(this).serialize();
+
+            // Enviar los datos mediante AJAX
+            $.ajax({
+                type: 'POST',
+                url: '?entity=corporacion',
+                data: formData,
+                processData: false,
+                cache: false,
+                contentType: false,
+                success: function (response) {
+                    // Manejar la respuesta del servidor
+                    console.log(response, "funciona");
+                },
+                error: function (xhr, status, error) {
+                    // Manejar los errores
+                    console.error(error);
+                }
+            });
+        });
+
+    }
+
 }
 
 $(document).ready(function () {

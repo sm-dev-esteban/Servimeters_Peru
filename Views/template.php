@@ -27,11 +27,14 @@
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/plugins/bs-stepper/css/bs-stepper.min.css">
     <!-- dropzonejs -->
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/plugins/dropzone/min/dropzone.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/dist/css/adminlte.min.css">
+
     <!-- jQuery -->
-    <!-- Me gusta ver el mundo arder >:) -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/jquery/jquery.min.js"></script>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -62,8 +65,6 @@
     </div>
     <!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="<?= SERVERSIDE ?>Views/resources/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -91,10 +92,14 @@
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/bs-stepper/js/bs-stepper.min.js"></script>
     <!-- dropzonejs -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/dropzone/min/dropzone.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= SERVERSIDE ?>Views/resources/dist/js/adminlte.min.js"></script>
     <!-- All page -->
     <script src="<?= SERVERSIDE ?>Views\assets\js\all.page.js"></script>
+    <!-- Loguin/Logout -->
+    <script src="<?= SERVERSIDE ?>Views\assets\js\loguin.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="<?= SERVERSIDE ?>Views/resources/dist/js/demo.js"></script> -->
     <!-- prueba -->
@@ -105,6 +110,9 @@
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
     </script>
+    <!-- <script src="<?= SERVERSIDE ?>/Views/resources/dist/js/demo.js"></script> -->
+    <!--Master.js-->
+    <script src="<?= SERVERSIDE ?>/Views/resources/dist/js/master/master.js"></script>
     <!--Envio de información del formulario cliente-->
     <script src="<?= SERVERSIDE ?>Views/assets/js/customerForm.js"></script>
 </body>
