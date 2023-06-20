@@ -62,6 +62,14 @@
     </div>
     <!-- ./wrapper -->
 
+    <!-- jQuery -->
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
     <!-- Bootstrap 4 -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Select2 -->
@@ -92,6 +100,13 @@
     <!-- prueba -->
     <script src="<?= SERVERSIDE ?>config.min.js"></script>
     <script src="<?= SERVERSIDE ?>Views/assets/js/request.js"></script>
+    <script>
+        $("input[data-bootstrap-switch]").each(function() {
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        })
+    </script>
+    <!--Envio de información del formulario cliente-->
+    <script src="<?= SERVERSIDE ?>Views/assets/js/customerForm.js"></script>
 </body>
 
 </html>
