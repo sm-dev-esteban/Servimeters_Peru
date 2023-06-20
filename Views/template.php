@@ -113,6 +113,8 @@
     <!-- <script src="<?= SERVERSIDE ?>/Views/resources/dist/js/demo.js"></script> -->
     <!--Master.js-->
     <script src="<?= SERVERSIDE ?>/Views/resources/dist/js/master/master.js"></script>
+    <!--Envio de información del formulario cliente-->
+    <script src="<?= SERVERSIDE ?>Views/assets/js/customerForm.js"></script>
 </body>
 
 </html>

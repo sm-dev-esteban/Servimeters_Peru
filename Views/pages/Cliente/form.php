@@ -56,7 +56,6 @@
                                 </div>
                             </div>
                             <div class="bs-stepper-content">
-
                                 <!--Paso 1 (Introducción) -->
                                 <?php require_once 'forms/capacityForm.php' ?>
                                 <!--Paso 2 (Situación financiera y requisitos legales)-->
@@ -81,7 +80,6 @@
         window.stepper = new Stepper($('#stepper').get(0))
         $("form").on("submit", function(e) {
             e.preventDefault();
-            console.log("se envia");
         });
 
 
