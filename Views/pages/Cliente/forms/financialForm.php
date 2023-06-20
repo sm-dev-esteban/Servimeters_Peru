@@ -25,7 +25,7 @@ require_once 'Controllers/customer.controller.php';
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                         </div>
-                        <input type="date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask required>
+                        <input type="date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Razón Social</label>
-                    <input type="text" name="data[razon_social]" class="form-control" id="###" placeholder="Ingrese razón social" required>
+                    <input type="text" name="data[razon_social]" class="form-control" id="###" placeholder="Ingrese razón social">
                 </div>
             </div>
 
@@ -42,7 +42,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Nombre Comercial</label>
-                    <input type="text" name="data[nombre_comercial]" class="form-control" id="###" placeholder="Ingrese el nombre comercial" required>
+                    <input type="text" name="data[nombre_comercial]" class="form-control" id="###" placeholder="Ingrese el nombre comercial" >
                 </div>
             </div>
 
@@ -50,7 +50,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">RUC / CIF / NIF ( Por Favor especificar)</label>
-                    <input type="text" class="form-control" name="data[ruc_cif_nif]" id="###" placeholder="Ingrese el datos que se especifica" required>
+                    <input type="text" class="form-control" name="data[ruc_cif_nif]" id="###" placeholder="Ingrese el datos que se especifica" >
                 </div>
             </div>
 
@@ -58,7 +58,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Domicilio Fiscal*</label>
-                    <input type="text" class="form-control" name="data[domicilio_fiscal]" id="###" placeholder="Ingrese el domicilio fiscal" required>
+                    <input type="text" class="form-control" name="data[domicilio_fiscal]" id="###" placeholder="Ingrese el domicilio fiscal" >
                 </div>
             </div>
 
@@ -66,7 +66,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Código Postal*</label>
-                    <input type="text" class="form-control" name="data[codigo_postal]" id="###" placeholder="Ingrese el código postal" required>
+                    <input type="text" class="form-control" name="data[codigo_postal]" id="###" placeholder="Ingrese el código postal" >
                 </div>
             </div>
 
@@ -74,7 +74,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Providencia/Población/Pais</label>
-                    <input type="text" class="form-control" name="data[providencia_poblacion_pais]" id="###" placeholder="Ingrese las siguientes opciones" required>
+                    <input type="text" class="form-control" name="data[providencia_poblacion_pais]" id="###" placeholder="Ingrese las siguientes opciones" >
                 </div>
             </div>
 
@@ -82,7 +82,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Llenado por*:</label>
-                    <input type="text" class="form-control" name="data[llenado_por]" id="###" placeholder="Ingrese su nombre" required>
+                    <input type="text" class="form-control" name="data[llenado_por]" id="###" placeholder="Ingrese su nombre" >
                 </div>
             </div>
 
@@ -90,7 +90,7 @@ require_once 'Controllers/customer.controller.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="###">Télefono:</label>
-                    <input type="text" class="form-control" name="data[telefono]" id="###" placeholder="Ingrese el télefono" required>
+                    <input type="text" class="form-control" name="data[telefono]" id="###" placeholder="Ingrese el télefono" >
                 </div>
             </div>
 
