@@ -14,8 +14,9 @@ function replaceMaster($search, $replace, $folder = "./*", $config = [])
 
     foreach ($all_files as $route) {
         if (strpos(getenv("SCRIPT_NAME"), basename($route)) === false) {
-            if (is_dir($route) && $config["dirs"] === true) {
-                $change = array_merge($change, replaceMaster($search, $replace, "{$route}/*", $config));
+            if (is_dir($route)) {
+                if ($config["dirs"] === true)
+                    $change = array_merge($change, replaceMaster($search, $replace, "{$route}/*", $config));
             } else {
                 $oldFile = file_get_contents($route);
                 $newFile = $oldFile;
