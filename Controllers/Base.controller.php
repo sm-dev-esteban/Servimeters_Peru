@@ -24,7 +24,7 @@ class BaseController
      * @return array
      */
 
-    private static function getObjectModel()
+    public static function getObjectModel()
     {
         return self::$model->getObjectAsArray();
     }

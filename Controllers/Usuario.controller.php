@@ -21,14 +21,9 @@ class UsuarioController extends BaseController
      */
     static public function saveUser()
     {
-        if (isset($_GET['action']) && $_GET['action'] === 'create') {
-            if (isset($_POST)) {
-                $usuario = new UsuarioModel($_POST);
-                parent::setModel($usuario);
-                echo parent::insert();
-            } else {
-                echo 'Los valores no son validos!';
-            }
+        if (isset($_GET['action']) && strcmp($_GET['action'], 'insert') == 0) {
+            parent::setModel(new UsuarioModel($_POST));
+            parent::insert();
         }
     }
 }

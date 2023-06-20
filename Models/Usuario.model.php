@@ -10,15 +10,27 @@ class UsuarioModel extends BaseModel
     /**
      * @var string
      */
-    private $name;
+    private $email;
     /**
      * @var string
      */
-    private $pass;
+    private $usuario;
     /**
      * @var string
      */
-    private $role;
+    private $password;
+    /**
+     * @var string
+     */
+    private $rol;
+    /**
+     * @var string
+     */
+    private $habilitado;
+    /**
+     * @var string
+     */
+    private $estado;
 
     function __construct($array = null)
     {
@@ -36,7 +48,10 @@ class UsuarioModel extends BaseModel
      */
     public function getObjectAsArray()
     {
-        return get_object_vars($this);
+        $objectArray = array(
+            "data" => get_object_vars($this)
+        );
+        return $objectArray;
     }
 
     /**
@@ -49,6 +64,6 @@ class UsuarioModel extends BaseModel
 
     private function encryptPass()
     {
-        $this->pass = password_hash($this->pass, PASSWORD_BCRYPT, ['cost' => 12]);
+        $this->password = password_hash($this->password, PASSWORD_BCRYPT, ['cost' => 12]);
     }
 }

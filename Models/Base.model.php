@@ -33,15 +33,8 @@ class BaseModel implements BDInterface
     public function insert($object)
     {
         try {
-            $properties = array();
-            foreach ($object as $key => $value) {
-                $properties[] = $key;
-            }
-            $values = str_repeat('?,', count($properties));
-
-            $this->query = 'INSERT INTO ' .  $this->table . '(' . implode(',', $properties) . ') VALUES (' . substr($values, 0, (strlen($values) - 1)) . ')';
-            $result = $this->db->executePrepareQuery($this->query, $object);
-            return $result;
+            $af = new AutomaticForm($object, $this->table);
+            $af->execute();
         } catch (Exception $e) {
             echo $e;
         }
