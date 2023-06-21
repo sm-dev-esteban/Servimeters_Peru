@@ -1,4 +1,4 @@
-<div id="test-l-3" class="content">
+<div id="test-l-5" class="content">
     <h5 class="text-center p-3">Responsabilidad Corporativa</h5>
     <!-- <form id="resposibilityForm" method="post"> -->
     <div class="row">
@@ -207,7 +207,7 @@
         </div>
         <div class="col-md-12">
             <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-            <button class="btn btn-primary" id="sendForm">Enviar</button>
+            <button class="btn btn-primary" id="sendForm" data-user="<?= $_SESSION['id'] ?>">Enviar</button>
         </div>
     </div>
 </div>

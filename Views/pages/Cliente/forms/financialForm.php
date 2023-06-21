@@ -313,168 +313,127 @@
         </div>
         <!-- Tabla de volumen-->
         <div class="col-md-12">
-            <div class="card">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">1.1 En la siguiente tabla llene el volumen de ventas de los últimos tres años en
+                        dólares:</h3>
+                </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <div class="row">
-                            <div class="col-md-6">
-                                <!-- Primera tabla -->
-                                <label>1.1 En la siguiente tabla llene el volumen de ventas de los últimos tres años en
-                                    dólares:</label>
-                                <table id="###" class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Año 1</th>
-                                            <th>Sector</th>
-                                            <th>Ventas Totales</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td contenteditable="true">2020</td>
-                                            <td contenteditable="true">Sector B</td>
-                                            <td contenteditable="true">$150,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td contenteditable="true">2021</td>
-                                            <td contenteditable="true">Sector A</td>
-                                            <td contenteditable="true">$120,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td contenteditable="true">2021</td>
-                                            <td contenteditable="true">Sector B</td>
-                                            <td contenteditable="true">$180,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="text-right"><strong>Total</strong></td>
-                                            <td contenteditable="true"><strong>$550,000</strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- Segunda tabla -->
-                            <div class="col-md-6">
-                                <table id="editable-table-2" class="table table-bordered" style="margin-top: 1.5rem;">
-                                    <label>Información adicional</label>
-                                    <thead>
-                                        <tr>
-                                            <th>Año 2</th>
-                                            <th>Sector</th>
-                                            <th>Ventas Totales</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td contenteditable="true" name="name[anno]">2020</td>
-                                            <td contenteditable="true">Sector A</td>
-                                            <td contenteditable="true">$100,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td contenteditable="true">2020</td>
-                                            <td contenteditable="true">Sector B</td>
-                                            <td contenteditable="true">$150,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td contenteditable="true">2021</td>
-                                            <td contenteditable="true">Sector A</td>
-                                            <td contenteditable="true">$120,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td contenteditable="true">2021</td>
-                                            <td contenteditable="true">Sector B</td>
-                                            <td contenteditable="true">$180,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="text-right"><strong>Total</strong></td>
-                                            <td contenteditable="true"><strong>$550,000</strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <!-- Primera tabla -->
+                            <?php for ($i = 1; $i < 4; $i++) { ?>
+                                <div class="col-md-6">
+                                    <form id="financialSellForm_<?= $i ?>">
+                                        <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                                        <label>Información adicional</label>
+                                        <table id="###" class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Año <?= $i ?></th>
+                                                    <th>Sector</th>
+                                                    <th>Ventas Totales</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php for ($j = 1; $j < 5; $j++) { ?>
+                                                    <tr>
+                                                        <td> <input type="text" class="form-control form-control-border" name="data[anno_<?= $j ?>]" placeholder="2023"> </td>
+                                                        <td> <input type="text" class="form-control form-control-border" name="data[sector_<?= $j ?>]" placeholder="Sector A"> </td>
+                                                        <td> <input type="number" class="form-control form-control-border" step="0.01" name="data[ventas_<?= $j ?>]" placeholder="$100"> </td>
+                                                    </tr>
+                                                <?php } ?>
+                                                <tr>
+                                                    <td colspan="2" class="text-right" id="total_<?= $i ?>"><strong>Total</strong></td>
+                                                    <td contenteditable="true"><strong>$550,000</strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <!--Tabla de pólizas-->
         <div class="col-md-12">
-            <div class="card">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">1.2 En la siguiente tabla llene las Pólizas con las cuales cuenta la empresa:</h3>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <label>1.2 En la siguiente tabla llene las Pólizas con las cuales cuenta la empresa:</label>
-                        <table id="###" class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Entidad</th>
-                                    <th>Número</th>
-                                    <th>Fecha de Vigencia</th>
-                                    <th>Detalle de la Póliza</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td contenteditable="true">Entidad A</td>
-                                    <td contenteditable="true">001</td>
-                                    <td contenteditable="true">2023-01-01</td>
-                                    <td contenteditable="true">Detalles de la póliza A</td>
-                                </tr>
-                                <tr>
-                                    <td contenteditable="true">Entidad B</td>
-                                    <td contenteditable="true">002</td>
-                                    <td contenteditable="true">2023-02-15</td>
-                                    <td contenteditable="true">Detalles de la póliza B</td>
-                                </tr>
-                                <tr>
-                                    <td contenteditable="true">Entidad C</td>
-                                    <td contenteditable="true">003</td>
-                                    <td contenteditable="true">2023-03-10</td>
-                                    <td contenteditable="true">Detalles de la póliza C</td>
-                                </tr>
-                                <!-- Agrega más filas según sea necesario -->
-                            </tbody>
-                        </table>
+                        <form id="policiesForm">
+                            <table id="policiesTable" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Entidad</th>
+                                        <th>Número</th>
+                                        <th>Fecha de Vigencia</th>
+                                        <th>Detalle de la Póliza</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php for ($i = 1; $i < 4; $i++) { ?>
+                                        <tr>
+                                            <td><input type="text" class="form-control form-control-border" name="data[entity_<?= $i ?>]" placeholder="Entidad A"></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[number_<?= $i ?>]" placeholder="00<?= $i ?>"></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[dateValidity_<?= $i ?>]" placeholder="<?= date("d-m-Y") ?>"></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[details_<?= $i ?>]" placeholder="..."></td>
+                                        </tr>
+                                    <?php } ?>
+
+                                    <!-- Agrega más filas según sea necesario -->
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td> <button class="btn btn-secondary" id="addRowPolicies">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <!--Tabla de bancos-->
         <div class="col-md-12">
-            <div class="card">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">1.3 En la siguiente tabla llene los Bancos con los cuales trabaja la empresa:</h3>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <label>1.3 En la siguiente tabla llene los Bancos con los cuales trabaja la empresa:</label>
-                        <table id="###" class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Banco</th>
-                                    <th>Sucursal</th>
-                                    <th>Número de Cuenta</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td contenteditable="true">Banco A</td>
-                                    <td contenteditable="true">Sucursal 1</td>
-                                    <td contenteditable="true">123456789</td>
-                                </tr>
-                                <tr>
-                                    <td contenteditable="true">Banco B</td>
-                                    <td contenteditable="true">Sucursal 2</td>
-                                    <td contenteditable="true">987654321</td>
-                                </tr>
-                                <tr>
-                                    <td contenteditable="true">Banco C</td>
-                                    <td contenteditable="true">Sucursal 3</td>
-                                    <td contenteditable="true">456789123</td>
-                                </tr>
-                                <!-- Agrega más filas según sea necesario -->
-                            </tbody>
-                        </table>
+                        <form id="banksForm">
+                            <table id="bankTable" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Banco</th>
+                                        <th>Sucursal</th>
+                                        <th>Número de Cuenta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php for ($i = 1; $i < 4; $i++) { ?>
+                                        <tr>
+                                            <td><input type="text" class="form-control form-control-border" name="data[nameBank_<?= $i ?>]" placeholder="Banco A"></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[subsidiary_<?= $i ?>]" placeholder="Sucursal <?= $i ?>"></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[accountNumber_<?= $i ?>]" placeholder="<?= str_repeat($i, 5) ?>"></td>
+                                        </tr>
+                                    <?php } ?>
+                                    <!-- Agrega más filas según sea necesario -->
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td> <button class="btn btn-secondary" id="addRowBanks">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -482,7 +441,6 @@
         <div class="col-md-12">
             <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
             <button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
-
         </div>
     </div>
 </div>

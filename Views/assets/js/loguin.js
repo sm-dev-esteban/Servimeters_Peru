@@ -23,6 +23,7 @@ $(document).ready(function() {
             showToast(`${result.Error}.`, 'error');
         }else if(result.Success){
             showToast(`${result.Success}.`, 'success');
+            localStorage.setItem('user', result.User);
             window.location.href = SERVERSIDE;
         }
         return false;
@@ -30,6 +31,7 @@ $(document).ready(function() {
 
     $('#logout').on('click', async function(e) {
         e.preventDefault();
+        localStorage.clear();
         var result = await requestController('session', 'sessionOff');
         showToast(`${result.Success}.` | 'Gracias por su visita.', 'success');
         window.location.href = SERVERSIDE;

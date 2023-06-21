@@ -13,60 +13,67 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        // TODO Si no tiene homologacion, bloquear
-                        <!-- Steper -->
-                        <div id="stepper" class="bs-stepper">
-                            <div class="bs-stepper-header">
-                                <!--step I-->
-                                <div class="step" data-target="#test-l-1">
-                                    <button type="button" class="btn step-trigger">
-                                        <span class="bs-stepper-circle">1</span>
-                                        <span class="bs-stepper-label">Paso</span>
-                                    </button>
+                        <?php if (strcmp($_SESSION['estado'], 'homologacion') !== 0) {
+                            include('lockScreen.php');
+                        } else { ?>
+                            <!-- Steper -->
+                            <div id="stepper" class="bs-stepper">
+                                <div class="bs-stepper-header">
+                                    <!--step I-->
+                                    <div class="step" data-target="#test-l-1">
+                                        <button type="button" class="btn step-trigger">
+                                            <span class="bs-stepper-circle">1</span>
+                                            <span class="bs-stepper-label">Paso</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+                                    <!--step II-->
+                                    <div class="step" data-target="#test-l-2">
+                                        <button type="button" class="btn step-trigger">
+                                            <span class="bs-stepper-circle">2</span>
+                                            <span class="bs-stepper-label">Paso</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+                                    <!-- step III -->
+                                    <div class="step" data-target="#test-l-3">
+                                        <button type="button" class="btn step-trigger">
+                                            <span class="bs-stepper-circle">3</span>
+                                            <span class="bs-stepper-label">Paso</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+                                    <!--step IV-->
+                                    <div class="step" data-target="#test-l-4">
+                                        <button type="button" class="btn step-trigger">
+                                            <span class="bs-stepper-circle">4</span>
+                                            <span class="bs-stepper-label">Paso</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+                                    <!--step v-->
+                                    <div class="step" data-target="#test-l-5">
+                                        <button type="button" class="btn step-trigger">
+                                            <span class="bs-stepper-circle">5</span>
+                                            <span class="bs-stepper-label">Paso</span>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="line"></div>
-                                <!--step II-->
-                                <div class="step" data-target="#test-l-2">
-                                    <button type="button" class="btn step-trigger">
-                                        <span class="bs-stepper-circle">2</span>
-                                        <span class="bs-stepper-label">Paso</span>
-                                    </button>
-                                </div>
-                                <div class="line"></div>
-                                <!--step III-->
-                                <!-- <div class="step" data-target="#test-l-3">
-                                    <button type="button" class="btn step-trigger">
-                                        <span class="bs-stepper-circle">3</span>
-                                        <span class="bs-stepper-label">Paso</span>
-                                    </button>
-                                </div>
-                                <div class="line"></div> -->
-                                <!--step IV-->
-                                <!-- <div class="step" data-target="#test-l-4">
-                                    <button type="button" class="btn step-trigger">
-                                        <span class="bs-stepper-circle">4</span>
-                                        <span class="bs-stepper-label">Paso</span>
-                                    </button>
-                                </div> -->
-                                <div class="line"></div>
-                                <!--step v-->
-                                <div class="step" data-target="#test-l-3">
-                                    <button type="button" class="btn step-trigger">
-                                        <span class="bs-stepper-circle">5</span>
-                                        <span class="bs-stepper-label">Paso</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="bs-stepper-content">
-                                <!--Paso 1 (Introducción) -->
-                                <?php require_once 'forms/capacityForm.php' ?>
-                                <!--Paso 2 (Situación financiera y requisitos legales)-->
-                                <?php require_once 'forms/financialForm.php' ?>
-                                <!--Paso 5 (Responsabilidad corporativa)-->
-                                <?php require_once 'forms/responsibilityForm.php' ?>
+                                <div class="bs-stepper-content">
+                                    <!--Paso 1 (Introducción) -->
+                                    <?php require_once 'forms/capacityForm.php' ?>
+                                    <!--Paso 2 (Situación financiera y requisitos legales)-->
+                                    <?php require_once 'forms/financialForm.php' ?>
+                                    <!--Paso 3 (Managment)-->
+                                    <?php require_once 'forms/managementForm.php' ?>
+                                    <!--Paso 4 (Managment)-->
+                                    <?php require_once 'forms/qualityForm.php' ?>
+                                    <!--Paso 5 (Responsabilidad corporativa)-->
+                                    <?php require_once 'forms/responsibilityForm.php' ?>
 
+                                </div>
                             </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

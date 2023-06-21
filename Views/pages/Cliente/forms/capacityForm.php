@@ -24,6 +24,7 @@
    <!--Validación de si acepta las condiciones-->
    <form id="condicionesForm">
       <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+      <input type="text" name="data[habilitado]" value="true" hidden>
       <label>
          <input type="checkbox" name="data[terminos]" id="conditionBox" required>
          Acepto las condiciones

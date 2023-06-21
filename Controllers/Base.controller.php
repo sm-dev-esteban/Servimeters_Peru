@@ -59,7 +59,8 @@ class BaseController
      */
     public static function update()
     {
-        self::$model->update(self::getObjectModel());
+        // return self::getObjectModel();
+        return self::$model->update(self::getObjectModel(), self::getId());
     }
 
     /**

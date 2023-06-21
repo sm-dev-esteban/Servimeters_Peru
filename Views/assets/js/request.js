@@ -26,12 +26,15 @@ async function requestController(controller = null, method = null, formData = {}
             dataType: "JSON",
             beforeSend: function() {
                 console.log('Antes de enviar');
-                // TODO Generar LOAD
+                
+            },
+            error:function(xhr, status, error) {
+                reject({error});
             }
             }).done(function(result){
-                resolve(result)
+                resolve(result);
             }).fail(function(error) {
-                reject(error)
+                reject(error);
             })
     })
 }

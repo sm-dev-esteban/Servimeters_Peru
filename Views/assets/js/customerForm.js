@@ -11,13 +11,14 @@ class CustomerForm {
             showConfirmButton: false,
             timer: 3000
         });
+        
     }
 
     //Mostrar mensaje al almacenar formularios
     showToast(msg = 'Servimeters', icon = 'info') {
-        Toast.fire({
+        this.Toast.fire({
             icon: icon,
-            title: msg 
+            title: msg
         });
     }
 
@@ -25,6 +26,40 @@ class CustomerForm {
     togglePermissions() {
         this.$conditionBox.on("change", () => {
             this.$button.prop("disabled", !this.$conditionBox.is(":checked"));
+        });
+    }
+
+    addRowPolicies(){
+        var t = $('#policiesTable').DataTable({
+            paging: false,
+            ordering: false,
+            info: false,
+            searching: false,
+        });
+        var counter = 4;
+        $('#addRowPolicies').on('click', function(e) {
+          t.row.add([`<input type="text" class="form-control form-control-border" name="data[entity_${counter}]" placeholder="Entidad A">`, 
+          `<input type="text" class="form-control form-control-border" name="data[number_${counter}]" placeholder="00${counter}">`, 
+          `<input type="text" class="form-control form-control-border" name="data[dateValidity_${counter}]" placeholder="${moment(new Date()).format('DD-MM-yyyy')}">`, 
+          `<input type="text" class="form-control form-control-border" name="data[details_${counter}]" placeholder="...">`]).draw(false);
+          counter++;
+        });
+    }
+
+    addRowBanks(){
+        var t = $('#bankTable').DataTable({
+            paging: false,
+            ordering: false,
+            info: false,
+            searching: false,
+        });
+        var counter = 4;
+        $('#addRowBanks').on('click', function(e) {
+          t.row.add([`<input type="text" class="form-control form-control-border" name="data[nameBank_${counter}]" placeholder="Banco A">`, 
+          `<input type="text" class="form-control form-control-border" name="data[subsidiary_${counter}]" placeholder="Sucursal ${counter}">`, 
+          `<input type="text" class="form-control form-control-border" name="data[accountNumber_${counter}]" placeholder="${counter.toString().repeat(5)}">`
+        ]).draw(false);
+          counter++;
         });
     }
 
@@ -54,7 +89,7 @@ class CustomerForm {
             });
         });
     }
-  
+
     sendResponsibilityForm() {
 
         //Enviar documentos sección 2 situación financiera-->
@@ -86,34 +121,45 @@ class CustomerForm {
         });
 
     }
-
 }
 
 $(document).ready(function () {
   const formValidate = new CustomerForm();
   formValidate.togglePermissions();
-  formValidate.validateField();
-//   formValidate.sendFinancialForm();
-//   formValidate.sendFinancialDocument();
-//   formValidate.sendManagementForm();
-//   formValidate.sendquialityForm();
+  formValidate.addRowPolicies();
+  formValidate.addRowBanks();
 
-  $('#sendForm').on('click', function(e) {
+  $('#sendForm').on('click', async function(e) {
     e.preventDefault();
     let forms = document.getElementsByTagName('form');
-    let index = 1;
     Array.from(forms).forEach(async (form) => {
         let formData = new FormData(form);
-        let result = await requestController('formulario', 'registerForm', formData, `entity=${form.id}`);
-        if (result.Result.status) {
-            formValidate.showToast(`Guardado ${index} de ${forms.length}...`, 'success');
-        }else if(result.Result.error){
-            formValidate.showToast(`No se guardado ${index} de ${forms.length}...`, 'error');
+        try {
+            await requestController('formulario', 'registerForm', formData, `entity=${form.id}`);
+        } catch (error) {
+            console.error(error);
+            formValidate.showToast(`No se guardaron las respuestas...`, 'error');
         }
-        index++;
     });
-    // TODO Actualizar estado del usuario
-    window.location.href = SERVERSIDE;
+
+    
+    let userData = new FormData();
+    let user = JSON.parse(localStorage.getItem('user'));
+    for (const key in user) {
+        userData.append(`${key}`, `${user[key]}`);
+    }
+    userData.delete('estado');
+    userData.append('estado', 'auditando');
+    try {
+        let result = await requestController('Usuario', 'updateUser', userData);
+        if (result.Result) {
+            formValidate.showToast(`Guardado con exito...`, 'success');
+        }
+        window.location.href = SERVERSIDE;
+    } catch (error) {
+        formValidate.showToast(`${error}`, 'error');
+        console.error(error);
+    }
     return false;
   })
 });

@@ -36,7 +36,7 @@ class BaseModel implements BDInterface
             $af = new AutomaticForm($object, $this->table);
             return $af->execute();
         } catch (Exception $e) {
-            echo $e;
+            return $e;
         }
     }
     /**
@@ -52,8 +52,14 @@ class BaseModel implements BDInterface
      * 
      * @return [type]
      */
-    public function update($object)
+    public function update($object, $primaryKey)
     {
+        try {
+            $af = new AutomaticForm($object, $this->table, 'UPDATE', $primaryKey);
+            return $af->execute();
+        } catch (Exception $e) {
+            return $e;
+        }
     }
     /**
      * @param string $id

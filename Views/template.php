@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/plugins/dropzone/min/dropzone.min.css">
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/dist/css/adminlte.min.css">
 
@@ -96,6 +100,19 @@
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- bs-custom-file-input -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/jszip/jszip.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= SERVERSIDE ?>Views/resources/dist/js/adminlte.min.js"></script>
     <!-- All page -->
