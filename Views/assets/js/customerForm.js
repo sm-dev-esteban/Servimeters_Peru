@@ -5,6 +5,20 @@ class CustomerForm {
         this.$buttonValidate = $("#nextValidate");
         this.$button.prop("disabled", true);
 
+        this.Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    }
+
+    //Mostrar mensaje al almacenar formularios
+    showToast(msg = 'Servimeters', icon = 'info') {
+        Toast.fire({
+            icon: icon,
+            title: msg 
+        });
     }
 
     //Permiso al cliente de continuar rellenando el formulario
@@ -203,8 +217,27 @@ $(document).ready(function () {
   const formValidate = new CustomerForm();
   formValidate.togglePermissions();
   formValidate.validateField();
-  formValidate.sendFinancialForm();
-  formValidate.sendFinancialDocument();
-  formValidate.sendManagementForm();
-  formValidate.sendquialityForm();
+//   formValidate.sendFinancialForm();
+//   formValidate.sendFinancialDocument();
+//   formValidate.sendManagementForm();
+//   formValidate.sendquialityForm();
+
+  $('#sendForm').on('click', function(e) {
+    e.preventDefault();
+    let forms = document.getElementsByTagName('form');
+    let index = 1;
+    Array.from(forms).forEach(async (form) => {
+        let formData = new FormData(form);
+        let result = await requestController('formulario', 'registerForm', formData, `entity=${form.id}`);
+        if (result.Result.status) {
+            formValidate.showToast(`Guardado ${index} de ${forms.length}...`, 'success');
+        }else if(result.Result.error){
+            formValidate.showToast(`No se guardado ${index} de ${forms.length}...`, 'error');
+        }
+        index++;
+    });
+    // TODO Actualizar estado del usuario
+    window.location.href = SERVERSIDE;
+    return false;
+  })
 });

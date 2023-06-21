@@ -34,7 +34,7 @@ class BaseModel implements BDInterface
     {
         try {
             $af = new AutomaticForm($object, $this->table);
-            $af->execute();
+            return $af->execute();
         } catch (Exception $e) {
             echo $e;
         }

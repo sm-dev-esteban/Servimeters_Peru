@@ -15,10 +15,10 @@ function AutomaticForm(Method, params = []) {
     return $request.responseJSON;
 }
 
-async function requestController(controller = null, method = null, formData = {}){
+async function requestController(controller = null, method = null, formData = {}, params = ''){
     return new Promise(function(resolve, reject){
         $.ajax({
-            url: `${SERVERSIDE}Controllers/${controller}.controller.php?method=${method}&path=${FOLDERSIDE}`,
+            url: `${SERVERSIDE}Controllers/${controller}.controller.php?method=${method}&path=${FOLDERSIDE}&${params}`,
             type: 'post',
             data: formData,
             processData: false,
@@ -26,6 +26,7 @@ async function requestController(controller = null, method = null, formData = {}
             dataType: "JSON",
             beforeSend: function() {
                 console.log('Antes de enviar');
+                // TODO Generar LOAD
             }
             }).done(function(result){
                 resolve(result)

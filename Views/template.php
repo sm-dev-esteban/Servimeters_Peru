@@ -94,6 +94,8 @@
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/dropzone/min/dropzone.min.js"></script>
     <!-- SweetAlert2 -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= SERVERSIDE ?>Views/resources/dist/js/adminlte.min.js"></script>
     <!-- All page -->
@@ -109,6 +111,10 @@
         $("input[data-bootstrap-switch]").each(function() {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
+
+        $(function() {
+            bsCustomFileInput.init();
+        });
     </script>
     <!-- <script src="<?= SERVERSIDE ?>/Views/resources/dist/js/demo.js"></script> -->
     <!--Master.js-->

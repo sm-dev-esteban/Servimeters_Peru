@@ -13,6 +13,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
+                        // TODO Si no tiene homologacion, bloquear
+                        <!-- Steper -->
                         <div id="stepper" class="bs-stepper">
                             <div class="bs-stepper-header">
                                 <!--step I-->
@@ -32,23 +34,23 @@
                                 </div>
                                 <div class="line"></div>
                                 <!--step III-->
-                                <div class="step" data-target="#test-l-3">
+                                <!-- <div class="step" data-target="#test-l-3">
                                     <button type="button" class="btn step-trigger">
                                         <span class="bs-stepper-circle">3</span>
                                         <span class="bs-stepper-label">Paso</span>
                                     </button>
                                 </div>
-                                <div class="line"></div>
+                                <div class="line"></div> -->
                                 <!--step IV-->
-                                <div class="step" data-target="#test-l-4">
+                                <!-- <div class="step" data-target="#test-l-4">
                                     <button type="button" class="btn step-trigger">
                                         <span class="bs-stepper-circle">4</span>
                                         <span class="bs-stepper-label">Paso</span>
                                     </button>
-                                </div>
+                                </div> -->
                                 <div class="line"></div>
                                 <!--step v-->
-                                <div class="step" data-target="#test-l-5">
+                                <div class="step" data-target="#test-l-3">
                                     <button type="button" class="btn step-trigger">
                                         <span class="bs-stepper-circle">5</span>
                                         <span class="bs-stepper-label">Paso</span>
@@ -60,10 +62,6 @@
                                 <?php require_once 'forms/capacityForm.php' ?>
                                 <!--Paso 2 (Situación financiera y requisitos legales)-->
                                 <?php require_once 'forms/financialForm.php' ?>
-                                <!--Paso 3 (Capacidad operativa e infraestructura-->
-                                <?php require_once 'forms/managementForm.php' ?>
-                                <!--Paso 4 (Sistema de gestión de calidad-->
-                                <?php require_once 'forms/qualityForm.php' ?>
                                 <!--Paso 5 (Responsabilidad corporativa)-->
                                 <?php require_once 'forms/responsibilityForm.php' ?>
 
