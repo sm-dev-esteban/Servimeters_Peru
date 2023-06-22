@@ -39,7 +39,9 @@ class UsuarioModel extends BaseModel
             foreach ($array as $key => $val) {
                 $this->$key = $val;
             }
-            $this->encryptPass();
+            if (isset($this->password)) {
+                $this->encryptPass();
+            }
         }
     }
 
@@ -65,5 +67,16 @@ class UsuarioModel extends BaseModel
     private function encryptPass()
     {
         $this->password = password_hash($this->password, PASSWORD_BCRYPT, ['cost' => 12]);
+    }
+
+    /**
+     * @param string $pass
+     * @param string $hash
+     * 
+     * @return bool
+     */
+    public static function verifyPass($pass, $hash)
+    {
+        return password_verify($pass, $hash);
     }
 }

@@ -1,10 +1,6 @@
-<?php
-  require_once 'Controllers/customer.controller.php';
-?>
-
 <div id="test-l-5" class="content">
     <h5 class="text-center p-3">Responsabilidad Corporativa</h5>
-    <form id="resposibilityForm" method="post">
+    <!-- <form id="resposibilityForm" method="post"> -->
     <div class="row">
         <!--Campo Número de empleados-->
         <div class="col-md-6">
@@ -123,12 +119,11 @@
                 </select>
             </div>
         </div>
-         <!--Botón de envio-->
-         <div class="col-md-12 text-center">
+        <!--Botón de envio-->
+        <!-- <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-primary m-3">Enviar</button>
-        </div>
-        </form>
-        <?php $result = CustomerController::createCustomer(); ?>
+        </div> -->
+        <!-- </form> -->
 
         <!--Adjunto de archivos-->
         <div class="col-md-12">
@@ -212,7 +207,7 @@
         </div>
         <div class="col-md-12">
             <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-            <button class="btn btn-primary" onclick="stepper.next()">Enviar</button>
+            <button class="btn btn-primary" id="sendForm" data-user="<?= $_SESSION['id'] ?>">Enviar</button>
         </div>
     </div>
 </div>
