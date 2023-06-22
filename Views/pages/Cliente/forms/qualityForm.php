@@ -1,137 +1,256 @@
 <div id="test-l-4" class="content">
-    <h5 class="text-center p-3">Sistemas de gestión de calidad</h5>
-    <form id="quialityForm" method="post">
-        <div class="row">
-            <!-- Campo Responsable -->
-            <div class="col-md-6">
-                <div class="form-group" style="margin-top: 1.5rem;">
-                    <label>Escriba el nombre del responsable de Gestión de Calidad y el cargo.</label>
-                    <input type="text" class="form-control" name="data[responsable]" required>
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Sistemas de gestión de calidad</h3>
                 </div>
-            </div>
 
-            <!-- Campo Auditoria -->
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Escriba los resultados de la última auditoría interna o externa.
-                        No. de Fortalezas / No. de Oportunidades de mejora / No. de No Conformidades</label>
-                    <input type="text" class="form-control" name="data[resultados_auditoria]">
-                </div>
-            </div>
+                <form id="quialityForm">
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Campo Responsable -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                                    <label>Escriba el nombre del responsable de Gestión de Calidad y el cargo.</label>
+                                    <input type="text" class="form-control" name="data[responsable]" required>
+                                </div>
+                            </div>
 
-            <!-- Campo Revisión y Aprobación-->
-            <div class="col-md-6">
-                <div class="form-group" style="margin-top: 2rem;">
-                    <label>¿La documentación que utiliza tiene controles de revisión y aprobación?</label>
-                    <select class="custom-select" name="data[revision_aprobacion_documentacion]">
-                        <option>Si</option>
-                        <option>No</option>
-                    </select>
-                </div>
-            </div>
+                            <!-- Campo Auditoria -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Escriba los resultados de la última auditoría interna o externa.
+                                        No. de Fortalezas / No. de Oportunidades de mejora / No. de No Conformidades</label>
+                                    <input type="text" class="form-control" name="data[resultados_auditoria]">
+                                </div>
+                            </div>
 
-            <!-- Campo Auditoria -->
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Escriba el documento que utiliza para el control de documentos y registros y el tratamiento de
-                        trabajos o productos no conformes.
-                        (Nombre / Código / Versión / Fecha de aprobación AAAA-MM-DD)</label>
-                    <input type="text" class="form-control" name="data[control_documentos]" required>
-                </div>
-            </div>
+                            <!-- Campo Revisión y Aprobación-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>¿La documentación que utiliza tiene controles de revisión y aprobación?</label>
+                                    <select class="custom-select" name="data[revision_aprobacion_documentacion]">
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
 
-            <!-- Campo Garantia-->
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Indique el tipo de garantía que ofrece sobre los productos o servicios a homologar.</label>
-                    <input type="text" class="form-control" name="data[tipo_garantia]" required>
-                </div>
-            </div>
+                            <!-- Campo Auditoria -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Escriba el documento que utiliza para el control de documentos y registros y el tratamiento de
+                                        trabajos o productos no conformes.
+                                        (Nombre / Código / Versión / Fecha de aprobación AAAA-MM-DD)</label>
+                                    <input type="text" class="form-control" name="data[control_documentos]" placeholder="Nombre / Código / Versión / Fecha de aprobación AAAA-MM-DD" required>
+                                </div>
+                            </div>
 
-            <!-- Campo Planeación y Programación-->
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Escriba como la empresa realiza la planeación y programación del producto o servicio a
-                        homologar.</label>
-                    <input type="text" class="form-control" name="data[planeacion_programacion]" required>
-                </div>
-            </div>
+                            <!-- Campo Garantia-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Indique el tipo de garantía que ofrece sobre los productos o servicios a homologar.</label>
+                                    <input type="text" class="form-control" name="data[tipo_garantia]" required>
+                                </div>
+                            </div>
+
+                            <!-- Campo Planeación y Programación-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Escriba como la empresa realiza la planeación y programación del producto o servicio a
+                                        homologar.</label>
+                                    <input type="text" class="form-control" name="data[planeacion_programacion]" required>
+                                </div>
+                            </div>
 
 
-            <!-- Campo Control stock-->
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Escriba como identifica y mantiene el control del stock de los insumos y productos.</label>
-                    <input type="text" class="form-control" name="data[control_stock]">
-                </div>
-            </div>
+                            <!-- Campo Control stock-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Escriba como identifica y mantiene el control del stock de los insumos y productos.</label>
+                                    <input type="text" class="form-control" name="data[control_stock]">
+                                </div>
+                            </div>
 
-            <!-- Campo Subcontratados-->
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Escriba como la empresa realiza el control de los procesos subcontratados asociados al producto o
-                        servicio a homologar.</label>
-                    <input type="text" class="form-control" name="data[control_subcontratados]">
-                </div>
-            </div>
+                            <!-- Campo Subcontratados-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Escriba como la empresa realiza el control de los procesos subcontratados asociados al producto o
+                                        servicio a homologar.</label>
+                                    <input type="text" class="form-control" name="data[control_subcontratados]">
+                                </div>
+                            </div>
 
-            <!-- Campo Controles y Auditorias-->
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>¿Realiza controles o auditorias sobre su cadena de suministro?</label>
-                    <select class="custom-select" name="data[controles_auditorias_cadena_suministro]">
-                        <option>Si</option>
-                        <option>No</option>
-                    </select>
-                </div>
-            </div>
+                            <!-- Campo Controles y Auditorias-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>¿Realiza controles o auditorias sobre su cadena de suministro?</label>
+                                    <select class="custom-select" name="data[controles_auditorias_cadena_suministro]">
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
 
-            <!-- Campo Revisión y Aprobación-->
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>¿La documentación que utiliza tiene controles de revisión y aprobación?</label>
-                    <select class="custom-select" name="data[revision_aprobacion_documentacion2]">
-                        <option>Si</option>
-                        <option>No</option>
-                    </select>
-                </div>
+                            <!-- Campo Revisión y Aprobación-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>¿La documentación que utiliza tiene controles de revisión y aprobación?</label>
+                                    <select class="custom-select" name="data[revision_aprobacion_documentacion2]">
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                </form>
             </div>
-            <!--Botón de envio-->
-    </form>
+        </div>
+    </div>
 
 
     <div class="col-md-12">
         <!--Adjunto de archivos-->
-        <div class="card card-default">
+        <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title"><em>Adjuntar los siguientes documentos:</em></h3><br>
-                <ul>
-                    <li class="nav-item">1. Certificado de Sistema de Gestión de Calidad (ISO 9001) que relacione el
-                        servicio o producto a homologar.</li>
-                    <li class="nav-item">2. Ficha técnica del servicio o producto a homologar.</li>
-                    <li class="nav-item">3. Documento con el cual gestiona y analizan las acciones correctivas.</li>
-                    <li class="nav-item">4. Documento en el cual se han definido las competencias del personal que
-                        incluyan Cargo y Educación.</li>
-                    <li class="nav-item">5. Plan o programa de mantenimiento y calibración de los equipos
-                        relacionados
-                        en la sección de capacidad operativa y que influyen en la calidad del servicio o producto a
-                        homologar</li>
-                    <li class="nav-item">6. Procedimiento de evaluación de proveedores.</li>
-                    <li class="nav-item">7. Procedimiento de inspección de productos, materiales o insumos
-                        comprados.
-                    </li>
-                    <li class="nav-item">8. Procedimiento utilizado para realizar el control de calidad una vez
-                        finalizado el servicio el cual indique como afrontar retrasos en la fabricación de productos
-                        o
-                        servicios.</li>
-                    <li class="nav-item">9. Resultado del análisis de los resultados de las evaluaciones de
-                        satisfacción
-                        del cliente.</li>
-                    <li class="nav-item">10. Procedimiento de quejas.</li>
-                </ul>
+                <h3 class="card-title">Adjuntar los siguientes documentos:</h3>
             </div>
-            <div class="card-body">
-                <!-- <div id="actions" class="row">
+            <form id="sgcDocumentsForm">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                            <label for="adjunto1">1. Certificado de Sistema de Gestión de Calidad (ISO 9001) que relacione el
+                                servicio o producto a homologar.</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file[adjunto1]" id="adjunto1" accept=".pdf" required>
+                                <label class="custom-file-label" for="adjunto1">Subir archivo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="adjunto2">2. Ficha técnica del servicio o producto a homologar.</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file[adjunto2]" id="adjunto2" accept=".pdf" required>
+                                <label class="custom-file-label" for="adjunto2">Subir archivo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="adjunto3">3. Documento con el cual gestiona y analizan las acciones correctivas.</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file[adjunto3]" id="adjunto3" accept=".pdf" required>
+                                <label class="custom-file-label" for="adjunto3">Subir archivo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="adjunto4">4. Documento en el cual se han definido las competencias del personal que
+                                incluyan Cargo y Educación.</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file[adjunto4]" id="adjunto4" accept=".pdf" required>
+                                <label class="custom-file-label" for="adjunto4">Subir archivo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="adjunto5">5. Plan o programa de mantenimiento y calibración de los equipos relacionados
+                                en la sección de capacidad operativa y que influyen en la calidad del servicio o producto a
+                                homologar.</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file[adjunto5]" id="adjunto5" accept=".pdf" required>
+                                <label class="custom-file-label" for="adjunto5">Subir archivo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="adjunto6">6. Procedimiento de evaluación de proveedores.</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file[adjunto6]" id="adjunto6" accept=".pdf" required>
+                                <label class="custom-file-label" for="adjunto6">Subir archivo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="adjunto7">7. Procedimiento de inspección de productos, materiales o insumos
+                                comprados.</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file[adjunto7]" id="adjunto7" accept=".pdf" required>
+                                <label class="custom-file-label" for="adjunto7">Subir archivo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="adjunto8">8. Procedimiento utilizado para realizar el control de calidad una vez
+                                finalizado el servicio el cual indique como afrontar retrasos en la fabricación de productos
+                                o servicios.</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file[adjunto8]" id="adjunto8" accept=".pdf" required>
+                                <label class="custom-file-label" for="adjunto8">Subir archivo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="adjunto9">9. Resultado del análisis de los resultados de las evaluaciones de
+                                satisfacción del cliente.</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file[adjunto9]" id="adjunto9" accept=".pdf" required>
+                                <label class="custom-file-label" for="adjunto9">Subir archivo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="adjunto10">10. Procedimiento de quejas.</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file[adjunto10]" id="adjunto10" accept=".pdf" required>
+                                <label class="custom-file-label" for="adjunto10">Subir archivo</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- <div id="actions" class="row">
                         <div class="col-lg-6">
                             <div class="btn-group w-100">
                                 <span class="btn  col fileinput-button">
@@ -157,8 +276,8 @@
                             </div>
                         </div>
                     </div> -->
-                <input type="file" name="" id="" class="form-control">
-                <!-- <div class="table table-striped files" id="previews">
+
+            <!-- <div class="table table-striped files" id="previews">
                         <div id="template" class="row mt-2">
                             <div class="col-auto">
                                 <span class="preview"><img src="data:," alt="" data-dz-thumbnail /></span>
@@ -194,7 +313,7 @@
                             </div>
                         </div>
                     </div> -->
-            </div>
+
         </div>
     </div>
     <div class="col-md-12">
