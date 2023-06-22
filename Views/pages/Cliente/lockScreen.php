@@ -9,7 +9,7 @@
         <br>
 
         <div class="text-center">
-            <img src="<?= SERVERSIDE ?>/Views/resources/dist/img/random_icons_14.svg" alt="User Image" style="width: 100px; height: 100px;">
+            <img src="<?= SERVERSIDE ?>/Views/resources/dist/img/random_icons_15.svg" alt="User Image" style="width: 100px; height: 100px;">
         </div>
         <br>
         <!-- START LOCK SCREEN ITEM -->
