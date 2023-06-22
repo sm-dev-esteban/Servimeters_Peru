@@ -141,7 +141,7 @@
 
                             <!--Campo Tipo de servicio-->
                             <div class="col-md-6">
-                                <div class="form-group" style="margin-top: 1.5rem;">
+                                <div class="form-group">
                                     <label>¿Tiene servicio postventa?</label>
                                     <select class="form-control" name="data[servicio_postventa]">
                                         <option>Si</option>
@@ -368,6 +368,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <form id="policiesForm">
+                            <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
                             <table id="policiesTable" class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -409,6 +410,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <form id="banksForm">
+                            <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
                             <table id="bankTable" class="table table-bordered">
                                 <thead>
                                     <tr>
