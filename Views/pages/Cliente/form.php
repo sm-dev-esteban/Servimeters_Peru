@@ -1,3 +1,28 @@
+<style>
+    label:not(.form-check-label):not(.custom-file-label) {
+        font-weight: normal;
+    }
+
+    .active .bs-stepper-circle,
+    .btn-primary {
+        background-color: #0473a4;
+        border-color: #0473a4;
+    }
+
+    .error,
+    .mandatory {
+        color: tomato;
+    }
+
+    .disabledNext {
+        background-color: tomato !important;
+    }
+
+    button {
+        cursor: pointer;
+    }
+</style>
+
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -88,11 +113,11 @@
         });
 
 
-        $(`[data-algo]`).on("click", function() {
-            $(":invalid").removeClass("is-valid").addClass("is-invalid");
-            $(":valid").removeClass("is-invalid").addClass("is-valid");
-            stepper.previous()
-            stepper.next()
-        });
+        // $(`[data-algo]`).on("click", function() {
+        //     $(":invalid").removeClass("is-valid").addClass("is-invalid");
+        //     $(":valid").removeClass("is-invalid").addClass("is-valid");
+        //     stepper.previous()
+        //     stepper.next()
+        // });
     })
 </script>
