@@ -68,7 +68,7 @@ class BaseController
      */
     public static function get()
     {
-        self::$model->get(self::$model->getId());
+        return self::$model->get(self::$model->getId());
     }
 
     /**

@@ -6,7 +6,7 @@
                     <h3 class="card-title">Sistemas de gestión de calidad</h3>
                 </div>
 
-                <form id="quialityForm">
+                <form id="quialityForm" class="validatable-form form_3">
                     <div class="card-body">
                         <div class="row">
                             <!-- Campo Responsable -->
@@ -23,7 +23,7 @@
                                 <div class="form-group">
                                     <label>Escriba los resultados de la última auditoría interna o externa.
                                         No. de Fortalezas / No. de Oportunidades de mejora / No. de No Conformidades</label>
-                                    <input type="text" class="form-control" name="data[resultados_auditoria]">
+                                    <input type="text" class="form-control" name="data[resultados_auditoria]" required>
                                 </div>
                             </div>
 
@@ -70,7 +70,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Escriba como identifica y mantiene el control del stock de los insumos y productos.</label>
-                                    <input type="text" class="form-control" name="data[control_stock]">
+                                    <input type="text" class="form-control" name="data[control_stock]" required>
                                 </div>
                             </div>
 
@@ -79,7 +79,7 @@
                                 <div class="form-group">
                                     <label>Escriba como la empresa realiza el control de los procesos subcontratados asociados al producto o
                                         servicio a homologar.</label>
-                                    <input type="text" class="form-control" name="data[control_subcontratados]">
+                                    <input type="text" class="form-control" name="data[control_subcontratados]" required>
                                 </div>
                             </div>
 
@@ -117,7 +117,7 @@
             <div class="card-header">
                 <h3 class="card-title">Adjuntar los siguientes documentos:</h3>
             </div>
-            <form id="sgcDocumentsForm">
+            <form id="sgcDocumentsForm" class="validatable-form form_3">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
@@ -318,7 +318,9 @@
     </div>
     <div class="col-md-12">
         <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-        <button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
+        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-html="true" title="Complete los campos obligatorios <b class='mandatory'>*</b> para continuar">
+            <button class="btn btn-primary next" data-form="3">Siguiente</button>
+        </span>
     </div>
 </div>
 </div>

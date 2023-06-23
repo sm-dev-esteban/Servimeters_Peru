@@ -6,7 +6,7 @@
                     <h3 class="card-title">Capacidad operativa e Infraestructura</h3>
                 </div>
 
-                <form id="managementForm" method="post">
+                <form id="managementForm" class="validatable-form form_2">
                     <div class="card-body">
                         <!-- Campo Instalaciones -->
                         <div class="col-md-12">
@@ -64,7 +64,9 @@
 
     <div class="col-md-12">
         <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-        <button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
+        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-html="true" title="Complete los campos obligatorios <b class='mandatory'>*</b> para continuar">
+            <button class="btn btn-primary next" data-form="2">Siguiente</button>
+        </span>
     </div>
 </div>
 </div>

@@ -68,6 +68,12 @@ class BaseModel implements BDInterface
      */
     public function get($id)
     {
+        try {
+            $result = AutomaticForm::getDataSql($this->table, "id = {$id}");
+            return $result ?? false;
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
 
@@ -80,7 +86,7 @@ class BaseModel implements BDInterface
     {
         $this->query = "SELECT * FROM `" . $this->table . "`";
         $result = $this->db->executeQuery($this->query);
-        return $result;
+        return $result ?? false;
     }
 
     /**
@@ -94,6 +100,6 @@ class BaseModel implements BDInterface
     public function getCondition($condition)
     {
         $result = AutomaticForm::getDataSql($this->table, $condition);
-        return $result;
+        return $result ?? false;
     }
 }

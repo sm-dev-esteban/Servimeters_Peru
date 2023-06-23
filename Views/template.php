@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -77,6 +77,9 @@
     </script>
     <!-- Bootstrap 4 -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- jquery-validation -->
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/plugins/jquery-validation/additional-methods.min.js"></script>
     <!-- Select2 -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/select2/js/select2.full.min.js"></script>
     <!-- Bootstrap4 Duallistbox -->
@@ -137,7 +140,10 @@
     <!--Master.js-->
     <script src="<?= SERVERSIDE ?>/Views/resources/dist/js/master/master.js"></script>
     <!--Envio de información del formulario cliente-->
-    <script src="<?= SERVERSIDE ?>Views/assets/js/customerForm.js"></script>
+    <!-- <script src="<?= SERVERSIDE ?>Views/assets/js/customerForm.js"></script> -->
+    <!-- Validacion de formularios -->
+    <script src="<?= SERVERSIDE ?>Views/assets/js/validateForms.js"></script>
+
 </body>
 
 </html>

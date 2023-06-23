@@ -8,7 +8,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form id="financialForm">
+                <form id="financialForm" class="validatable-form form_1">
                     <div class="card-body">
                         <!--Campo Empresa-->
                         <div class="row">
@@ -32,6 +32,7 @@
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                         </div>
                                         <input type="date" class="form-control" name="data[fecha]" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask required>
+                                        <span class='error'></span>
                                     </div>
                                 </div>
                             </div>
@@ -43,6 +44,7 @@
                                 <div class="form-group">
                                     <label for="###">Razón Social</label>
                                     <input type="text" name="data[razon_social]" class="form-control" id="###" placeholder="Ingrese razón social" required>
+                                    <span class='error'></span>
                                 </div>
                             </div>
 
@@ -67,7 +69,7 @@
                             <!--Campo Domicilio Fiscal-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="###">Domicilio Fiscal*</label>
+                                    <label for="###">Domicilio Fiscal</label>
                                     <input type="text" class="form-control" name="data[domicilio_fiscal]" id="###" placeholder="Ingrese el domicilio fiscal" required>
                                 </div>
                             </div>
@@ -77,7 +79,7 @@
                             <!--Campo Código Postal-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="###">Código Postal*</label>
+                                    <label for="###">Código Postal</label>
                                     <input type="text" class="form-control" name="data[codigo_postal]" id="###" placeholder="Ingrese el código postal" required>
                                 </div>
                             </div>
@@ -95,7 +97,7 @@
                             <!--Campo Llenado por -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="###">Llenado por*:</label>
+                                    <label for="###">Llenado por:</label>
                                     <input type="text" class="form-control" name="data[llenado_por]" id="###" placeholder="Ingrese su nombre" required>
                                 </div>
                             </div>
@@ -155,7 +157,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="###">Capital Social de la empresa en Dólares</label>
-                                <input type="text" class="form-control" name="data[capital_social]" id="###" placeholder="Ingrese la capital social de la mepresa en dólares" required>
+                                <input type="number" class="form-control" name="data[capital_social]" id="###" placeholder="Ingrese la capital social de la mepresa en dólares" required>
                             </div>
                         </div>
 
@@ -163,7 +165,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="###">Número de clientes en los últimos dos años(2021/2022)</label>
-                                <input type="text" class="form-control" name="data[numero_clientes]" id="###" placeholder="Ingrese el número de clientes en los últimos dos años" required>
+                                <input type="number" step="0.01" class="form-control" name="data[numero_clientes]" id="###" placeholder="Ingrese el número de clientes en los últimos dos años" required>
                             </div>
                         </div>
 
@@ -188,7 +190,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Adjuntar los siguientes documentos:</h3>
                 </div>
-                <form id="financialDocumentForm">
+                <form id="financialDocumentForm" class="validatable-form form_1">
                     <div class="card-body">
 
                         <div class="row">
@@ -199,7 +201,7 @@
                             <div class="col-md-4">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="file[adjunto1]" id="adjunto1" accept=".pdf" required>
-                                    <label class="custom-file-label" for="adjunto1">Subir archivo</label>
+                                    <span class="custom-file-label" for="adjunto1">Subir archivo</span>
                                 </div>
                             </div>
                         </div>
@@ -213,7 +215,7 @@
                             <div class="col-md-4">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="file[adjunto2]" id="adjunto2" accept=".pdf" required>
-                                    <label class="custom-file-label" for="adjunto2">Subir archivo</label>
+                                    <span class="custom-file-label" for="adjunto2">Subir archivo</span>
                                 </div>
                             </div>
                         </div>
@@ -227,7 +229,7 @@
                             <div class="col-md-4">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="file[adjunto3]" id="adjunto3" accept=".pdf" required>
-                                    <label class="custom-file-label" for="adjunto3">Subir archivo</label>
+                                    <span class="custom-file-label" for="adjunto3">Subir archivo</span>
                                 </div>
                             </div>
                         </div>
@@ -241,7 +243,7 @@
                             <div class="col-md-4">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="file[adjunto4]" id="adjunto4" accept=".pdf" required>
-                                    <label class="custom-file-label" for="adjunto4">Subir archivo</label>
+                                    <span class="custom-file-label" for="adjunto4">Subir archivo</sp>
                                 </div>
 
                             </div>
@@ -256,7 +258,7 @@
                             <div class="col-md-4">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="file[adjunto5]" id="adjunto5" accept=".pdf" required>
-                                    <label class="custom-file-label" for="adjunto5">Subir archivo</label>
+                                    <span class="custom-file-label" for="adjunto5">Subir archivo</span>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +272,7 @@
                             <div class="col-md-4">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="file[adjunto6]" id="adjunto6" accept=".pdf" required>
-                                    <label class="custom-file-label" for="adjunto6">Subir archivo</label>
+                                    <span class="custom-file-label" for="adjunto6">Subir archivo</span>
                                 </div>
                             </div>
                         </div>
@@ -284,7 +286,7 @@
                             <div class="col-md-4">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="file[adjunto7]" id="adjunto7" accept=".pdf" required>
-                                    <label class="custom-file-label" for="adjunto7">Subir archivo</label>
+                                    <span class="custom-file-label" for="adjunto7">Subir archivo</span>
                                 </div>
                             </div>
                         </div>
@@ -298,7 +300,7 @@
                             <div class="col-md-4">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="file[adjunto8]" id="adjunto8" accept=".pdf" required>
-                                    <label class="custom-file-label" for="adjunto8">Subir archivo</label>
+                                    <span class="custom-file-label" for="adjunto8">Subir archivo</span>
                                 </div>
                             </div>
                         </div>
@@ -325,9 +327,9 @@
                             <!-- Primera tabla -->
                             <?php for ($i = 1; $i < 4; $i++) { ?>
                                 <div class="col-md-6">
-                                    <form id="financialSellForm_<?= $i ?>">
+                                    <form id="financialSellForm_<?= $i ?>" class="validatable-form form_1">
                                         <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
-                                        <label>Información adicional</label>
+                                        <!-- <label>Información adicional</label> -->
                                         <table id="###" class="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -339,9 +341,9 @@
                                             <tbody>
                                                 <?php for ($j = 1; $j < 5; $j++) { ?>
                                                     <tr>
-                                                        <td> <input type="text" class="form-control form-control-border" name="data[anno_<?= $j ?>]" placeholder="2023"> </td>
-                                                        <td> <input type="text" class="form-control form-control-border" name="data[sector_<?= $j ?>]" placeholder="Sector A"> </td>
-                                                        <td> <input type="number" class="form-control form-control-border" step="0.01" name="data[ventas_<?= $j ?>]" placeholder="$100"> </td>
+                                                        <td> <input type="text" class="form-control form-control-border" name="data[anno_<?= $j ?>]" placeholder="2023" required> </td>
+                                                        <td> <input type="text" class="form-control form-control-border" name="data[sector_<?= $j ?>]" placeholder="Sector A" required> </td>
+                                                        <td> <input type="number" class="form-control form-control-border" step="0.01" name="data[ventas_<?= $j ?>]" placeholder="$100" required> </td>
                                                     </tr>
                                                 <?php } ?>
                                                 <tr>
@@ -367,7 +369,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <form id="policiesForm">
+                        <form id="policiesForm" class="validatable-form form_1">
                             <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
                             <table id="policiesTable" class="table table-bordered">
                                 <thead>
@@ -381,10 +383,10 @@
                                 <tbody>
                                     <?php for ($i = 1; $i < 4; $i++) { ?>
                                         <tr>
-                                            <td><input type="text" class="form-control form-control-border" name="data[entity_<?= $i ?>]" placeholder="Entidad A"></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[number_<?= $i ?>]" placeholder="00<?= $i ?>"></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[dateValidity_<?= $i ?>]" placeholder="<?= date("d-m-Y") ?>"></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[details_<?= $i ?>]" placeholder="..."></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[entity_<?= $i ?>]" placeholder="Entidad A" required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[number_<?= $i ?>]" placeholder="00<?= $i ?>" required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[dateValidity_<?= $i ?>]" placeholder="<?= date("d-m-Y") ?>" required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[details_<?= $i ?>]" placeholder="..." required></td>
                                         </tr>
                                     <?php } ?>
 
@@ -392,7 +394,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td> <button class="btn btn-secondary" id="addRowPolicies">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                        <td> <button type="button" class="btn btn-secondary" id="addRowPolicies">Agregar Fila <i class="fas fa-plus"></i></button> </td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -409,7 +411,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <form id="banksForm">
+                        <form id="banksForm" class="validatable-form form_1">
                             <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
                             <table id="bankTable" class="table table-bordered">
                                 <thead>
@@ -422,16 +424,16 @@
                                 <tbody>
                                     <?php for ($i = 1; $i < 4; $i++) { ?>
                                         <tr>
-                                            <td><input type="text" class="form-control form-control-border" name="data[nameBank_<?= $i ?>]" placeholder="Banco A"></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[subsidiary_<?= $i ?>]" placeholder="Sucursal <?= $i ?>"></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[accountNumber_<?= $i ?>]" placeholder="<?= str_repeat($i, 5) ?>"></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[nameBank_<?= $i ?>]" placeholder="Banco A" required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[subsidiary_<?= $i ?>]" placeholder="Sucursal <?= $i ?>" required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[accountNumber_<?= $i ?>]" placeholder="<?= str_repeat($i, 5) ?>" required></td>
                                         </tr>
                                     <?php } ?>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td> <button class="btn btn-secondary" id="addRowBanks">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                        <td> <button type="button" class="btn btn-secondary" id="addRowBanks">Agregar Fila <i class="fas fa-plus"></i></button> </td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -442,7 +444,9 @@
         </div>
         <div class="col-md-12">
             <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-            <button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-html="true" title="Complete los campos obligatorios <b class='mandatory'>*</b> para continuar">
+                <button class="btn btn-primary next" data-form="1">Siguiente</button>
+            </span>
         </div>
     </div>
 </div>

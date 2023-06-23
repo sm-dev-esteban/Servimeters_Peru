@@ -1,22 +1,21 @@
 class CustomerForm {
+    static Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+
     constructor() {
         this.$conditionBox = $("#conditionBox");
         this.$button = $("#next");
         this.$buttonValidate = $("#nextValidate");
-        this.$button.prop("disabled", true);
-
-        this.Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        
+        this.$button.prop("disabled", true);        
     }
 
     //Mostrar mensaje al almacenar formularios
-    showToast(msg = 'Servimeters', icon = 'info') {
-        this.Toast.fire({
+    static showToast(msg = 'Servimeters', icon = 'info') {
+        CustomerForm.Toast.fire({
             icon: icon,
             title: msg
         });
@@ -121,6 +120,43 @@ class CustomerForm {
         });
 
     }
+
+    sendForms(){
+        $('#sendForm').on('click', async function(e) {
+            e.preventDefault();
+
+            let forms = document.getElementsByTagName('form');
+            Array.from(forms).forEach(async (form) => {
+                let formData = new FormData(form);
+                try {
+                    await requestController('formulario', 'registerForm', formData, `entity=${form.id}`);
+                } catch (error) {
+                    console.error(error);
+                    CustomerForm.showToast(`No se guardaron las respuestas...`, 'error');
+                }
+            });
+
+            
+            let userData = new FormData();
+            let user = JSON.parse(localStorage.getItem('user'));
+            for (const key in user) {
+                userData.append(`${key}`, `${user[key]}`);
+            }
+            userData.delete('estado');
+            userData.append('estado', 'auditando');
+            try {
+                let result = await requestController('Usuario', 'updateUser', userData);
+                if (result.Result) {
+                    CustomerForm.showToast(`Guardado con exito...`, 'success');
+                }
+                window.location.href = SERVERSIDE;
+            } catch (error) {
+                CustomerForm.showToast(`${error}`, 'error');
+                console.error(error);
+            }
+            return false;
+        })
+    }
 }
 
 $(document).ready(function () {
@@ -128,38 +164,6 @@ $(document).ready(function () {
   formValidate.togglePermissions();
   formValidate.addRowPolicies();
   formValidate.addRowBanks();
+  formValidate.sendForms();
 
-  $('#sendForm').on('click', async function(e) {
-    e.preventDefault();
-    let forms = document.getElementsByTagName('form');
-    Array.from(forms).forEach(async (form) => {
-        let formData = new FormData(form);
-        try {
-            await requestController('formulario', 'registerForm', formData, `entity=${form.id}`);
-        } catch (error) {
-            console.error(error);
-            formValidate.showToast(`No se guardaron las respuestas...`, 'error');
-        }
-    });
-
-    
-    let userData = new FormData();
-    let user = JSON.parse(localStorage.getItem('user'));
-    for (const key in user) {
-        userData.append(`${key}`, `${user[key]}`);
-    }
-    userData.delete('estado');
-    userData.append('estado', 'auditando');
-    try {
-        let result = await requestController('Usuario', 'updateUser', userData);
-        if (result.Result) {
-            formValidate.showToast(`Guardado con exito...`, 'success');
-        }
-        window.location.href = SERVERSIDE;
-    } catch (error) {
-        formValidate.showToast(`${error}`, 'error');
-        console.error(error);
-    }
-    return false;
-  })
 });
