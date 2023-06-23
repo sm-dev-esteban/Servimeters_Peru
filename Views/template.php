@@ -36,6 +36,18 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/dist/css/adminlte.min.css">
 
+    <!-- Estilo global -->
+    <style>
+        .error,
+        .mandatory {
+            color: tomato;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+
     <!-- jQuery -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/jquery/jquery.min.js"></script>
 

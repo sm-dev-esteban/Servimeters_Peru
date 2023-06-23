@@ -9,17 +9,8 @@
         border-color: #0473a4;
     }
 
-    .error,
-    .mandatory {
-        color: tomato;
-    }
-
     .disabledNext {
         background-color: tomato !important;
-    }
-
-    button {
-        cursor: pointer;
     }
 </style>
 
