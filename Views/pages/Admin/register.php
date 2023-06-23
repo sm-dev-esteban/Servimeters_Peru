@@ -16,7 +16,9 @@
               <!--Botón envio-->
             </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Enviar</button>
+              <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Asegurese de que las contraseñas coincidan.">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </span>
             </div>
           </form>
         </div>
@@ -25,3 +27,5 @@
     </div>
   </div>
   </div>
+
+  <script src="<?= SERVERSIDE ?>Views/assets/js/registerUser.js"></script>
