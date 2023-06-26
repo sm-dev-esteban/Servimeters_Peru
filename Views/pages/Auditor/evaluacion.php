@@ -1,3 +1,7 @@
+<?php
+require_once  'Controllers/proceso.controller.php';
+?>
+
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -81,10 +85,10 @@
                                     <span class="badge badge-success">Success</span>
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm m-1" href="#">
+                                    <a class="btn btn-primary btn-sm m-1" href="?action=insert">
                                         <i class="fas fa-folder">
                                         </i>
-                                        View
+                                        Proceso
                                     </a>
                                     <a class="btn btn-info btn-sm m-1" href="#">
                                         <i class="fas fa-pencil-alt">
@@ -103,5 +107,6 @@
                 </table>
             </div>
         </div>
+        <?php ProcessController::sendRegisterProcess(); ?>
     </div>
 </section>
