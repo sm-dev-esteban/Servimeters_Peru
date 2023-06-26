@@ -56,7 +56,7 @@ class BaseModel implements BDInterface
     {
         try {
             $af = new AutomaticForm($object, $this->table, 'UPDATE', $primaryKey);
-            return $af->execute();
+            return $af->execute(true, true);
         } catch (Exception $e) {
             return $e;
         }

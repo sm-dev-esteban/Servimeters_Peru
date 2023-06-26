@@ -13,11 +13,12 @@
             <div class="card-body">
 
               <?php include_once('form/formUser.php'); ?>
+
               <!--Botón envio-->
             </div>
             <div class="card-footer">
               <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Asegurese de que las contraseñas coincidan.">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" data-type="create" class="btn btn-primary sendUser">Enviar</button>
               </span>
             </div>
           </form>
