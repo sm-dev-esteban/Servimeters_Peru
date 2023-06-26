@@ -50,6 +50,17 @@ class UsuarioController extends BaseController
         header('Content-Type: application/json');
         echo json_encode(self::$result);
     }
+
+    static public function loadUser()
+    {
+        if (isset($_POST['id'])) {
+            self::$result = new stdClass();
+            parent::setModel(new UsuarioModel(array_merge($_POST)));
+            self::$result->Result = parent::get();
+            header('Content-Type: application/json');
+            echo json_encode(self::$result);
+        }
+    }
 }
 
 if (isset($_GET['method'])) {

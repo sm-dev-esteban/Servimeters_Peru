@@ -13,8 +13,8 @@
    <p>Llenando de este formulario <strong>AUTORIZO</strong> de forma expresa a SERVIMETERS PERÚ S.A.C. o a quien represente sus derechos o autorice en el
       futuro a consultar toda información referente al comportamiento comercial para certificarme como proveedor homologado en las centrales
       de riesgo. Lo anterior implica que todo cumplimiento o incumplimiento de las obligaciones financieras son reflejadas en bases de datos.</p>
-   <p>Excepto que la ley y las autoridades lo requieran, SERVIMETERS.</p>
-   <p>PERÚ S.A.C., tratara de manera
+   <p>Excepto que la ley y las autoridades lo requieran.</p>
+   <p>SERVIMETERS PERÚ, tratara de manera
       confidencial y no revelara a terceros, sin previo consentimiento por escrito del cliente, la información que el cliente suministre en este
       formulario y durante la ejecución del servicio de Homologación de Proveedores. Aquella información que se obtenga sobre el cliente de fuentes
       distintas (por ejemplo, una persona que realiza una queja, de autoridades reglamentarias) también se tratará de manera confidencial.
@@ -25,8 +25,8 @@
    <form id="condicionesForm">
       <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
       <input type="text" name="data[habilitado]" value="true" hidden>
-      <label>
-         <input type="checkbox" name="data[terminos]" id="conditionBox" required>
+      <input type="checkbox" name="data[terminos]" id="conditionBox" required>
+      <label data-toggle="tooltip" data-placement="right" title="Acepta los terminos para continuar">
          Acepto las condiciones
       </label>
       <br>

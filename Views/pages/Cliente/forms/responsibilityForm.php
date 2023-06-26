@@ -7,7 +7,7 @@
                     <h3 class="card-title">Responsabilidad Corporativa</h3>
                 </div>
 
-                <form id="responsabilityForm">
+                <form id="responsabilityForm" class="validatable-form form_4">
                     <div class="card-body">
                         <div class="row">
                             <!--Campo Número de empleados-->
@@ -141,7 +141,7 @@
                 <div class="card-header">
                     <h3 class="card-title"><em>Adjuntar la siguiente información:</em></h3><br>
                 </div>
-                <form id="responsabilityDocumentsForm">
+                <form id="responsabilityDocumentsForm" class="validatable-form form_4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-8">
@@ -249,7 +249,9 @@
         </div>
         <div class="col-md-12">
             <button class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-            <button class="btn btn-primary" id="sendForm" data-user="<?= $_SESSION['id'] ?>">Enviar</button>
+            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-html="true" title="Complete los campos obligatorios <b class='mandatory'>*</b> para continuar">
+                <button class="btn btn-primary next" data-form="4" id="sendForm" data-user="<?= $_SESSION['id'] ?>">Enviar</button>
+            </span>
         </div>
     </div>
 </div>
