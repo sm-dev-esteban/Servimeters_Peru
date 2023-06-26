@@ -19,13 +19,13 @@
 <!--Confirmar contraseña-->
 <div class="form-group">
     <label for="exampleInputPassword1">Confirmar Contraseña</label>
-    <input type="password" class="form-control" inputmode="text" id="confirm_password" autocomplete="new-password" placeholder="****" required />
+    <input type="password" class="form-control" inputmode="text" id="confirm_password" autocomplete="new-password" placeholder="****" />
 </div>
 
 <!--Rol-->
 <div class="form-group">
     <label>Rol</label>
-    <select class="form-control select2" name="rol" style="width: 100%;">
+    <select class="form-control select2" name="rol" id="select" style="width: 100%;">
         <option selected="selected">Admin</option>
         <option>Auditor</option>
         <option>Cliente</option>
@@ -35,7 +35,8 @@
 <!-- switch -->
 <div class="form-group">
     <label>Habilitar acceso</label>
-    <input type="checkbox" name="habilitado" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+    <input type="checkbox" id="habilitado" data-bootstrap-switch data-on-text="habilitar" data-off-text="deshabilitar" data-off-color="danger" data-on-color="success" checked>
+    <input type="text" id="checkbox" name="habilitado" hidden>
 </div>
 
 <!-- Estado inicial -->

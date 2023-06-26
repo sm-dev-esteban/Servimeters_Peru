@@ -44,7 +44,7 @@ class ValidationForms {
             userData.delete('estado');
             userData.append('estado', 'auditando');
             try {
-                let result = await requestController('Usuario', 'updateUser', userData);
+                let result = await requestController('Usuario', 'updateStateUser', userData);
                 if (result.Result) {
                     ValidationForms.showToast(`Guardado con exito...`, 'success');
                 }

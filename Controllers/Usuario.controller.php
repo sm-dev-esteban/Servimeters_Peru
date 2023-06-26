@@ -33,7 +33,26 @@ class UsuarioController extends BaseController
         }
     }
 
+    /**
+     * @return string
+     */
     static public function updateUser()
+    {
+        if (isset($_GET['action']) && strcmp($_GET['action'], 'update') == 0) {
+            self::$result = new stdClass();
+            parent::setModel(new UsuarioModel($_POST));
+            $result = parent::update();
+            self::$result->Result = $result["status"];
+            echo "<script>
+                window.location.href = 'http://localhost/peru/Admin/accesos';
+            </script>";
+        }
+    }
+
+    /**
+     * @return [type]
+     */
+    static public function updateStateUser()
     {
         session_start();
         self::$result = new stdClass();
