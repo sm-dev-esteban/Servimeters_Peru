@@ -56,12 +56,12 @@ $usuarios = UsuarioController::index();
                                     <?php } ?>
                                 </td>
                                 <td class="project-actions text-center">
-                                    <a class="btn btn-primary btn-sm m-1" href="#">
+                                    <span class="btn btn-primary btn-sm m-1">
                                         <i class="fas fa-folder">
                                         </i>
                                         Ver
-                                    </a>
-                                    <button class="btn btn-info btn-sm m-1" data-toggle="modal" data-target="#modal-xl" data-user="<?= $usuario['id'] ?>">
+                                    </span>
+                                    <button type="button" class="btn btn-info btn-sm m-1" data-toggle="modal" data-target="#modal-xl" data-user="<?= $usuario['id'] ?>">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Editar
@@ -85,13 +85,20 @@ $usuarios = UsuarioController::index();
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="?action=update">
+            <form action="?action=update" method="post">
+
                 <div class="modal-body">
+                    <!-- Estado inicial -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="id" inputmode="text" hidden />
+                    </div>
+
                     <?php include('form/formUser.php') ?>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="submit" data-type="update" class="btn btn-primary sendUser">Guardar Cambios</button>
+                    <?php UsuarioController::updateUser(); ?>
                 </div>
             </form>
         </div>
@@ -101,44 +108,48 @@ $usuarios = UsuarioController::index();
 </div>
 <!-- /.modal -->
 
+<script src="<?= SERVERSIDE ?>Views/assets/js/registerUser.js"></script>
 <script>
     $(document).ready(function() {
-        $('#modal-xl').on('show.bs.modal', async function(e) {
-            var button = $(e.relatedTarget);
-            var id = button.data('user');
-            var formData = new FormData();
-            formData.append('id', id);
-            try {
-                const result = await requestController('Usuario', 'loadUser', formData);
-                if (!result.Result) {
-                    return false;
-                }
-                console.log(result.Result[0]);
-                for (const key in result.Result[0]) {
-                    var element = document.getElementsByName(key)[0];
-                    if (element !== undefined) {
-                        if (element.type === 'checkbox') {
-                            console.log(key, element.type);
-                            element.checked = false;
-                        }
-                        element.value = result.Result[0][key];
-                        // switch (element.tagName) {
-                        //     case 'INPUT':
-                        //         element.value = result.Result[0][key];
-                        //         break;
-                        //     case 'SELECT':
-                        //         console.log('SELECT -->', element.tagName)
-                        //         break;
-                        //     default:
-                        //         console.log('No existe ', key);
-                        //         break;
-                        // }
-                    }
+        // $('#modal-xl').on('show.bs.modal', async function(e) {
+        //     var button = $(e.relatedTarget);
+        //     var id = button.data('user');
+        //     var formData = new FormData();
+        //     formData.append('id', id);
+        //     try {
+        //         const result = await requestController('Usuario', 'loadUser', formData);
+        //         if (!result.Result) {
+        //             return false;
+        //         }
 
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        })
+        //         for (const key in result.Result[0]) {
+        //             var element = document.getElementsByName(key)[0];
+        //             if (element !== undefined) {
+        //                 // if (element.type === 'checkbox') {
+        //                 //     element.checked = ;
+        //                 //     $('#checkbox').bootstrapSwitch('state', (result.Result[0][key] === 'on'));
+        //                 // }
+        //                 // element.value = result.Result[0][key];
+        //                 switch (element.type) {
+        //                     case 'checkbox':
+        //                         console.log('CHECK -->', element.type);
+        //                         $('#checkbox').bootstrapSwitch('state', (result.Result[0][key] === 'on'));
+        //                         break;
+        //                     case 'select-one':
+        //                         console.log('SELECT -->', element.type);
+        //                         $('#select').val(result.Result[0][key]).trigger('change');
+        //                         break;
+        //                     default:
+        //                         console.log('No se valida ', key);
+        //                         element.value = result.Result[0][key];
+        //                         break;
+        //                 }
+        //             }
+
+        //         }
+        //     } catch (error) {
+        //         console.error(error);
+        //     }
+        // })
     })
 </script>
