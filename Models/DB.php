@@ -14,6 +14,7 @@ class DB extends DB_Config
         "username" => "root",
         "password" => "",
         "database" => "servimetersperu",
+        "port" => "3306",
         "file" => "db.db"
     ];
 
@@ -51,7 +52,7 @@ class DB extends DB_Config
         /* No me interesa mucho que obtenga los dns de la conexion asi que mejor lo declaro en el metodo */
         $dns = [];
 
-        $dns["mysql"] = "mysql:host={$this->params["hostname"]};dbname={$this->params["database"]}";
+        $dns["mysql"] = "mysql:host={$this->params["hostname"]};dbname={$this->params["database"]};port={$this->params["port"]}";
         $dns["sqlsrv"] = "sqlsrv:Server={$this->params["hostname"]};Database={$this->params["database"]}";
         $dns["sqlite"] = "sqlite:{$this->params["file"]}";
 

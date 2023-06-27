@@ -18,6 +18,7 @@ class SessionController extends BaseController
 
         if (isset($_POST['user']) && isset($_POST['password'])) {
 
+            self::$result = new stdClass();
             if (empty($_POST['user']) || empty($_POST['password'])) {
                 self::$result->Error = 'Las credenciales no son validas';
                 header('Content-Type: application/json');
@@ -26,11 +27,10 @@ class SessionController extends BaseController
             }
 
             session_start();
-            self::$result = new stdClass();
             parent::setModel(new UsuarioModel());
             // Obtener el usuario
             $user = parent::getCondition("usuario LIKE '%" . $_POST['user'] . "%'");
-            if (sizeof($user) <= 0) {
+            if (empty($user)) {
                 self::$result->Error = 'Las credenciales no son validas';
                 header('Content-Type: application/json');
                 echo json_encode(self::$result);
