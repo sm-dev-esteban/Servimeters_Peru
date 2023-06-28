@@ -1,5 +1,9 @@
 <?php
-require_once  'Controllers/proceso.controller.php';
+require_once  'Controllers/formulario.controller.php';
+require_once  'Controllers/Usuario.controller.php';
+
+$forms = FormController::index();
+$users = UsuarioController::index();
 ?>
 
 <div class="content-header">
@@ -25,64 +29,68 @@ require_once  'Controllers/proceso.controller.php';
                                 #
                             </th>
                             <th style="width: 20%">
-                                Project Name
+                                Fecha de registro
                             </th>
                             <th style="width: 30%">
-                                Team Members
+                                Usuario
                             </th>
                             <th>
-                                Project Progress
+                                Progreso
                             </th>
                             <th style="width: 8%" class="text-center">
-                                Status
+                                Estado
                             </th>
                             <th style="width: 20%">
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 0; $i <= rand(5, 10); $i++) : ?>
+                        <?php foreach ($forms as $form) { ?>
+                            <?php $email = ''; ?>
+                            <?php $nameUser = ''; ?>
+                            <?php $estado = ''; ?>
+                            <?php foreach ($users as $user) {
+                                if (strcmp($form['usuario'], strval($user['id'])) === 0) {
+                                    $email = $user['email'];
+                                    $nameUser = $user['usuario'];
+                                    $estado = $user['estado'];
+                                }
+                            } ?>
+
                             <tr>
                                 <td>
-                                    #
+                                    <?= $form['id'] ?>
                                 </td>
                                 <td>
                                     <a>
-                                        AdminLTE v3
+                                        <?= $form['fechaRegistro'] ?>
                                     </a>
                                     <br />
                                     <small>
-                                        Created 01.01.2019
+                                        <?= $email ?>
                                     </small>
                                 </td>
                                 <td>
                                     <ul class="list-inline">
+                                        <?php $randAvatar = rand(1, 5) ?>
                                         <li class="list-inline-item">
-                                            <img alt="Avatar" class="table-avatar" src="<?= SERVERSIDE ?>Views/resources/dist/img/avatar.png">
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <img alt="Avatar" class="table-avatar" src="<?= SERVERSIDE ?>Views/resources/dist/img/avatar2.png">
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <img alt="Avatar" class="table-avatar" src="<?= SERVERSIDE ?>Views/resources/dist/img/avatar3.png">
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <img alt="Avatar" class="table-avatar" src="<?= SERVERSIDE ?>Views/resources/dist/img/avatar4.png">
+                                            <img alt="Avatar" class="table-avatar" src="<?= SERVERSIDE ?>Views/resources/dist/img/avatar<?= $randAvatar ?>.png">
+                                            <a><?= $nameUser ?></a>
                                         </li>
                                     </ul>
                                 </td>
-                                <?php $rand = rand(0, 100) ?>
+                                <?php $rand = ($estado === 'homologacion') ? 0 : 100; ?>
                                 <td class="project_progress">
                                     <div class="progress progress-sm">
                                         <div class="progress-bar bg-green" role="progressbar" aria-valuenow="<?= $rand ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $rand ?>%">
                                         </div>
                                     </div>
                                     <small>
-                                        <?= $rand ?>% Complete
+                                        <?= $rand ?>% Completado
                                     </small>
                                 </td>
                                 <td class="project-state">
-                                    <span class="badge badge-success">Success</span>
+                                    <?= $form['habilitado'] ? '<span class="badge badge-success">Habilitado' : '<span class="badge badge-danger">No habilitado' ?></span>
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-primary btn-sm m-1" href="?action=insert">
@@ -90,10 +98,10 @@ require_once  'Controllers/proceso.controller.php';
                                         </i>
                                         Proceso
                                     </a>
-                                    <a class="btn btn-info btn-sm m-1" href="#">
+                                    <a class="btn btn-info btn-sm m-1 loadForm" data-id="<?= $form['id'] ?>" data-terminos="<?= $form['terminos'] ?>" href="#">
                                         <i class="fas fa-pencil-alt">
                                         </i>
-                                        Edit
+                                        Evaluar
                                     </a>
                                     <a class="btn btn-danger btn-sm m-1" href="#">
                                         <i class="fas fa-trash">
@@ -102,11 +110,38 @@ require_once  'Controllers/proceso.controller.php';
                                     </a>
                                 </td>
                             </tr>
-                        <?php endfor ?>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
         </div>
-        <?php ProcessController::sendRegisterProcess(); ?>
     </div>
 </section>
+
+<script>
+    $(document).ready(function() {
+        $('.loadForm').on('click', function() {
+            var id = $(this).data('id');
+            var terminos = $(this).data('terminos');
+
+            var form = $('<form>', {
+                method: 'POST',
+                action: 'detalle_form'
+            });
+
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'id',
+                value: id
+            }).appendTo(form);
+
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'terminos',
+                value: terminos
+            }).appendTo(form);
+
+            form.appendTo('body').submit();
+        })
+    })
+</script>

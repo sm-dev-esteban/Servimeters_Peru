@@ -22,7 +22,7 @@
       normativa de desarrollo, respetando los derechos de accesos, rectificación y cancelación. Estos datos se emplearán exclusivamente por
       SERVIMETERS PERÚ S.A.C. y departamentos adjuntos.</p>
    <!--Validación de si acepta las condiciones-->
-   <form id="condicionesForm">
+   <form id="condiciones_form">
       <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
       <input type="text" name="data[habilitado]" value="true" hidden>
       <input type="checkbox" name="data[terminos]" id="conditionBox" required>
