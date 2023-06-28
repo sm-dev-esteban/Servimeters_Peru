@@ -84,9 +84,12 @@ class BaseModel implements BDInterface
      */
     public function getAll()
     {
-        $this->query = "SELECT * FROM `" . $this->table . "`";
-        $result = $this->db->executeQuery($this->query);
-        return $result ?? false;
+        try {
+            $result = AutomaticForm::getDataSql($this->table);
+            return $result ?? false;
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
     /**
