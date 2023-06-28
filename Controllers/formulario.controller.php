@@ -19,12 +19,24 @@ class FormController extends BaseController
             self::$result = new stdClass();
             $table = $_GET['entity'];
             $data = array_merge($_POST, $_FILES);
-            parent::setModel(new FormulatioModel($data, $table));
+            parent::setModel(new FormulatioModel($data, null,  $table));
             self::$result->Result = parent::insert();
             header('Content-Type: application/json');
             echo json_encode(self::$result);
             exit();
         }
+    }
+
+    public static function index()
+    {
+        parent::setModel(new FormulatioModel(null, null, 'condiciones_form'));
+        return parent::getAll();
+    }
+
+    public static function getForm($id, $table)
+    {
+        parent::setModel(new FormulatioModel(null, $id, $table));
+        return parent::get();
     }
 }
 

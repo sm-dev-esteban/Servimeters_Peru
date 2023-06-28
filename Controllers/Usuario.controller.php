@@ -44,7 +44,7 @@ class UsuarioController extends BaseController
             $result = parent::update();
             self::$result->Result = $result["status"];
             echo "<script>
-                window.location.href = 'http://localhost/peru/Admin/accesos';
+                window.location.href = '" . SERVERSIDE . "Admin/accesos';
             </script>";
         }
     }
