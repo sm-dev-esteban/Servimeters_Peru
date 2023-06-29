@@ -38,12 +38,8 @@
 
     <!-- Estilo global -->
     <style>
-        .error {
-            color: tomato;
-        }
-
-        .mandatory::after {
-            content: '*';
+        .error,
+        .mandatory {
             color: tomato;
         }
 

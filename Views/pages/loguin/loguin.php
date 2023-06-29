@@ -84,7 +84,6 @@
 <!-- Constantes -->
 <script src="<?= SERVERSIDE ?>config.min.js"></script>
 <!-- Request -->
-<script src="<?= SERVERSIDE ?>Views/assets/js/all.page.js"></script>
 <script src="<?= SERVERSIDE ?>Views/assets/js/request.js"></script>
 <script src="<?= SERVERSIDE ?>Views/assets/js/loguin.js"></script>
 

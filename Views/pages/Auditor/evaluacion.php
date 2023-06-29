@@ -35,7 +35,7 @@ $users = UsuarioController::index();
                                 Usuario
                             </th>
                             <th>
-                                Progreso de Formulario
+                                Progreso
                             </th>
                             <th style="width: 8%" class="text-center">
                                 Estado
@@ -98,7 +98,7 @@ $users = UsuarioController::index();
                                         </i>
                                         Proceso
                                     </a>
-                                    <a class="btn btn-info btn-sm m-1 loadForm" data-id="<?= $form['id'] ?>" data-terminos="<?= $form['terminos'] ?>" data-cliente="<?= $nameUser ?>" data-idcliente="<?= $form['usuario'] ?>" href="#">
+                                    <a class="btn btn-info btn-sm m-1 loadForm" data-id="<?= $form['id'] ?>" data-terminos="<?= $form['terminos'] ?>" href="#">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Evaluar
@@ -121,23 +121,25 @@ $users = UsuarioController::index();
 <script>
     $(document).ready(function() {
         $('.loadForm').on('click', function() {
-
-            var dataForm = ['id', 'terminos', 'cliente', 'idcliente'];
+            var id = $(this).data('id');
+            var terminos = $(this).data('terminos');
 
             var form = $('<form>', {
                 method: 'POST',
                 action: 'detalle_form'
             });
 
-            dataForm.forEach((e) => {
-                var value = $(this).data(e);
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'id',
+                value: id
+            }).appendTo(form);
 
-                $('<input>').attr({
-                    type: 'hidden',
-                    name: e,
-                    value: value
-                }).appendTo(form);
-            });
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'terminos',
+                value: terminos
+            }).appendTo(form);
 
             form.appendTo('body').submit();
         })
