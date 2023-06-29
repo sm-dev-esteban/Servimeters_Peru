@@ -81,6 +81,65 @@ $(":checkbox[data-bootstrap-switch]").each(function () {
 });
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-    // Tooltip
-    //------------------------------------------------------------------------------------------------------------------------------------------------------
+// Tooltip
+//------------------------------------------------------------------------------------------------------------------------------------------------------
     $('[data-toggle="tooltip"]').tooltip();
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+// TOAST
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+var Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+});
+
+function showToast(msg = 'Servimeters', icon = 'info') {
+    Toast.fire({
+        icon: icon,
+        title: msg 
+    });
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+// SWAL
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/**
+ * @param string title
+ * @param string icon
+ * @param string text
+ * @param mixed {...params}
+ * 
+ * @return [type]
+ */
+function showSwal(title, icon = 'success', text = '', params = {}) {
+    return new Promise((resolve, reject)=>{
+        let {allowOutsideClick, showCancelButton, confirmButtonColor, cancelButtonColor, confirmButtonText, cancelButtonText} = params;
+
+        Swal.fire({
+            title: title,
+            text: text,
+            icon: icon,
+            allowOutsideClick: allowOutsideClick || false,
+            showCancelButton: showCancelButton || false,
+            confirmButtonColor: confirmButtonColor || '#3085d6',
+            cancelButtonColor: cancelButtonColor || '#d33',
+            confirmButtonText: confirmButtonText || 'Ok',
+            cancelButtonText: cancelButtonText || 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                resolve(true);
+            }else{
+                resolve(false);
+            }
+        }).catch(error => {
+            Swal.showValidationMessage(
+              `Request failed: ${error}`
+            );
+            reject(false);
+        })
+    })
+}

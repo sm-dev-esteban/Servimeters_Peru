@@ -1,18 +1,5 @@
 'use strict';
 $(document).ready(function() {
-    var Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000
-    });
-
-    function showToast(msg = 'Servimeters', icon = 'info') {
-        Toast.fire({
-            icon: icon,
-            title: msg 
-        });
-    }
     
     $('#loguin').on('click', async function(e) {
         e.preventDefault();
@@ -23,7 +10,6 @@ $(document).ready(function() {
             showToast(`${result.Error}.`, 'error');
         }else if(result.Success){
             showToast(`${result.Success}.`, 'success');
-            localStorage.setItem('user', result.User);
             window.location.href = SERVERSIDE;
         }
         return false;
