@@ -121,28 +121,26 @@ $users = UsuarioController::index();
 
 <script>
     $(document).ready(function() {
-        $('.loadForm').on('click', function() {
-            var id = $(this).data('id');
-            var terminos = $(this).data('terminos');
+                $('.loadForm').on('click', function() {
+                    var id = $(this).data('id');
+                    var terminos = $(this).data('terminos');
 
-            var form = $('<form>', {
-                method: 'POST',
-                action: 'detalle_form'
-            });
+                    var form = $('<form>', {
+                        method: 'POST',
+                        action: 'detalle_form'
+                    });
 
-            $('<input>').attr({
-                type: 'hidden',
-                name: 'id',
-                value: id
-            }).appendTo(form);
+                    // Recorremos los valores a enviar
+                    dataForm.forEach((e) => {
+                        var value = $(this).data(e);
 
-            $('<input>').attr({
-                type: 'hidden',
-                name: 'terminos',
-                value: terminos
-            }).appendTo(form);
+                        $('<input>').attr({
+                            type: 'hidden',
+                            name: 'terminos',
+                            value: terminos
+                        }).appendTo(form);
 
-            form.appendTo('body').submit();
-        })
-    })
+                        form.appendTo('body').submit();
+                    })
+                })
 </script>
