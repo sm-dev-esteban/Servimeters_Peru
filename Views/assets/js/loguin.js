@@ -1,4 +1,6 @@
 'use strict';
+
+
 $(document).ready(function() {
     var Toast = Swal.mixin({
         toast: true,
@@ -24,7 +26,7 @@ $(document).ready(function() {
         }else if(result.Success){
             showToast(`${result.Success}.`, 'success');
             localStorage.setItem('user', result.User);
-            window.location.href = SERVERSIDE;
+            window.location.href = `${SERVERSIDE}Cliente/form`;
         }
         return false;
     })
@@ -38,3 +40,4 @@ $(document).ready(function() {
         return false;
     })
 });
+

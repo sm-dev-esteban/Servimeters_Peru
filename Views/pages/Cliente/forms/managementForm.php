@@ -60,6 +60,136 @@
                 </form>
             </div>
         </div>
+
+         <!--Tabla de contratación de servicio-->
+         <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">1.1 Llene la capacidad de contratación del servicio que desea homologar:</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <form id="contracting_service_form" class="validatable-form form_1">
+                            <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                            <table id="policiesTable" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Producto o Servicio</th>
+                                        <th>Capacidad Instalada</th>
+                                        <th>Producción Actual</th>
+                                        <th>Detalle del producto o servicio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php for ($i = 1; $i < 4; $i++) { ?>
+                                        <tr>
+                                            <td><input type="text" class="form-control form-control-border" name="data[product_<?= $i ?>]" placeholder="..." required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[capacity_<?= $i ?>]" placeholder="..." required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[production_<?= $i ?>]" placeholder="..." required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[details_<?= $i ?>]" placeholder="..." required></td>
+                                        </tr>
+                                    <?php } ?>
+
+                                    <!-- Agrega más filas según sea necesario -->
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td> <button type="button" class="btn btn-secondary" id="addRowPolicies">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--Tabla de prestación de servicio-->
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">1.2 Equipos que utiliza para la prestación del servicio:</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <form id="service_provision_form" class="validatable-form form_1">
+                            <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                            <table id="policiesTable" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Equipos</th>
+                                        <th>Marca</th>
+                                        <th>Año no fabricación</th>
+                                        <th>Propio o alquilado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php for ($i = 1; $i < 4; $i++) { ?>
+                                        <tr>
+                                            <td><input type="text" class="form-control form-control-border" name="data[hardware_<?= $i ?>]" placeholder="..." required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[mark_<?= $i ?>]" placeholder="DELL" required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[anno_<?= $i ?>]" placeholder="2023" required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[apartment _<?= $i ?>]" placeholder="Propio" required ></td>
+                                        </tr>
+                                    <?php } ?>
+
+                                    <!-- Agrega más filas según sea necesario -->
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td> <button type="button" class="btn btn-secondary" id="addRowPolicies">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Tabla de prestación de servicio o producto-->
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">1.3 Relación de clientes a los cuales ha prestado el servicio o producto a homologar:</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <form id="service_provision_product_form" class="validatable-form form_1">
+                            <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                            <table id="policiesTable" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre del Cliente</th>
+                                        <th>Actividad del Cliente</th>
+                                        <th>Contacto</th>
+                                        <th>Teléfono</th>
+                                        <th>Antiguedad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php for ($i = 1; $i < 4; $i++) { ?>
+                                        <tr>
+                                            <td><input type="text" class="form-control form-control-border" name="data[customer_<?= $i ?>]" placeholder="..." required ></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[activity_<?= $i ?>]" placeholder="..." required></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[contact_<?= $i ?>]" placeholder="00<?= $i ?>" required></td>
+                                            <td><input type="number" class="form-control form-control-border" name="data[phone_<?= $i ?>]" placeholder="2329829" required ></td>
+                                            <td><input type="text" class="form-control form-control-border" name="data[details_<?= $i ?>]" placeholder="..." required ></td>
+                                        </tr>
+                                    <?php } ?>
+                                    <!-- Agrega más filas según sea necesario -->
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td> <button type="button" class="btn btn-secondary" id="addRowPolicies">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>   
     </div>
 
     <div class="col-md-12">

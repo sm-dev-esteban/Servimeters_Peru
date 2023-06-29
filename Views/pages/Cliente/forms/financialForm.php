@@ -87,7 +87,7 @@
                             <!--Campo Providencia/Población/Pais-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="###">Providencia/Población/Pais</label>
+                                    <label for="###">Ciudad/Provincia/País</label>
                                     <input type="text" class="form-control" name="data[providencia_poblacion_pais]" id="###" placeholder="Ingrese las siguientes opciones" required>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="###">Número de clientes en los últimos dos años(2021/2022)</label>
-                                <input type="number" class="form-control" name="data[numero_clientes]" id="###" placeholder="Ingrese el número de clientes en los últimos dos años" required>
+                                <input type="text" class="form-control" name="data[numero_clientes]" id="###" placeholder="Ingrese el número de clientes en los últimos dos años" required>
                             </div>
                         </div>
 

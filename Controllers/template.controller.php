@@ -21,7 +21,7 @@ class ControladorTemplate
     /**
      * @param String $router - mucho texto
      */
-    static function router(String $router = "default")
+    static function router(String $router = "form")
     {
         // $db = new DB();
         // $con = $db->connect(); --Lo deshabilite, Perdon :(

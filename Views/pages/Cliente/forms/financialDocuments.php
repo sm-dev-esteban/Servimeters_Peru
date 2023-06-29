@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
-                        <label for="adjunto1">1. Certificado de Cámara y Comercio no mayor a 30 días.</label>
+                        <label for="adjunto1">1. RUC no mayor a 30 días.</label>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
