@@ -37,25 +37,24 @@ class SessionController extends BaseController
                 exit();
             }
 
-            // Validar contraseña
+            $userLog = $user[0];
+            // Validar contraseña 
             $pass = $_POST['password'];
-            if (!UsuarioModel::verifyPass($pass, $user[0]['password'])) {
+            if (!UsuarioModel::verifyPass($pass, $userLog['password'])) {
                 self::$result->Error = 'Las credenciales no son validas';
                 echo json_encode(self::$result);
                 exit();
             }
 
             // Es habilitado para entrar?
-            if (strcmp('on', $user[0]['habilitado']) !== 0) {
+            if (strcmp('on', $userLog['habilitado']) !== 0) {
                 self::$result->Error = 'No esta habilitado para ingresar';
                 echo json_encode(self::$result);
                 exit();
             }
-            $userLog = $user[0];
+
             $userLog['password'] = '';
-            $user[0]['password'] = $pass;
-            self::$result->User = json_encode($userLog);
-            self::sessionIn($user[0]);
+            self::sessionIn($userLog);
             self::$result->Success = 'Ingreso con exito';
             echo json_encode(self::$result);
             exit();

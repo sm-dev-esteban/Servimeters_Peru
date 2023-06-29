@@ -38,6 +38,36 @@ class FormController extends BaseController
         parent::setModel(new FormulatioModel(null, $id, $table));
         return parent::get();
     }
+
+    public static function loadDataForms()
+    {
+        if (isset($_POST['id'])) {
+            $forms = array('financial_form', 'financial_sell_form_1', 'financial_sell_form_2', 'financial_sell_form_3', 'policies_form', 'banks_form', 'management_form', 'quiality_form', 'responsability_form');
+            $id = $_POST['id'];
+            $data = array();
+            foreach ($forms as $form) {
+                $data[$form] = self::getForm($id, $form);
+            }
+            return $data ?? false;
+        } else {
+            echo '<script>window.location.href= "' . SERVERSIDE . '"</script>';
+        }
+    }
+
+    public static function loadDocsForm()
+    {
+        if (isset($_POST['id'])) {
+            $formsDocs = array('financial_documents_form', 'sgc_documents_form', 'responsability_documents_form');
+            $id = $_POST['id'];
+            $dataDocs = array();
+            foreach ($formsDocs as $formDoc) {
+                $dataDocs[$formDoc] = self::getForm($id, $formDoc);
+            }
+            return $dataDocs ?? false;
+        } else {
+            echo '<script>window.location.href= "' . SERVERSIDE . '"</script>';
+        }
+    }
 }
 
 if (isset($_GET['method'])) {

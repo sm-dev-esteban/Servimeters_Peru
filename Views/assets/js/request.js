@@ -15,6 +15,14 @@ function AutomaticForm(Method, params = []) {
     return $request.responseJSON;
 }
 
+ /**
+  * @param null controller
+  * @param null method
+  * @param  formData
+  * @param string params
+  * 
+  * @return [type]
+  */
 async function requestController(controller = null, method = null, formData = {}, params = ''){
     return new Promise(function(resolve, reject){
         $.ajax({

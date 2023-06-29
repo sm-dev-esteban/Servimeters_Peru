@@ -6,21 +6,6 @@ class ValidationForms {
         this.$button.prop("disabled", true);        
     }
 
-    static Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000
-    });
-
-    //Mostrar mensaje al almacenar formularios
-    static showToast(msg = 'Servimeters', icon = 'info') {
-        ValidationForms.Toast.fire({
-            icon: icon,
-            title: msg
-        });
-    }
-
     static async sendForms(){
         // $('#sendForm').on('click', async function(e) {
 
@@ -31,26 +16,23 @@ class ValidationForms {
                     await requestController('formulario', 'registerForm', formData, `entity=${form.id}`);
                 } catch (error) {
                     console.error(error);
-                    ValidationForms.showToast(`No se guardaron las respuestas...`, 'error');
+                    showToast(`No se guardaron las respuestas...`, 'error');
                 }
             });
 
             
             let userData = new FormData();
-            let user = JSON.parse(localStorage.getItem('user'));
-            for (const key in user) {
-                userData.append(`${key}`, `${user[key]}`);
-            }
-            userData.delete('estado');
+            userData.append('id', $('#sendForm').data('user'));
             userData.append('estado', 'auditando');
+
             try {
                 let result = await requestController('Usuario', 'updateStateUser', userData);
                 if (result.Result) {
-                    ValidationForms.showToast(`Guardado con exito...`, 'success');
+                    showToast(`Guardado con exito...`, 'success');
                 }
                 window.location.href = SERVERSIDE;
             } catch (error) {
-                ValidationForms.showToast(`${error}`, 'error');
+                showToast(`${error}`, 'error');
                 console.error(error);
             }
             return false;
@@ -98,40 +80,59 @@ class ValidationForms {
         });
     }
 
-    addValuesToLabelForms(objectLabel = []){
-        for (let i = 0; i < objectLabel.length; i++) {
-            let {label, classLabel, text} = objectLabel[i];
-            $('form').each(function() {
+    static addValuesToLabelInputForms(idForm = 'form'){
+            
+            $(idForm).each(function() {
                 const form = $(this);
-                const labels = form.find(label);
-        
-                labels.each(function() {
-                    const currentLabel = $(this);
-                    const span = $('<span>').addClass(classLabel).text(text);
-        
-                    currentLabel.after(span);
+                
+                const elements = form.find('input');
+
+                elements.each(function() {
+                    const currentElement = $(this);
+                    if (currentElement.is(':disabled') || currentElement.is(':hidden')) {
+                        return true;
+                    }
+
+                    if (currentElement.next('.error')[0] === undefined) {
+                        const span = $('<span>').addClass('error');
+                        currentElement.after(span);
+                    }
+
+                    ValidationForms.validateErrors(currentElement);
+                    
+                    var label = currentElement.prev('label');
+                    if (label[0] === undefined) {
+                        label = currentElement.next('label');
+                    }
+
+                    if (label[0] === undefined) {
+                        return true;
+                    }
+
+                    label.addClass('mandatory');
+
                 });
             })
-        }
+        
     }
 
-    validateErrors(form){
+    static validateErrors(input){
 
-        const inputs = form.querySelectorAll("input");
-        inputs.forEach((input) =>{
-            input.addEventListener('blur', () => {
+        // const inputs = form.querySelectorAll("input");
+        // inputs.forEach((input) =>{
+            input.on('blur', () => {
                 
-                let $input = $(input);
+                let $input = input.get(0);
 
-                if(input.validity.valueMissing){
-                    $input.addClass('is-invalid').removeClass('is-valid');
-                    showError(input);
+                if($input.validity.valueMissing){
+                    input.addClass('is-invalid').removeClass('is-valid');
+                    showError($input);
                 }else{
-                    $input.addClass('is-valid').removeClass('is-invalid');
-                    hideError(input);
+                    input.addClass('is-valid').removeClass('is-invalid');
+                    hideError($input);
                 }
             });
-        });
+        // });
 
         function showError(input){
             const errorSpan = input.nextElementSibling;
@@ -150,11 +151,15 @@ class ValidationForms {
     }
 
     checkNextForm(){
+        $('#next').on('click', function(params) {
+            ValidationForms.addValuesToLabelInputForms('.validatable-form');
+        })
 
         $('.next').on('click', function(e) {
             var button = $(this);
             var idForm = button.data('form');
             var isValid = false;
+            ValidationForms.addValuesToLabelInputForms('.validatable-form');
             $(`.form_${idForm}`).each(function() {
                 var form = $(this);
                 var count = form.find(":invalid").addClass('is-invalid').length;
@@ -173,8 +178,6 @@ class ValidationForms {
 
             if (isValid) {
                 button.removeClass('disabledNext');
-                console.log(idForm);
-                console.log(typeof idForm);
                 idForm === 4 ? ValidationForms.sendForms() : stepper.next();
             }
         });
@@ -189,32 +192,15 @@ $(document).ready(function(e) {
     object.addRowPolicies();
     object.togglePermissions();
 
-
-    let valuesToForm = [
-        {
-            label: 'input',
-            classLabel: 'error',
-            text: ''
-        },
-        {
-            label: 'label',
-            classLabel: 'mandatory',
-            text: '*'
-        },
-    ];
-
-    // Agregar valores a inputs de formularios
-    object.addValuesToLabelForms(valuesToForm);
-
     // Validar boton Next
     object.checkNextForm();
 
     // Validar inputs
-    const forms = document.querySelectorAll('.validatable-form');
+    // const forms = document.querySelectorAll('.validatable-form');
     
-    forms.forEach((form) => {
-       object.validateErrors(form);
-    });
+    // forms.forEach((form) => {
+    //    object.validateErrors(form);
+    // });
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------
     // Tooltip
