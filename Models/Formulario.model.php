@@ -5,7 +5,13 @@ require_once 'Base.model.php';
 class FormulatioModel extends BaseModel
 {
 
+    /**
+     * @var array
+     */
     private $arrayData;
+    /**
+     * @var string
+     */
     private $id;
 
     public function __construct($arrayData = null, $id = null, $table = '')

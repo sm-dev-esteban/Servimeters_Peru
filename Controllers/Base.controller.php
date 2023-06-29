@@ -11,7 +11,7 @@ class BaseController
     }
 
     /**
-     * @param mixed $action
+     * @param srting $action
      * 
      * @return mixed
      */

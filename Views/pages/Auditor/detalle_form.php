@@ -96,8 +96,9 @@ foreach ($formsDocs as $formDoc) {
                                         <div class="col-md-6" id="financialDocs">
 
                                         </div>
-                                        <div class="col-md-6">
-                                            <h1>Archivos aqui</h1>
+                                        <!-- END ACCORDION & CAROUSEL-->
+                                        <div class="col-md-7">
+                                            <object data="" type="application/pdf" width="100%" height="100%"></object>
                                         </div>
                                     </div>
                                 </div>
@@ -300,6 +301,81 @@ foreach ($formsDocs as $formDoc) {
 
         $('.formsTab').on('click', function(e) {
             $('.hideForm').prop('hidden', true);
+            $('input').prop('disabled', true);
         });
+    }
+
+    function seeDoc() {
+        $('.loadFile').on('click', function() {
+            var url = $(this).data('file');
+            $('object').attr('data', url);
+        })
+    }
+
+    function upPage() {
+        $('#up').on('click', function() {
+            $('html, body').animate({
+                scrollTop: $('#menu').offset().top
+            }, 500)
+        })
+    }
+
+    function closeEvaluate() {
+        $('#closeTab').on('click', function() {
+            $('input').prop('disabled', false);
+            $('span.error').replaceAll('');
+            confirmClose();
+        });
+    }
+
+    function confirmClose() {
+        $('#closeForm').on('click', async function() {
+            var res = await showSwal('¿Desea cerrar la evaluación?', 'warning', 'Confirme para continuar con el cierre', {
+                showCancelButton: true,
+                confirmButtonText: 'Si, cerrar!',
+                cancelButtonText: 'No, cancelar!'
+            });
+
+            if (res) {
+                closeEvaluation();
+            }
+        })
+    }
+
+    async function closeEvaluation() {
+        try {
+            $('#valueCheck').val($('#checkboxPrimary1').is(':checked') ? 'Cumple' : 'No Cumple');
+            var form = document.getElementById('evaluacion');
+            var data = new FormData(form);
+
+            var result = await requestController('formulario', 'registerForm', data, `entity=${form.id}`);
+
+            if (!result.Result.status) {
+                throw new Error('Fallo en el resultado');
+            }
+
+            let userData = new FormData();
+            var idcliente = '<?php echo $idcliente ?>';
+            userData.append('id', idcliente);
+            userData.append('estado', 'evaluado');
+
+            result = await requestController('Usuario', 'updateStateUser', userData);
+            console.log(result);
+            if (!result.Result) {
+                throw new Error('No se actualizo el cliente');
+            }
+
+            var res = await showSwal('!Cerrado!');
+
+            if (res) {
+                window.location.href = SERVERSIDE + 'Auditor/evaluacion'
+            }
+
+        } catch (error) {
+            await showSwal('Error en la operacion!', 'info');
+            console.error(error);
+            return false;
+        }
+
     }
 </script>

@@ -37,4 +37,4 @@ async function requestController(controller = null, method = null, formData = {}
             reject(error);
         })
     })
-}
+} 

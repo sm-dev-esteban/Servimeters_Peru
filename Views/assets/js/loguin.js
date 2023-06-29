@@ -38,4 +38,4 @@ $(document).ready(function () {
         window.location.href = SERVERSIDE;
         return false;
     })
-});
+}); 

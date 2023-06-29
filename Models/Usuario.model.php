@@ -64,6 +64,9 @@ class UsuarioModel extends BaseModel
         return $this->id;
     }
 
+    /**
+     * @return [type]
+     */
     private function encryptPass()
     {
         $this->password = password_hash($this->password, PASSWORD_BCRYPT, ['cost' => 12]);
