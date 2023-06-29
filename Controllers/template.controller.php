@@ -35,6 +35,9 @@ class ControladorTemplate
         }
     }
 
+    /**
+     * @return [type]
+     */
     static function menu()
     {
         if (strcmp($_SESSION['rol'], 'Admin') === 0) {

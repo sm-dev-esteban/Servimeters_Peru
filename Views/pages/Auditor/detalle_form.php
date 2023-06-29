@@ -161,7 +161,7 @@ if (!$data || !$dataDocs) {
                                         </div>
                                         <!-- END ACCORDION & CAROUSEL-->
                                         <div class="col-md-7">
-                                            <embed src="" type="application/pdf" width="100%" height="100%">
+                                            <object data="" type="application/pdf" width="100%" height="100%"></object>
                                         </div>
                                     </div>
                                     <!-- /.row -->
@@ -364,7 +364,7 @@ if (!$data || !$dataDocs) {
     function seeDoc() {
         $('.loadFile').on('click', function() {
             var url = $(this).data('file');
-            $('embed').attr('src', url);
+            $('object').attr('data', url);
         })
     }
 

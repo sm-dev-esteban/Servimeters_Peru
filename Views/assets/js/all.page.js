@@ -142,4 +142,4 @@ function showSwal(title, icon = 'success', text = '', params = {}) {
             reject(false);
         })
     })
-}
+} 

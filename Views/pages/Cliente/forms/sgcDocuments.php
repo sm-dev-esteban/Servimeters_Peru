@@ -1,3 +1,4 @@
+<!-- Form Docs -->
 <div class="col-md-12 hideForm">
     <div class="card card-primary">
         <div class="card-header">

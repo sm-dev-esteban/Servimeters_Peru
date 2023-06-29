@@ -100,6 +100,11 @@ class BaseModel implements BDInterface
         return get_object_vars($this);
     }
 
+    /**
+     * @param mixed $condition
+     * 
+     * @return [type]
+     */
     public function getCondition($condition)
     {
         $result = AutomaticForm::getDataSql($this->table, $condition);

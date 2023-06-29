@@ -1,3 +1,4 @@
+<!-- Lock -->
 <div class="hold-transition lockscreen">
     <!-- Automatic element centering -->
     <div class="lockscreen-wrapper">

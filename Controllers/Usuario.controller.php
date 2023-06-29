@@ -16,6 +16,9 @@ class UsuarioController extends BaseController
     /**
      * @return array
      */
+    /**
+     * @return [type]
+     */
     public static function index()
     {
         parent::setModel(new UsuarioModel());

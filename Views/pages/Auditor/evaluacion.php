@@ -2,6 +2,7 @@
 require_once  'Controllers/formulario.controller.php';
 require_once  'Controllers/Usuario.controller.php';
 
+//Carga de datos
 $forms = FormController::index();
 $users = UsuarioController::index();
 ?>

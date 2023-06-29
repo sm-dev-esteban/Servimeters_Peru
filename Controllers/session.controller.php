@@ -13,6 +13,9 @@ class SessionController extends BaseController
 {
     private static $result;
 
+    /**
+     * @return [type]
+     */
     public static function loguin()
     {
 
@@ -61,6 +64,11 @@ class SessionController extends BaseController
         }
     }
 
+    /**
+     * @param mixed $object
+     * 
+     * @return [type]
+     */
     public static function sessionIn($object)
     {
         foreach ($object as $key => $val) {
@@ -68,6 +76,9 @@ class SessionController extends BaseController
         }
     }
 
+    /**
+     * @return [type]
+     */
     public static function sessionOff()
     {
         self::$result = new stdClass();
