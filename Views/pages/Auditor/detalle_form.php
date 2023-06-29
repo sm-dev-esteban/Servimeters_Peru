@@ -1,6 +1,8 @@
 <?php
+//Evalua si cumple con los permisos
 if (!isset($_POST['id']) || strcmp($_SESSION['rol'], 'Admin') !== 0)
     echo '<script>window.location.href= "' . SERVERSIDE . '"</script>';
+
 $id = $_POST['id'];
 $terminos = $_POST['terminos'];
 $cliente = $_POST['cliente'];

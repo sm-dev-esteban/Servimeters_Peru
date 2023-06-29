@@ -130,6 +130,7 @@ $users = UsuarioController::index();
                 action: 'detalle_form'
             });
 
+            // Recorremos los valores a enviar
             dataForm.forEach((e) => {
                 var value = $(this).data(e);
 
