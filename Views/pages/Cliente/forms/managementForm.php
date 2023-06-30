@@ -1,3 +1,4 @@
+<!-- Form 3 -->
 <div id="test-l-3" class="content">
     <div class="row">
         <div class="col-12">
@@ -61,17 +62,17 @@
             </div>
         </div>
 
-         <!--Tabla de contratación de servicio-->
-         <div class="col-md-12">
+        <!--Tabla de contratación de servicio-->
+        <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">1.1 Llene la capacidad de contratación del servicio que desea homologar:</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <form id="contracting_service_form" class="validatable-form form_1">
+                        <form id="contracting_service_form" class="validatable-form form_2">
                             <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
-                            <table id="policiesTable" class="table table-bordered">
+                            <table id="" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Producto o Servicio</th>
@@ -81,14 +82,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php for ($i = 1; $i < 4; $i++) { ?>
-                                        <tr>
-                                            <td><input type="text" class="form-control form-control-border" name="data[product_<?= $i ?>]" placeholder="..." required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[capacity_<?= $i ?>]" placeholder="..." required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[production_<?= $i ?>]" placeholder="..." required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[details_<?= $i ?>]" placeholder="..." required></td>
-                                        </tr>
-                                    <?php } ?>
+                                    <tr>
+                                        <td><input type="text" class="form-control form-control-border" name="data[product_1]" placeholder="..." required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[capacity_1]" placeholder="..." required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[production_1]" placeholder="..." required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[details_1]" placeholder="..." required></td>
+                                    </tr>
 
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
@@ -103,18 +102,18 @@
                 </div>
             </div>
         </div>
-        
+
         <!--Tabla de prestación de servicio-->
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">1.2 Equipos que utiliza para la prestación del servicio:</h3>
+                    <h3 class="card-title">1.3 Relación de clientes a los cuales ha prestado el servicio o producto a homologar:</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <form id="service_provision_form" class="validatable-form form_1">
+                        <form id="service_provision_form" class="validatable-form form_2">
                             <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
-                            <table id="policiesTable" class="table table-bordered">
+                            <table id="" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Equipos</th>
@@ -124,15 +123,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php for ($i = 1; $i < 4; $i++) { ?>
-                                        <tr>
-                                            <td><input type="text" class="form-control form-control-border" name="data[hardware_<?= $i ?>]" placeholder="..." required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[mark_<?= $i ?>]" placeholder="DELL" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[anno_<?= $i ?>]" placeholder="2023" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[apartment _<?= $i ?>]" placeholder="Propio" required ></td>
-                                        </tr>
-                                    <?php } ?>
-
+                                    <tr>
+                                        <td><input type="text" class="form-control form-control-border" name="data[hd_1]" placeholder="..." required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[marca_1]" placeholder="..." required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[anno_1]" placeholder="001" required></td>
+                                        <td>
+                                            <select class="form-control form-control-border" name="data[propietario_1]">
+                                                <option>Propio</option>
+                                                <option>alquilado</option>
+                                            </select>
+                                        </td>
+                                    </tr>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
                                 <tfoot>
@@ -155,9 +156,9 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <form id="service_provision_product_form" class="validatable-form form_1">
+                        <form id="service_provision_product_form" class="validatable-form form_2">
                             <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
-                            <table id="policiesTable" class="table table-bordered">
+                            <table id="" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Nombre del Cliente</th>
@@ -168,15 +169,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php for ($i = 1; $i < 4; $i++) { ?>
-                                        <tr>
-                                            <td><input type="text" class="form-control form-control-border" name="data[customer_<?= $i ?>]" placeholder="..." required ></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[activity_<?= $i ?>]" placeholder="..." required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[contact_<?= $i ?>]" placeholder="00<?= $i ?>" required></td>
-                                            <td><input type="number" class="form-control form-control-border" name="data[phone_<?= $i ?>]" placeholder="2329829" required ></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[details_<?= $i ?>]" placeholder="..." required ></td>
-                                        </tr>
-                                    <?php } ?>
+                                    <tr>
+                                        <td><input type="text" class="form-control form-control-border" name="data[customer_1]" placeholder="..." required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[activity_1]" placeholder="..." required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[contact_1]" placeholder="001" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[phone_1]" placeholder="2329829" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[details_1]" placeholder="..." required></td>
+                                    </tr>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
                                 <tfoot>
@@ -189,7 +188,7 @@
                     </div>
                 </div>
             </div>
-        </div>   
+        </div>
     </div>
 
     <div class="col-md-12">

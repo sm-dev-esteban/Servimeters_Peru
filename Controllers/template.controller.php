@@ -21,7 +21,7 @@ class ControladorTemplate
     /**
      * @param String $router - mucho texto
      */
-    static function router(String $router = "form")
+    static function router(String $router = "default")
     {
         // $db = new DB();
         // $con = $db->connect(); --Lo deshabilite, Perdon :(
@@ -35,6 +35,9 @@ class ControladorTemplate
         }
     }
 
+    /**
+     * @return [type]
+     */
     static function menu()
     {
         if (strcmp($_SESSION['rol'], 'Admin') === 0) {

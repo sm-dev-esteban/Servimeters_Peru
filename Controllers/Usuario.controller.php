@@ -16,6 +16,9 @@ class UsuarioController extends BaseController
     /**
      * @return array
      */
+    /**
+     * @return [type]
+     */
     public static function index()
     {
         parent::setModel(new UsuarioModel());
@@ -57,7 +60,6 @@ class UsuarioController extends BaseController
         session_start();
         self::$result = new stdClass();
         $user = array_merge($_POST);
-        $user['password'] = $_SESSION['password'];
 
         parent::setModel(new UsuarioModel($user));
         $result = parent::update();

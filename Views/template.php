@@ -38,8 +38,12 @@
 
     <!-- Estilo global -->
     <style>
-        .error,
-        .mandatory {
+        .error {
+            color: tomato;
+        }
+
+        .mandatory::after {
+            content: '*';
             color: tomato;
         }
 
@@ -132,13 +136,13 @@
     <script src="<?= SERVERSIDE ?>Views/resources/dist/js/adminlte.min.js"></script>
     <!-- All page -->
     <script src="<?= SERVERSIDE ?>Views\assets\js\all.page.js"></script>
-    <!-- Loguin/Logout -->
-    <script src="<?= SERVERSIDE ?>Views\assets\js\loguin.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="<?= SERVERSIDE ?>Views/resources/dist/js/demo.js"></script> -->
     <!-- prueba -->
     <script src="<?= SERVERSIDE ?>config.min.js"></script>
     <script src="<?= SERVERSIDE ?>Views/assets/js/request.js"></script>
+    <!-- Loguin/Logout -->
+    <script src="<?= SERVERSIDE ?>Views\assets\js\loguin.js"></script>
     <script>
         $("input[data-bootstrap-switch]").each(function() {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));

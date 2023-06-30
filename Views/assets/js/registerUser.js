@@ -92,6 +92,8 @@ class RegisterUser{
                 if ($('.sendUser').data('type') === 'update') {
                     $('#password').removeAttr('name');
                 }
+
+                ValidationForms.addValuesToLabelInputForms();
             } catch (error) {
                 console.error(error);
             }
@@ -111,9 +113,10 @@ $(document).ready(function() {
     registerObject.passChange();
     registerObject.habilitarChange();
     registerObject.loadModalData();
+    ValidationForms.addValuesToLabelInputForms();
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------
     // Tooltip
     //------------------------------------------------------------------------------------------------------------------------------------------------------
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip(); 
 })

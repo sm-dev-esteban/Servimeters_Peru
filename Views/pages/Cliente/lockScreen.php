@@ -1,3 +1,4 @@
+<!-- Lock -->
 <div class="hold-transition lockscreen">
     <!-- Automatic element centering -->
     <div class="lockscreen-wrapper">
@@ -9,14 +10,14 @@
         <br>
 
         <div class="text-center">
-            <img src="<?= SERVERSIDE ?>/Views/resources/dist/img/random_icons_15.svg" alt="User Image" style="width: 100px; height: 100px;">
+            <img src="<?= SERVERSIDE ?>/Views/resources/dist/img/<?php echo $_SESSION['estado'] === 'evaluado' ? 'random_icons_26.svg' : 'random_icons_15.svg'; ?>" alt="User Image" style="width: 100px; height: 100px;">
         </div>
         <br>
         <!-- START LOCK SCREEN ITEM -->
         <div class="lockscreen-item">
             <!-- lockscreen image -->
             <div class="help-block text-center">
-                Su prueba de Homologación ya fue presentada.
+                <?php echo $_SESSION['estado'] === 'evaluado' ? 'Su prueba de homologacion ya fue evaluada. <br> Estaremos enviando el certificado de notas a su correo.' : 'Su prueba de Homologación ya fue presentada. Esta siendo evaluada por un auditor.'; ?>
             </div>
             <!-- /.lockscreen-item -->
         </div>
