@@ -54,7 +54,7 @@ class FormController extends BaseController
     public static function loadDataForms()
     {
         if (isset($_POST['id'])) {
-            $forms = array('financial_form', 'financial_sell_form_1', 'financial_sell_form_2', 'financial_sell_form_3', 'policies_form', 'banks_form', 'management_form', 'quiality_form', 'responsability_form');
+            $forms = array('financial_form', 'financial_sell_form_1', 'financial_sell_form_2', 'financial_sell_form_3', 'policies_form', 'banks_form', 'management_form', 'contracting_service_form', 'service_provision_form', 'service_provision_product_form', 'quiality_form', 'responsability_form');
             $id = $_POST['id'];
             $data = array();
             foreach ($forms as $form) {

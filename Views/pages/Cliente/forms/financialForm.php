@@ -213,18 +213,22 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php for ($j = 1; $j < 5; $j++) { ?>
-                                                    <tr>
-                                                        <td> <input type="text" class="form-control form-control-border" name="data[anno_<?= $j ?>]" placeholder="2023" required> </td>
-                                                        <td> <input type="text" class="form-control form-control-border" name="data[sector_<?= $j ?>]" placeholder="Sector A" required> </td>
-                                                        <td> <input type="number" class="form-control form-control-border" step="0.01" name="data[ventas_<?= $j ?>]" placeholder="$100" required> </td>
-                                                    </tr>
-                                                <?php } ?>
                                                 <tr>
-                                                    <td colspan="2" class="text-right" id="total_<?= $i ?>"><strong>Total</strong></td>
+                                                    <td> <input type="text" class="form-control form-control-border" name="data[anno_1]" placeholder="2023" required> </td>
+                                                    <td> <input type="text" class="form-control form-control-border" name="data[sector_1]" placeholder="Sector A" required> </td>
+                                                    <td> <input type="number" class="form-control form-control-border" step="0.01" name="data[ventas_1]" placeholder="$100" required> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> <button type="button" class="btn btn-secondary" id="addRowPolicies">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                                    <td class="text-right" id="total_<?= $i ?>"><strong>Total</strong></td>
                                                     <td contenteditable="true"><strong>$550,000</strong></td>
                                                 </tr>
                                             </tbody>
+                                            <tfoot>
+                                                <tr>
+
+                                                </tr>
+                                            </tfoot>
                                         </table>
                                     </form>
                                 </div>
@@ -255,15 +259,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php for ($i = 1; $i < 4; $i++) { ?>
-                                        <tr>
-                                            <td><input type="text" class="form-control form-control-border" name="data[entity_<?= $i ?>]" placeholder="Entidad A" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[number_<?= $i ?>]" placeholder="00<?= $i ?>" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[dateValidity_<?= $i ?>]" placeholder="<?= date("d-m-Y") ?>" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[details_<?= $i ?>]" placeholder="..." required></td>
-                                        </tr>
-                                    <?php } ?>
-
+                                    <tr>
+                                        <td><input type="text" class="form-control form-control-border" name="data[entity_1]" placeholder="Entidad A" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[number_1]" placeholder="001" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[dateValidity_1]" placeholder="<?= date("d-m-Y") ?>" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[details_1]" placeholder="..." required></td>
+                                    </tr>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
                                 <tfoot>
@@ -296,13 +297,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php for ($i = 1; $i < 4; $i++) { ?>
-                                        <tr>
-                                            <td><input type="text" class="form-control form-control-border" name="data[nameBank_<?= $i ?>]" placeholder="Banco A" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[subsidiary_<?= $i ?>]" placeholder="Sucursal <?= $i ?>" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[accountNumber_<?= $i ?>]" placeholder="<?= str_repeat($i, 5) ?>" required></td>
-                                        </tr>
-                                    <?php } ?>
+                                    <tr>
+                                        <td><input type="text" class="form-control form-control-border" name="data[nameBank_1]" placeholder="Banco A" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[subsidiary_1]" placeholder="Sucursal 1" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[accountNumber_1]" placeholder="<?= str_repeat(1, 5) ?>" required></td>
+                                    </tr>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
                                 <tfoot>

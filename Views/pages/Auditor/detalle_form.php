@@ -1,30 +1,35 @@
 <?php
 //Evalua si cumple con los permisos
-if (!isset($_POST['id']) || strcmp($_SESSION['rol'], 'Admin') !== 0)
+if (!isset($_POST['id']) || strcmp($_SESSION['rol'], 'Auditor') !== 0)
     echo '<script>window.location.href= "' . SERVERSIDE . '"</script>';
 
 $id = $_POST['id'];
 $terminos = $_POST['terminos'];
-$forms = array('financial_form', 'financial_sell_form_1', 'financial_sell_form_2', 'financial_sell_form_3', 'policies_form', 'banks_form', 'management_form', 'quiality_form', 'responsability_form');
-$formsDocs = array('financial_documents_form');
-$data = array();
-$dataDocs = array();
-require_once('Controllers/formulario.controller.php');
-foreach ($forms as $form) {
-    $data[$form] = FormController::getForm($id, $form);
-}
+$cliente = $_POST['cliente'];
+$idcliente = $_POST['idcliente'];
 
-foreach ($formsDocs as $formDoc) {
-    $dataDocs[$formDoc] = FormController::getForm($id, $formDoc);
+require_once('Controllers/formulario.controller.php');
+
+$data = FormController::loadDataForms();
+$dataDocs = FormController::loadDocsForm();
+
+if (!$data || !$dataDocs) {
+    echo '<script>window.location.href= "' . SERVERSIDE . '"</script>';
 }
 ?>
+
+<style>
+    .loadFormDoc {
+        min-height: 500px;
+    }
+</style>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Revision de Formulario <?= $id ?></h1>
+                <h1><i class="fas fa-clipboard text-muted"></i> Revision de Formulario: <span class="text-primary"><?= $id ?></span> Cliente: <span class="text-primary"><?= $cliente ?></span></h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -37,11 +42,11 @@ foreach ($formsDocs as $formDoc) {
             <!-- /.col -->
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header p-2">
+                    <div class="card-header p-2" id="menu">
                         <ul class="nav nav-pills">
-                            <li class="nav-item"><a class="nav-link active formsTab" href="#forms" data-toggle="tab">Formulario</a></li>
-                            <li class="nav-item"><a class="nav-link docsTab" href="#docs" data-toggle="tab">Documentos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Cierre</a></li>
+                            <li class="nav-item"><a class="nav-link active" id="formsTab" href="#forms" data-toggle="tab">Formulario</a></li>
+                            <li class="nav-item"><a class="nav-link" id="docsTab" href="#docs" data-toggle="tab">Documentos</a></li>
+                            <li class="nav-item"><a class="nav-link" id="closeTab" href="#cierre" data-toggle="tab">Cierre</a></li>
                         </ul>
                     </div>
                     <!-- /.card-header -->
@@ -95,65 +100,101 @@ foreach ($formsDocs as $formDoc) {
                                 <!-- Docs Financial -->
                                 <div class="post">
                                     <div class="row">
-                                        <div class="col-md-6" id="financialDocs">
+                                        <!-- START ACCORDION & CAROUSEL-->
+                                        <div class="col-md-5">
+                                            <div class="card">
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <!-- we are adding the accordion ID so Bootstrap's collapse plugin detects it -->
+                                                    <div id="accordion">
+                                                        <div class="card card-primary">
+                                                            <div class="card-header">
+                                                                <h4 class="card-title w-100">
+                                                                    <a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
+                                                                        Documentos Financieros
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                                                <div class="card-body">
+                                                                    <div id="financialDocuments" class="loadFormDoc" data-color="primary">
 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card card-danger">
+                                                            <div class="card-header">
+                                                                <h4 class="card-title w-100">
+                                                                    <a class="d-block w-100" data-toggle="collapse" href="#collapseTwo">
+                                                                        Documentos SGC
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                                                <div class="card-body">
+                                                                    <div id="sgcDocuments" class="loadFormDoc" data-color="danger">
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card card-success">
+                                                            <div class="card-header">
+                                                                <h4 class="card-title w-100">
+                                                                    <a class="d-block w-100" data-toggle="collapse" href="#collapseThree">
+                                                                        Documentos de Responsabilidad
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                                                <div class="card-body">
+                                                                    <div id="responsabilityDocuments" class="loadFormDoc" data-color="success">
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.card-body -->
+                                            </div>
+                                            <!-- /.card -->
                                         </div>
                                         <!-- END ACCORDION & CAROUSEL-->
                                         <div class="col-md-7">
                                             <object data="" type="application/pdf" width="100%" height="100%"></object>
                                         </div>
                                     </div>
+                                    <!-- /.row -->
                                 </div>
                             </div>
                             <!-- /.tab-pane -->
 
-                            <div class="tab-pane" id="settings">
-                                <form class="form-horizontal">
-                                    <div class="form-group row">
-                                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputName" placeholder="Name">
+                            <div class="tab-pane" id="cierre">
+                                <div class="post">
+                                    <div class="row justify-content-center text-center">
+                                        <div class="col-md-10 mt-5">
+                                            <h4>Cierre del Proceso de Evaluación</h4>
+                                        </div>
+                                        <div class="col-md-10 mt-5 mb-5">
+                                            <form id="evaluacion">
+                                                <div class="form-group">
+                                                    <div class="icheck-primary d-inline">
+                                                        <input type="checkbox" id="checkboxPrimary1">
+                                                        <label for="checkboxPrimary1">
+                                                            El cliente cumple con el <span class="text-primary"> proceso de Homologación</span>
+                                                        </label>
+                                                        <input type="text" id="valueCheck" name="data[cumple]" value="No Cumple" hidden>
+                                                        <input type="text" name="data[idFormulario]" value="<?= $id ?>" hidden>
+                                                    </div>
+
+                                                </div>
+                                                <button type="button" class="btn btn-app bg-danger" id="closeForm"><i class="fas fa-save"></i> Cerrar Evaluacion</button>
+                                            </form>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                                        <div class="col-sm-10">
-                                            <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="offset-sm-2 col-sm-10">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-danger">Submit</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                             <!-- /.tab-pane -->
                         </div>
@@ -162,9 +203,7 @@ foreach ($formsDocs as $formDoc) {
                     <!-- /.card-body -->
                     <div class="card-footer p-2">
                         <ul class="nav nav-pills">
-                            <li class="nav-item"><a class="nav-link active formsTab" href="#forms" data-toggle="tab">Formulario</a></li>
-                            <li class="nav-item"><a class="nav-link docsTab" href="#docs" data-toggle="tab">Documentos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Cierre</a></li>
+                            <li class="nav-item" id="up"><a class="nav-link" href="#menu"><i class="fas fa-arrow-up"></i> Subir</a>
                         </ul>
                     </div>
                     <!-- /.card-footer -->
@@ -209,20 +248,27 @@ foreach ($formsDocs as $formDoc) {
         }
 
         $('input, select, checkbox').prop('disabled', true);
-        loadDocs();
+        loadFormsDocs();
         showDocs();
+        upPage();
+        closeEvaluate();
     })
 
     function printData(values, elements) {
         return new Promise((resolve, reject) => {
+            console.log(elements);
             elements.forEach(input => {
+                console.log(input.name.replace(/data/g, '').replace(/\[/g, '').replace(/\]/g, ''));
+                console.log(values);
                 var value = values[input.name.replace(/data/g, '').replace(/\[/g, '').replace(/\]/g, '')];
                 // console.log(`${input.name} -->`, input.name.replace(/data/g, '').replace(/\[/g, '').replace(/\]/g, ''));
                 switch (input.type) {
                     case 'select-multiple':
                         // console.log(`${input.name} -->`, value.split('|/|'));
-                        value = value.split('|/|');
-                        $('.select2').val(value).trigger('change');
+                        if (value !== undefined) {
+                            value = value.split('|/|');
+                            $('.select2').val(value).trigger('change');
+                        }
                         // input.value = value;
                         break;
                     default:
@@ -255,53 +301,68 @@ foreach ($formsDocs as $formDoc) {
         })
     }
 
-    async function loadDocs() {
+    async function loadFormsDocs() {
 
-        var span = `<span id="" class="loadFile btn btn-primary">
-                                    Ver
-                                </span>`;
+        var formsDocs = document.getElementsByClassName('loadFormDoc');
+        formsDocs.forEach(e => {
+            var span = `<span class="loadFile btn btn-${e.dataset.color}">
+                            <i class="fas fa-eye"></i> Ver
+                        </span>`;
+            $.ajax({
+                url: `${SERVERSIDE}Views/pages/Cliente/forms/${e.id}.php`,
+                method: 'GET',
+                dataType: 'html',
+                beforeSend: function() {
 
-        $.ajax({
-            url: `${SERVERSIDE}Views/pages/Cliente/forms/financialDocuments.php`,
-            method: 'GET',
-            dataType: 'html',
-            success: function(res) {
-                var html = $(res).find('.custom-file').html(span);
-                console.log(html);
-                $('#financialDocs').html(html);
-                // console.log(res);
-            }
-        })
-
-        var dataDocs = '<?php echo json_encode($dataDocs); ?>';
-        dataDocs = JSON.parse(dataDocs);
-
-        // for (const key in dataDocs) {
-        //     var values = dataDocs[key][0];
-        //     var elements = await getElements(key);
-        //     elements.forEach(e => {
-        //         if (e.type === 'file') {
-        //             console.log('Cambiando File');
-        //             var $file = $(e).parent('div')[0];
-        //             var id = e.id;
-        //             var span = `<span id="${id}" class="loadFile btn btn-primary" data-file="${values[e.name.replace(/file/g, '').replace(/\[/g, '').replace(/\]/g, '')]}">
-        //                             Ver
-        //                         </span>`;
-
-        //             $file.innerHTML = span;
-        //         }
-        //     })
-        // }
+                },
+                success: function(res) {
+                    $(`#${e.id}`).html(res).find('.custom-file').replaceWith(span);
+                    $(`#${e.id}`).find('.card-header').prop('hidden', true);
+                    $(`#${e.id}`).find('form').addClass('seeDocs');
+                    $(`#${e.id} .loadFile`).parent('div').removeClass('col-md-4').addClass('col-md-3').parent('div').addClass('justify-content-center');
+                }
+            });
+        });
 
     }
 
-    function showDocs() {
-        $('.docsTab').on('click', async function(e) {
-            $('.hideForm').prop('hidden', false);
+    function loadDocs(ejecutar) {
 
+        if (!ejecutar) {
+            return false;
+        }
+
+        var dataDocs = '<?php echo json_encode($dataDocs); ?>';
+        dataDocs = JSON.parse(dataDocs);
+        var form;
+
+        for (const key in dataDocs) {
+            var forms = document.getElementsByClassName(`seeDocs`);
+            forms.forEach(e => {
+                if (e.id == key) {
+                    form = e;
+                }
+            })
+            var span = $(form).find('.loadFile');
+            var values = dataDocs[key][0];
+
+            for (var i = 0; i < span.length; i++) {
+                console.log(values[`adjunto${i + 1}`]);
+                span[i].dataset.file = values[`adjunto${i + 1}`];
+            }
+        }
+    }
+
+    function showDocs() {
+        var ejecutar = true;
+        $('#docsTab').on('click', async function(e) {
+            $('.hideForm').prop('hidden', false);
+            loadDocs(ejecutar);
+            seeDoc();
+            ejecutar = false;
         });
 
-        $('.formsTab').on('click', function(e) {
+        $('#formsTab').on('click', function(e) {
             $('.hideForm').prop('hidden', true);
             $('input').prop('disabled', true);
         });

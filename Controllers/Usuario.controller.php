@@ -60,7 +60,6 @@ class UsuarioController extends BaseController
         session_start();
         self::$result = new stdClass();
         $user = array_merge($_POST);
-        $user['password'] = $_SESSION['password'];
 
         parent::setModel(new UsuarioModel($user));
         $result = parent::update();
