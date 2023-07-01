@@ -1,6 +1,6 @@
 <?php
 //Evalua si cumple con los permisos
-if (!isset($_POST['id']) || strcmp($_SESSION['rol'], 'Auditor') !== 0)
+if (!isset($_POST['id']) || strcmp($_SESSION['rol'], 'Admin') !== 0)
     echo '<script>window.location.href= "' . SERVERSIDE . '"</script>';
 
 $id = $_POST['id'];
@@ -218,7 +218,7 @@ if (!$data || !$dataDocs) {
 <!-- /.content -->
 <script>
     $(document).ready(async function() {
-        $('#next, .next, .hideForm, .previous, .select2-search').prop('hidden', true);
+        $('#next, .next, .hideForm, .previous, .select2-search, .addRow').prop('hidden', true);
 
         var data = $('#data');
         terminos = data.data('terminos');
@@ -235,31 +235,25 @@ if (!$data || !$dataDocs) {
 
                 var elements = await getElements(key);
 
-                if (['policies_form', 'banks_form'].includes(key)) {
-                    if ((Object.keys(values).length - 2) > elements.length) {
-                        await addRows(key, values);
-                    } else {
-                        await printData(values, elements);
-                    }
+                if (['financial_sell_form_1', 'financial_sell_form_2', 'financial_sell_form_3', 'policies_form', 'banks_form', 'contracting_service_form', 'service_provision_form', 'service_provision_product_form'].includes(key)) {
+                    setDataTable(key, values, elements);
                 } else {
                     await printData(values, elements);
                 }
             }
         }
-
         $('input, select, checkbox').prop('disabled', true);
+
         loadFormsDocs();
         showDocs();
         upPage();
         closeEvaluate();
+        ValidationForms.addRows();
     })
 
     function printData(values, elements) {
         return new Promise((resolve, reject) => {
-            console.log(elements);
             elements.forEach(input => {
-                console.log(input.name.replace(/data/g, '').replace(/\[/g, '').replace(/\]/g, ''));
-                console.log(values);
                 var value = values[input.name.replace(/data/g, '').replace(/\[/g, '').replace(/\]/g, '')];
                 // console.log(`${input.name} -->`, input.name.replace(/data/g, '').replace(/\[/g, '').replace(/\]/g, ''));
                 switch (input.type) {
@@ -281,6 +275,26 @@ if (!$data || !$dataDocs) {
         })
     }
 
+    function printDataTable(values, elements) {
+        return new Promise((resolve, reject) => {
+            var inputs;
+            for (const key in values) {
+                inputs = elements.filter(function(e) {
+                    return e.name === `data[${key}][]`;
+                });
+
+                if (inputs.length > 0) {
+                    var val = values[key];
+                    val = val.toString().split('|/|');
+                    for (let i = 0; i < val.length; i++) {
+                        inputs[i].value = val[i];
+                    }
+                }
+            }
+            resolve(true);
+        })
+    }
+
     function getElements(key) {
         return new Promise((resolve, reject) => {
             var form = document.getElementById(`${key}`);
@@ -290,12 +304,29 @@ if (!$data || !$dataDocs) {
         })
     }
 
-    function addRows(key, values) {
+    async function setDataTable(key, values, elements) {
+        var value = values[elements[1].name.replace(/data/g, '').replace(/\[/g, '').replace(/\]/g, '')];
+        if (value !== undefined) {
+            value = value.toString().split('|/|');
+            var countRows = value.length
+            if (countRows > 1) {
+                // console.log('Tiene mas de una fila: ' + countRows + ' -- ', elements[1].name);
+                var table = $(`#${key}`).children('table');
+                await addRows(table, values, (countRows - 1));
+                var elements = await getElements(key);
+                await printDataTable(values, elements);
+                $('input, select, checkbox').prop('disabled', true);
+                return;
+            }
+        }
+    }
+
+    function addRows(table, values, count = 1) {
         return new Promise((resolve, reject) => {
             setTimeout(async () => {
-                (key === 'policies_form') ? $('#addRowPolicies').click(): $('#addRowBanks').click();
-                var elements = await getElements(key);
-                await printData(values, elements);
+                // (key === 'policies_form') ? $('#addRowPolicies').click(): $('#addRowBanks').click();
+                var id = $(table).attr('id');
+                ValidationForms.printRows(id, count);
                 resolve(true);
             }, 100);
         })

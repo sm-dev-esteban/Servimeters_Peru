@@ -19,8 +19,11 @@ $usuarios = UsuarioController::index();
                             <th style="width: 20%">
                                 Correo
                             </th>
-                            <th style="width: 20%">
+                            <th style="width: 10%">
                                 Usuario
+                            </th>
+                            <th style="width: 10%">
+                                Rol
                             </th>
                             <th style="width: 10%" class="text-center">
                                 Acceso
@@ -48,6 +51,9 @@ $usuarios = UsuarioController::index();
                                 <td>
                                     <?= $usuario['usuario'] ?>
                                 </td>
+                                <td>
+                                    <?= $usuario['rol'] ?>
+                                </td>
                                 <td class="project-state">
                                     <?php if ($usuario['habilitado'] === 'on') { ?>
                                         <span class="badge badge-success">Habilitado</span>
@@ -56,11 +62,13 @@ $usuarios = UsuarioController::index();
                                     <?php } ?>
                                 </td>
                                 <td class="project-actions text-center">
-                                    <span class="btn btn-primary btn-sm m-1">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        Ver
-                                    </span>
+                                    <?php if ($usuario['rol'] === 'Cliente') { ?>
+                                        <span class="btn btn-primary btn-sm m-1 process" data-usuario="<?= $usuario['id'] ?>" data-estado="asignado" data-auditor="">
+                                            <i class="fas fa-plus">
+                                            </i>
+                                            Asignar Proceso
+                                        </span>
+                                    <?php } ?>
                                     <button type="button" class="btn btn-info btn-sm m-1" data-toggle="modal" data-target="#modal-xl" data-user="<?= $usuario['id'] ?>">
                                         <i class="fas fa-pencil-alt">
                                         </i>
@@ -109,6 +117,7 @@ $usuarios = UsuarioController::index();
 <!-- /.modal -->
 
 <script src="<?= SERVERSIDE ?>Views/assets/js/registerUser.js"></script>
+<script src="<?= SERVERSIDE ?>Views/assets/js/process.js"></script>
 <script>
     $(document).ready(function() {
         // $('#modal-xl').on('show.bs.modal', async function(e) {
