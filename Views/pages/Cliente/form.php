@@ -29,7 +29,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <?php if (strcmp($_SESSION['estado'], 'homologacion') !== 0) {
+                        <?php if (strcmp($_SESSION['estado'], 'homologacion') === 0) {
                             include('lockScreen.php');
                         } else { ?>
                             <!-- Steper -->
@@ -103,12 +103,6 @@
             e.preventDefault();
         });
 
-
-        // $(`[data-algo]`).on("click", function() {
-        //     $(":invalid").removeClass("is-valid").addClass("is-invalid");
-        //     $(":valid").removeClass("is-invalid").addClass("is-valid");
-        //     stepper.previous()
-        //     stepper.next()
-        // });
+        ValidationForms.addRows();
     })
 </script>

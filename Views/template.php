@@ -89,7 +89,12 @@
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button);
+
+        // QUITAR ESTO
+        $(document).ready(function() {
+            $('input').removeAttr('required');
+        })
     </script>
     <!-- Bootstrap 4 -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
