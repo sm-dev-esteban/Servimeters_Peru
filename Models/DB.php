@@ -9,14 +9,6 @@ require_once FOLDERSIDE . "Models/DB_Config.php";
 class DB extends DB_Config
 {
     protected $gestor, $params, $con;
-    const DEFAULT_PARAMS = [
-        "hostname" => "localhost",
-        "username" => "root",
-        "password" => "",
-        "database" => "servimetersperu",
-        "port" => "3306",
-        "file" => "db.db"
-    ];
 
     public function __construct(
         String $gestor = self::DEFAULT_GESTOR,
@@ -31,7 +23,7 @@ class DB extends DB_Config
      * @param Mixed $name - Nombre del parámetro que quieran obtener por defecto los devuelve todos
      * @return Mixed Devuelve cualquier valor que este en el __construct
      */
-    public function getParams(String|Bool $name = false): String|array
+    public function getParams(String|Bool $name = false): String|array|PDO
     {
         // return $name ? ($this->$name ?? false) : $this;
         if ($name) {
@@ -50,18 +42,17 @@ class DB extends DB_Config
     public function connect($createDatabase = false)
     {
         /* No me interesa mucho que obtenga los dns de la conexion asi que mejor lo declaro en el metodo */
-        $dns = [];
-
-        $dns["mysql"] = "mysql:host={$this->params["hostname"]};dbname={$this->params["database"]};port={$this->params["port"]}";
-        $dns["sqlsrv"] = "sqlsrv:Server={$this->params["hostname"]};Database={$this->params["database"]}";
-        $dns["sqlite"] = "sqlite:{$this->params["file"]}";
+        $dns = [
+            "mysql" => "mysql:host={$this->params["hostname"]};dbname={$this->params["database"]};port={$this->params["port"]}",
+            "sqlsrv" => "sqlsrv:Server={$this->params["hostname"]};Database={$this->params["database"]}",
+            "sqlite" => "sqlite:{$this->params["file"]}"
+        ];
 
         if (!in_array($this->gestor, array_keys($dns))) {
             return self::getError("administrator not configured: {$this->gestor}", true);
         }
 
         try {
-
             $this->con = new PDO($dns[$this->gestor], $this->params["username"], $this->params["password"]);
         } catch (PDOException $th) {
             if ($createDatabase === true)
@@ -155,31 +146,23 @@ class DB extends DB_Config
     /**
      * @param String $query recive una consulta de toda la vida, pero al ejecutarla con esta function retorna un error dado el caso para una validación mas facil
      * @param PDO $con Conexión de PDO. Por defecto usara la conexión de la clase
-     * @param Mixed retorna el resultado de la consulta o un arreglo con el error
+     * @return Mixed si es un SELECT retorna el fetch con los datos, si es UPDATE|INSERT|DELETE retorna true y caso contrario retorna el error de la consulta se puede obtener con getError o como un arreglo ["error"]
      */
     public function executeQuery(String $query, Mixed $con = false)
     {
         $con = ($con === false ? $this->con : $con);
-        try {
-            if (!$con) {
-                return self::getError("no connection to database", true);
+        try { // valida si se ejecuta la consulta
+            if (!$con) return self::getError("no connection to database", true);
+            else if (!is_object($con)) return self::getError("connect no valid" . var_dump($con), true);
+
+            $result = $con->query($query);
+            try { // valida si contiene datos
+                return $result->fetchAll(PDO::FETCH_ASSOC);
+            } catch (Exception $th) { // valida si se ejecuto, siempre sera true
+                return true;
             }
-            return $con->query($query);
-            $arrayResults = array();
-            if (!$this->con) {
-                return [
-                    "error" => "no connection to database"
-                ];
-            }
-            $result = $this->con->query($query);
-            while ($usuario = $result->fetch(PDO::FETCH_ASSOC)) {
-                $arrayResults[] = $usuario;
-            }
-            return $arrayResults;
-        } catch (PDOException $th) {
-            return [
-                "error" => $th->getMessage()
-            ];
+        } catch (PDOException $th) { // si la consulta tiene algun error lo retorna
+            return self::getError($th, true);
         }
     }
 

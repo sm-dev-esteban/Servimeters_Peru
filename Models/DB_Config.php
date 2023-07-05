@@ -7,6 +7,7 @@ class DB_Config
         "username" => "root",
         "password" => "",
         "database" => "servimetersperu",
+        "port" => "3306",
         "file" => FOLDERSIDE . "db/db.db" /* sqlite */
     ];
 
