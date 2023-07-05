@@ -15,8 +15,16 @@ function AutomaticForm(Method, params = []) {
     return $request.responseJSON;
 }
 
-async function requestController(controller = null, method = null, formData = {}, params = '') {
-    return new Promise(function (resolve, reject) {
+ /**
+  * @param null controller
+  * @param null method
+  * @param  formData
+  * @param string params
+  * 
+  * @return [type]
+  */
+async function requestController(controller = null, method = null, formData = {}, params = ''){
+    return new Promise(function(resolve, reject){
         $.ajax({
             url: `${SERVERSIDE}Controllers/${controller}.controller.php?method=${method}&path=${FOLDERSIDE}&${params}`,
             type: 'post',
@@ -24,17 +32,17 @@ async function requestController(controller = null, method = null, formData = {}
             processData: false,
             contentType: false,
             dataType: "JSON",
-            beforeSend: function () {
+            beforeSend: function() {
                 console.log('Antes de enviar');
-
+                
             },
-            error: function (xhr, status, error) {
-                reject({ error });
+            error:function(xhr, status, error) {
+                reject({error});
             }
-        }).done(function (result) {
-            resolve(result);
-        }).fail(function (error) {
-            reject(error);
-        })
+            }).done(function(result){
+                resolve(result);
+            }).fail(function(error) {
+                reject(error);
+            })
     })
-}
+} 

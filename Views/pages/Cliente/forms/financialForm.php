@@ -1,3 +1,4 @@
+<!-- Form 2 -->
 <div id="test-l-2" class="content">
     <div class="row">
         <div class="col-12">
@@ -87,7 +88,7 @@
                             <!--Campo Providencia/Población/Pais-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="###">Providencia/Población/Pais</label>
+                                    <label for="###">Ciudad/Provincia/País</label>
                                     <input type="text" class="form-control" name="data[providencia_poblacion_pais]" id="###" placeholder="Ingrese las siguientes opciones" required>
                                 </div>
                             </div>
@@ -165,7 +166,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="###">Número de clientes en los últimos dos años(2021/2022)</label>
-                                <input type="number" class="form-control" name="data[numero_clientes]" id="###" placeholder="Ingrese el número de clientes en los últimos dos años" required>
+                                <input type="text" class="form-control" name="data[numero_clientes]" id="###" placeholder="Ingrese el número de clientes en los últimos dos años" required>
                             </div>
                         </div>
 
@@ -203,7 +204,7 @@
                                     <form id="financial_sell_form_<?= $i ?>" class="validatable-form form_1">
                                         <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
                                         <!-- <label>Información adicional</label> -->
-                                        <table id="###" class="table table-bordered">
+                                        <table id="financial_table<?= $i ?>" data-table="finance" class="table table-bordered table-form">
                                             <thead>
                                                 <tr>
                                                     <th>Año <?= $i ?></th>
@@ -212,18 +213,21 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php for ($j = 1; $j < 5; $j++) { ?>
-                                                    <tr>
-                                                        <td> <input type="text" class="form-control form-control-border" name="data[anno_<?= $j ?>]" placeholder="2023" required> </td>
-                                                        <td> <input type="text" class="form-control form-control-border" name="data[sector_<?= $j ?>]" placeholder="Sector A" required> </td>
-                                                        <td> <input type="number" class="form-control form-control-border" step="0.01" name="data[ventas_<?= $j ?>]" placeholder="$100" required> </td>
-                                                    </tr>
-                                                <?php } ?>
+                                                <tr>
+                                                    <td> <input type="text" class="form-control form-control-border" name="data[anno][]" placeholder="2023" required> </td>
+                                                    <td> <input type="text" class="form-control form-control-border" name="data[sector][]" placeholder="Sector A" required> </td>
+                                                    <td> <input type="number" class="form-control form-control-border" step="0.01" name="data[ventas][]" placeholder="$100" required> </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td> <button type="button" class="btn btn-secondary addRow" data-row="2" data-id="financial_table<?= $i ?>">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                                </tr>
                                                 <tr>
                                                     <td colspan="2" class="text-right" id="total_<?= $i ?>"><strong>Total</strong></td>
                                                     <td contenteditable="true"><strong>$550,000</strong></td>
                                                 </tr>
-                                            </tbody>
+                                            </tfoot>
                                         </table>
                                     </form>
                                 </div>
@@ -244,7 +248,7 @@
                     <div class="table-responsive">
                         <form id="policies_form" class="validatable-form form_1">
                             <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
-                            <table id="policiesTable" class="table table-bordered">
+                            <table id="policies_table" data-table="policies" class="table table-bordered table-form">
                                 <thead>
                                     <tr>
                                         <th>Entidad</th>
@@ -254,20 +258,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php for ($i = 1; $i < 4; $i++) { ?>
-                                        <tr>
-                                            <td><input type="text" class="form-control form-control-border" name="data[entity_<?= $i ?>]" placeholder="Entidad A" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[number_<?= $i ?>]" placeholder="00<?= $i ?>" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[dateValidity_<?= $i ?>]" placeholder="<?= date("d-m-Y") ?>" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[details_<?= $i ?>]" placeholder="..." required></td>
-                                        </tr>
-                                    <?php } ?>
-
+                                    <tr>
+                                        <td><input type="text" class="form-control form-control-border" name="data[entity][]" placeholder="Entidad A" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[number][]" placeholder="001" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[dateValidity][]" placeholder="<?= date("d-m-Y") ?>" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[details][]" placeholder="..." required></td>
+                                    </tr>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td> <button type="button" class="btn btn-secondary" id="addRowPolicies">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                        <td> <button type="button" class="btn btn-secondary addRow" data-id="policies_table">Agregar Fila <i class="fas fa-plus"></i></button> </td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -286,7 +287,7 @@
                     <div class="table-responsive">
                         <form id="banks_form" class="validatable-form form_1">
                             <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
-                            <table id="bankTable" class="table table-bordered">
+                            <table id="bank_table" data-table="bank" class="table table-bordered table-form">
                                 <thead>
                                     <tr>
                                         <th>Banco</th>
@@ -295,18 +296,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php for ($i = 1; $i < 4; $i++) { ?>
-                                        <tr>
-                                            <td><input type="text" class="form-control form-control-border" name="data[nameBank_<?= $i ?>]" placeholder="Banco A" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[subsidiary_<?= $i ?>]" placeholder="Sucursal <?= $i ?>" required></td>
-                                            <td><input type="text" class="form-control form-control-border" name="data[accountNumber_<?= $i ?>]" placeholder="<?= str_repeat($i, 5) ?>" required></td>
-                                        </tr>
-                                    <?php } ?>
+                                    <tr>
+                                        <td><input type="text" class="form-control form-control-border" name="data[nameBank][]" placeholder="Banco A" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[subsidiary][]" placeholder="Sucursal 1" required></td>
+                                        <td><input type="text" class="form-control form-control-border" name="data[accountNumber][]" placeholder="<?= str_repeat(1, 5) ?>" required></td>
+                                    </tr>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td> <button type="button" class="btn btn-secondary" id="addRowBanks">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                        <td> <button type="button" class="btn btn-secondary addRow" data-id="bank_table">Agregar Fila <i class="fas fa-plus"></i></button> </td>
                                     </tr>
                                 </tfoot>
                             </table>
