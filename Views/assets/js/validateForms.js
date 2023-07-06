@@ -136,6 +136,53 @@ class ValidationForms {
         });
     }
 
+    validateCheckFile(){
+         const checkboxes = document.querySelectorAll('#financial_documents_form input[type="checkbox"]');
+
+         checkboxes.forEach((checkbox,index) =>{
+
+            checkbox.addEventListener('click',() => {
+
+                if(checkbox.checked){
+
+                    const inputId = `adjunto${index+1}`;
+                    document.getElementById(inputId).required = true;
+                }else{
+
+                    const inputId = `adjunto${index+1}`;
+                    document.getElementById(inputId).required = false;
+                }
+
+            });
+
+         });
+    }
+
+    totalSales(){
+
+        $(document).ready(function() {
+          $('.addRow').click(function() {
+            let idTabla = $(this).data('id');
+            let suma = sumarValores('#' + idTabla);
+            $('#' + idTabla + ' tfoot tr:last-child td:last-child strong').text(suma);
+            
+            // Actualizar el atributo 'contenteditable' del <td> con la suma total
+            $('#' + idTabla + ' tfoot tr:last-child td:last-child').attr('contenteditable', 'true').text('$' + suma.toFixed(2));
+          });
+        });
+        
+        function sumarValores(tabla) {
+          let suma = 0;
+          $(tabla + ' tbody tr td:last-child input[type="number"]').each(function() {
+            let valor = parseFloat($(this).val());
+            if (!isNaN(valor)) {
+              suma += valor;
+            }
+          });
+          return suma; // Devolver el valor de suma
+        }
+      }
+
     static addValuesToLabelInputForms(idForm = 'form'){
             
             $(idForm).each(function() {
@@ -206,6 +253,8 @@ class ValidationForms {
     
     }
 
+
+
     checkNextForm(){
         $('#next').on('click', function(params) {
             ValidationForms.addValuesToLabelInputForms('.validatable-form');
@@ -251,7 +300,11 @@ $(document).ready(function(e) {
 
     // Validar boton Next
     object.checkNextForm();
+    
+    //Validar check de los input file
+    object.validateCheckFile();
 
+    object.totalSales();
     // Validar inputs
     // const forms = document.querySelectorAll('.validatable-form');
     
