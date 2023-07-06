@@ -8,12 +8,12 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
-                        <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                        <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                         <label for="adjunto1">1. Documento asociado a la protección de datos de carácter personal.</label>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto1]" id="adjunto1" accept=".pdf" >
+                            <input type="file" class="custom-file-input" name="file[adjunto1]" id="adjunto1" accept=".pdf">
                             <label class="custom-file-label" for="adjunto1">Subir archivo</label>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto2]" id="adjunto2" accept=".pdf" >
+                            <input type="file" class="custom-file-input" name="file[adjunto2]" id="adjunto2" accept=".pdf">
                             <label class="custom-file-label" for="adjunto2">Subir archivo</label>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto3]" id="adjunto3" accept=".pdf" >
+                            <input type="file" class="custom-file-input" name="file[adjunto3]" id="adjunto3" accept=".pdf">
                             <label class="custom-file-label" for="adjunto3">Subir archivo</label>
                         </div>
                     </div>

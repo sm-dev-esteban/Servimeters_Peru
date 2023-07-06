@@ -1,33 +1,26 @@
 <?php
-
 require_once 'Base.model.php';
-
-class ProcesoModel extends BaseModel
+class EvaluacionModel extends BaseModel
 {
 
     /**
-     * @var string
+     * @var [type]
      */
     private $id;
 
     /**
      * @var string
      */
-    private $usuario;
+    private $cumple;
 
     /**
      * @var string
      */
-    private $estado;
-
-    /**
-     * @var string
-     */
-    private $auditor;
+    private $proceso;
 
     function __construct($array = null)
     {
-        parent::__construct('proceso');
+        parent::__construct('evaluacion');
         if ($array) {
             foreach ($array as $key => $val) {
                 $this->$key = $val;
@@ -47,20 +40,10 @@ class ProcesoModel extends BaseModel
     }
 
     /**
-     * @return [type]
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
-
-    /*function addProcessColumn($processNumber, $idClient, $status= 'homologado') {
-                $arrayProcess = array(
-                    'numero_proceso' => $processNumber,
-                    'id_cliente' => $idClient,
-                    'estado' => $status
-                );
-        
-                return $arrayProcess;
-            }*/
 }

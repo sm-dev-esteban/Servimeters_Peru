@@ -105,9 +105,9 @@ class BaseModel implements BDInterface
      * 
      * @return [type]
      */
-    public function getCondition($condition)
+    public function getCondition($condition, $return)
     {
-        $result = AutomaticForm::getDataSql($this->table, $condition);
+        $result = AutomaticForm::getDataSql($this->table, $condition, $return);
         return $result ?? false;
     }
 }

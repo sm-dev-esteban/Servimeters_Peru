@@ -8,7 +8,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
-                        <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                        <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                         <label for="adjunto1">1. Certificado de Sistema de Gestión de Calidad (ISO 9001) que relacione el
                             servicio o producto a homologar.</label>
                     </div>

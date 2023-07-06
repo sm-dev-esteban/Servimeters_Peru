@@ -94,8 +94,10 @@
         // QUITAR ESTO
         $(document).ready(function() {
             $('input').removeAttr('required');
-        })
+        });
     </script>
+    <!-- Constantes -->
+    <script src="<?= SERVERSIDE ?>config.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- jquery-validation -->
@@ -144,7 +146,6 @@
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="<?= SERVERSIDE ?>Views/resources/dist/js/demo.js"></script> -->
     <!-- prueba -->
-    <script src="<?= SERVERSIDE ?>config.min.js"></script>
     <script src="<?= SERVERSIDE ?>Views/assets/js/request.js"></script>
     <!-- Loguin/Logout -->
     <script src="<?= SERVERSIDE ?>Views\assets\js\loguin.js"></script>

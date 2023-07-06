@@ -11,9 +11,9 @@ class ControladorTemplate
 {
 
     const menu = array(
-        "Admin" => "Admin/register.php|fa-plus|Ingresar Usuarios,Admin/accesos.php|fa-list|Lista de usuarios",
+        "Admin" => "Admin/register.php|fa-plus|Ingresar Usuarios,Admin/accesos.php|fa-list|Lista de usuarios,Admin/procesos.php|fa-clipboard|Lista de procesos",
         "Auditor" => "Auditor/evaluacion.php|fa-marker|Evaluar homologacion",
-        "Cliente" => "Cliente/form.php|fa-user|Homologacion de Cliente"
+        "Cliente" => "Cliente/list_procesos.php|fa-user|Homologacion(es) de Cliente"
     );
 
     const PATH_VIEWS = FOLDERSIDE . "Views/pages/";

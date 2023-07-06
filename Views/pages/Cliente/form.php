@@ -1,3 +1,12 @@
+<?php
+if (!isset($_POST['process'])) {
+    echo '<script>window.location.href= "' . SERVERSIDE . 'Cliente/list_procesos"</script>';
+}
+
+$process = $_POST['process'];
+$status = $_POST['status'];
+?>
+
 <style>
     label:not(.form-check-label):not(.custom-file-label) {
         font-weight: normal;
@@ -29,7 +38,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <?php if (strcmp($_SESSION['estado'], 'homologacion') === 0) {
+                        <?php if (strcmp($status, 'asignado') !== 0) {
                             include('lockScreen.php');
                         } else { ?>
                             <!-- Steper -->

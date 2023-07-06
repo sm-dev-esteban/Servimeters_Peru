@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                                    <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                                     <label>¿La empresa declara la veracidad de la información que suministrará en este formulario?</label>
                                     <select class="form-control" name="data[pregunta_veracidad]">
                                         <option>Si</option>
@@ -202,7 +202,7 @@
                             <?php for ($i = 1; $i < 4; $i++) { ?>
                                 <div class="col-md-6">
                                     <form id="financial_sell_form_<?= $i ?>" class="validatable-form form_1">
-                                        <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                                        <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                                         <!-- <label>Información adicional</label> -->
                                         <table id="financial_table<?= $i ?>" data-table="finance" class="table table-bordered table-form">
                                             <thead>
@@ -247,7 +247,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <form id="policies_form" class="validatable-form form_1">
-                            <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                            <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                             <table id="policies_table" data-table="policies" class="table table-bordered table-form">
                                 <thead>
                                     <tr>
@@ -286,7 +286,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <form id="banks_form" class="validatable-form form_1">
-                            <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                            <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                             <table id="bank_table" data-table="bank" class="table table-bordered table-form">
                                 <thead>
                                     <tr>

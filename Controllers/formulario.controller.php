@@ -48,17 +48,24 @@ class FormController extends BaseController
         return parent::get();
     }
 
+    public static function getFormProcess($id, $table)
+    {
+        parent::setModel(new FormulatioModel(null, null, $table));
+        $result = parent::getCondition("proceso = {$id}");
+        return $result[0];
+    }
+
     /**
      * @return [type]
      */
     public static function loadDataForms()
     {
         if (isset($_POST['id'])) {
-            $forms = array('financial_form', 'financial_sell_form_1', 'financial_sell_form_2', 'financial_sell_form_3', 'policies_form', 'banks_form', 'management_form', 'contracting_service_form', 'service_provision_form', 'service_provision_product_form', 'quiality_form', 'responsability_form');
+            $forms = array('condiciones_form', 'financial_form', 'financial_sell_form_1', 'financial_sell_form_2', 'financial_sell_form_3', 'policies_form', 'banks_form', 'management_form', 'contracting_service_form', 'service_provision_form', 'service_provision_product_form', 'quiality_form', 'responsability_form');
             $id = $_POST['id'];
             $data = array();
             foreach ($forms as $form) {
-                $data[$form] = self::getForm($id, $form);
+                $data[$form] = self::getFormProcess($id, $form);
             }
             return $data ?? false;
         } else {
@@ -76,7 +83,7 @@ class FormController extends BaseController
             $id = $_POST['id'];
             $dataDocs = array();
             foreach ($formsDocs as $formDoc) {
-                $dataDocs[$formDoc] = self::getForm($id, $formDoc);
+                $dataDocs[$formDoc] = self::getFormProcess($id, $formDoc);
             }
             return $dataDocs ?? false;
         } else {

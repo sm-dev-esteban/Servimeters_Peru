@@ -14,7 +14,7 @@
                             <!--Campo Número de empleados-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                                    <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                                     <label for="###">Número de Empleados(Fijos / Subcontratados)</label>
                                     <input type="number" name="data[numero_empleados]" class="form-control" id="###" placeholder="Ingrese el número de empleados" required>
                                 </div>
@@ -142,7 +142,7 @@
         <div class="col-md-12">
             <button class="btn btn-primary previous" onclick="stepper.previous()">Anterior</button>
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-html="true" title="Complete los campos obligatorios <b class='mandatory'>*</b> para continuar">
-                <button class="btn btn-primary next" data-form="4" id="sendForm" data-user="<?= $_SESSION['id'] ?>">Enviar</button>
+                <button class="btn btn-primary next" data-form="4" id="sendForm" data-process="<?= $process ?>">Enviar</button>
             </span>
         </div>
     </div>
