@@ -103,6 +103,6 @@
             e.preventDefault();
         });
 
-        ValidationForms.addRows();
+       // ValidationForms.addRows();
     })
 </script>
