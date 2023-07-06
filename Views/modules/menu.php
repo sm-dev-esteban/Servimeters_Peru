@@ -63,12 +63,12 @@ $menu =  json_decode(ControladorTemplate::menu());
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="<?= SERVERSIDE ?>test/form" class="nav-link">
                         <i class="nav-icon fa fa-question"></i>
                         <p>Prueba de formulario</p>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

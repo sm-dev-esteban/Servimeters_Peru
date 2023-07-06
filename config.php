@@ -1,10 +1,12 @@
 <?php
 define("FOLDERSIDE", str_replace("\\", "/", __DIR__) . "/");
 define("SERVERSIDE", str_replace(getenv("DOCUMENT_ROOT"), getenv("REQUEST_SCHEME") . "://" . getenv("HTTP_HOST"), FOLDERSIDE));
+define("ESTADOS", array("asignado" => "<h5><span class='badge badge-pill bg-primary'>Asignado</span></h5>", "cancelado" => "<h5><span class='badge badge-pill bg-danger'>Cancelado</span></h5>", "revision" => "<h5><span class='badge badge-pill bg-dark'>Revisión</span></h5>", "evaluado" => "<h5><span class='badge badge-pill bg-info'>Evaluado</span></h5>", "calificado" => "<h5><span class='badge badge-pill bg-success'>Calificado</span></h5>"));
 
 $data = [
     "FOLDERSIDE" => FOLDERSIDE,
-    "SERVERSIDE" => SERVERSIDE
+    "SERVERSIDE" => SERVERSIDE,
+    "ESTADOS" => ESTADOS
 ];
 
 /* json */

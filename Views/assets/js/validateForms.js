@@ -21,16 +21,16 @@ class ValidationForms {
             });
 
             
-            let userData = new FormData();
-            userData.append('id', $('#sendForm').data('user'));
-            userData.append('estado', 'auditando');
+            let processData = new FormData();
+            processData.append('id', $('#sendForm').data('process'));
+            processData.append('estado', 'revision');
 
             try {
-                let result = await requestController('Usuario', 'updateStateUser', userData);
+                let result = await requestController('proceso', 'update', processData);
                 if (result.Result) {
                     showToast(`Guardado con exito...`, 'success');
                 }
-                window.location.href = SERVERSIDE;
+                window.location.href = SERVERSIDE + 'Cliente/list_procesos';
             } catch (error) {
                 showToast(`${error}`, 'error');
                 console.error(error);

@@ -1,10 +1,9 @@
 <?php
 //Evalua si cumple con los permisos
-if (!isset($_POST['id']) || strcmp($_SESSION['rol'], 'Admin') !== 0)
+if (!isset($_POST['id']) || strcmp($_SESSION['rol'], 'Auditor') !== 0)
     echo '<script>window.location.href= "' . SERVERSIDE . '"</script>';
 
 $id = $_POST['id'];
-$terminos = $_POST['terminos'];
 $cliente = $_POST['cliente'];
 $idcliente = $_POST['idcliente'];
 
@@ -13,7 +12,9 @@ require_once('Controllers/formulario.controller.php');
 $data = FormController::loadDataForms();
 $dataDocs = FormController::loadDocsForm();
 
-if (!$data || !$dataDocs) {
+// var_dump($data);
+
+if (empty($data) || empty($dataDocs)) {
     echo '<script>window.location.href= "' . SERVERSIDE . '"</script>';
 }
 ?>
@@ -54,20 +55,18 @@ if (!$data || !$dataDocs) {
                         <div class="tab-content">
                             <div class="active tab-pane" id="forms">
                                 <!-- Data -->
-                                <span id="data" data-terminos='<?= $terminos ?>' hidden></span>
+                                <!-- <span id="data" data-terminos='<?= $terminos ?>' hidden></span> -->
                                 <!-- /.Data -->
                                 <!-- Capacity -->
                                 <div class="post">
                                     <?php include_once(FOLDERSIDE . 'Views/pages/Cliente/forms/capacityForm.php'); ?>
-                                    <?php if (strcmp($terminos, 'on') !== 0) {  ?>
-                                        <!-- Alert -->
-                                        <div class="alert alert-danger alert-dismissible">
-                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                            <h5><i class="icon fas fa-exclamation-triangle"></i> Aviso!</h5>
-                                            Los terminos y condiciones no fueron aceptados por el cliente en este formulario.
-                                        </div>
-                                        <!-- /.Alert -->
-                                    <?php } ?>
+                                    <!-- Alert -->
+                                    <div class="alert alert-danger alert-dismissible" hidden>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                        <h5><i class="icon fas fa-exclamation-triangle"></i> Aviso!</h5>
+                                        Los terminos y condiciones no fueron aceptados por el cliente en este formulario.
+                                    </div>
+                                    <!-- /.Alert -->
                                 </div>
                                 <!-- /.Capacity -->
 
@@ -185,8 +184,8 @@ if (!$data || !$dataDocs) {
                                                         <label for="checkboxPrimary1">
                                                             El cliente cumple con el <span class="text-primary"> proceso de Homologación</span>
                                                         </label>
-                                                        <input type="text" id="valueCheck" name="data[cumple]" value="No Cumple" hidden>
-                                                        <input type="text" name="data[idFormulario]" value="<?= $id ?>" hidden>
+                                                        <input type="text" id="valueCheck" name="cumple" value="No Cumple" hidden>
+                                                        <input type="text" name="proceso" value="<?= $id ?>" hidden>
                                                     </div>
 
                                                 </div>
@@ -220,18 +219,12 @@ if (!$data || !$dataDocs) {
     $(document).ready(async function() {
         $('#next, .next, .hideForm, .previous, .select2-search, .addRow').prop('hidden', true);
 
-        var data = $('#data');
-        terminos = data.data('terminos');
-        if (terminos === 'on') {
-            $('#conditionBox').attr('checked', true);
-        }
-
         var data = '<?php echo json_encode($data); ?>';
         data = JSON.parse(data);
 
         for (const key in data) {
             if (Object.hasOwnProperty.call(data, key)) {
-                var values = data[key][0];
+                var values = data[key];
 
                 var elements = await getElements(key);
 
@@ -255,15 +248,20 @@ if (!$data || !$dataDocs) {
         return new Promise((resolve, reject) => {
             elements.forEach(input => {
                 var value = values[input.name.replace(/data/g, '').replace(/\[/g, '').replace(/\]/g, '')];
-                // console.log(`${input.name} -->`, input.name.replace(/data/g, '').replace(/\[/g, '').replace(/\]/g, ''));
                 switch (input.type) {
                     case 'select-multiple':
                         // console.log(`${input.name} -->`, value.split('|/|'));
-                        if (value !== undefined) {
+                        if (value !== undefined && value !== null) {
                             value = value.split('|/|');
                             $('.select2').val(value).trigger('change');
                         }
-                        // input.value = value;
+                        break;
+                    case 'checkbox':
+                        if (value === 'on') {
+                            $(input).attr('checked', true);
+                        } else {
+                            $('.alert').prop('hidden', false);
+                        }
                         break;
                     default:
                         input.value = value;
@@ -279,12 +277,15 @@ if (!$data || !$dataDocs) {
         return new Promise((resolve, reject) => {
             var inputs;
             for (const key in values) {
+                // console.log(key);
                 inputs = elements.filter(function(e) {
                     return e.name === `data[${key}][]`;
                 });
+                // console.log(inputs);
 
                 if (inputs.length > 0) {
                     var val = values[key];
+                    // console.log(val);
                     val = val.toString().split('|/|');
                     for (let i = 0; i < val.length; i++) {
                         inputs[i].value = val[i];
@@ -309,7 +310,8 @@ if (!$data || !$dataDocs) {
         if (value !== undefined) {
             value = value.toString().split('|/|');
             var countRows = value.length
-            if (countRows > 1) {
+            console.log(countRows);
+            if (countRows >= 1) {
                 // console.log('Tiene mas de una fila: ' + countRows + ' -- ', elements[1].name);
                 var table = $(`#${key}`).children('table');
                 await addRows(table, values, (countRows - 1));
@@ -375,10 +377,9 @@ if (!$data || !$dataDocs) {
                 }
             })
             var span = $(form).find('.loadFile');
-            var values = dataDocs[key][0];
+            var values = dataDocs[key];
 
             for (var i = 0; i < span.length; i++) {
-                console.log(values[`adjunto${i + 1}`]);
                 span[i].dataset.file = values[`adjunto${i + 1}`];
             }
         }
@@ -442,21 +443,20 @@ if (!$data || !$dataDocs) {
             var form = document.getElementById('evaluacion');
             var data = new FormData(form);
 
-            var result = await requestController('formulario', 'registerForm', data, `entity=${form.id}`);
+            var result = await requestController('Evaluacion', 'insert', data);
 
             if (!result.Result.status) {
                 throw new Error('Fallo en el resultado');
             }
 
-            let userData = new FormData();
-            var idcliente = '<?php echo $idcliente ?>';
-            userData.append('id', idcliente);
-            userData.append('estado', 'evaluado');
+            let processData = new FormData();
+            var idProceso = '<?php echo $id ?>';
+            processData.append('id', idProceso);
+            processData.append('estado', 'evaluado');
 
-            result = await requestController('Usuario', 'updateStateUser', userData);
-            console.log(result);
-            if (!result.Result) {
-                throw new Error('No se actualizo el cliente');
+            result = await requestController('proceso', 'update', processData);
+            if (!result.Result.status) {
+                throw new Error('No se actualizo el proceso');
             }
 
             var res = await showSwal('!Cerrado!');

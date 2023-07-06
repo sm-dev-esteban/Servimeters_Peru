@@ -38,8 +38,3 @@
     <input type="checkbox" id="habilitado" data-bootstrap-switch data-on-text="habilitar" data-off-text="deshabilitar" data-off-color="danger" data-on-color="success" checked>
     <input type="text" id="checkbox" name="habilitado" hidden>
 </div>
-
-<!-- Estado inicial -->
-<div class="form-group">
-    <input type="text" class="form-control" name="estado" inputmode="text" value="homologacion" hidden />
-</div>

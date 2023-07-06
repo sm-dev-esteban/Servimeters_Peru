@@ -69,6 +69,8 @@
         </div>
     </div>
 </body>
+<!-- Constantes -->
+<script src="<?= SERVERSIDE ?>config.min.js"></script>
 <!-- jQuery -->
 <script src="<?= SERVERSIDE ?>Views/resources/plugins/jquery/jquery.min.js"></script>
 
@@ -82,8 +84,6 @@
 
 <!-- AdminLTE App -->
 <script src="<?= SERVERSIDE ?>Views/resources/dist/js/adminlte.min.js"></script>
-<!-- Constantes -->
-<script src="<?= SERVERSIDE ?>config.min.js"></script>
 <!-- Request -->
 <script src="<?= SERVERSIDE ?>Views/assets/js/all.page.js"></script>
 <script src="<?= SERVERSIDE ?>Views/assets/js/request.js"></script>

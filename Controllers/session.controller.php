@@ -59,6 +59,7 @@ class SessionController extends BaseController
             $userLog['password'] = '';
             self::sessionIn($userLog);
             self::$result->Success = 'Ingreso con exito';
+            self::$result->Cli = $userLog['rol'] === 'Cliente' ? true : false;
             echo json_encode(self::$result);
             exit();
         }

@@ -12,7 +12,7 @@
                         <!-- Campo Instalaciones -->
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                                <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                                 <label>Las instalaciones utilizadas por la empresa son*:</label>
                                 <select class="form-control" name="data[instalaciones]" id="instalaciones">
                                     <option>Propias</option>
@@ -71,7 +71,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <form id="contracting_service_form" class="validatable-form form_2">
-                            <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                            <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                             <table id="contracting_service_table" data-table="contracting_service" class="table table-bordered table-form">
                                 <thead>
                                     <tr>
@@ -112,7 +112,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <form id="service_provision_form" class="validatable-form form_2">
-                            <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                            <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                             <table id="serv_prov_table" data-table="service_prov" class="table table-bordered table-form">
                                 <thead>
                                     <tr>
@@ -130,7 +130,7 @@
                                         <td>
                                             <select class="form-control form-control-border" name="data[propietario][]">
                                                 <option>Propio</option>
-                                                <option>alquilado</option>
+                                                <option>Alquilado</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -157,7 +157,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <form id="service_provision_product_form" class="validatable-form form_2">
-                            <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                            <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                             <table id="serv_prov_prod_table" data-table="service_prov_prod" class="table table-bordered table-form">
                                 <thead>
                                     <tr>

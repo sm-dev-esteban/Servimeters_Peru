@@ -33,6 +33,9 @@ class UsuarioController extends BaseController
         if (isset($_GET['action']) && strcmp($_GET['action'], 'insert') == 0) {
             parent::setModel(new UsuarioModel($_POST));
             parent::insert();
+            echo "<script>
+                window.location.href = '" . SERVERSIDE . "Admin/register';
+            </script>";
         }
     }
 
@@ -52,26 +55,6 @@ class UsuarioController extends BaseController
         }
     }
 
-    /**
-     * @return [type]
-     */
-    static public function updateStateUser()
-    {
-        session_start();
-        self::$result = new stdClass();
-        $user = array_merge($_POST);
-
-        parent::setModel(new UsuarioModel($user));
-        $result = parent::update();
-        self::$result->Result = $result["status"];
-
-        if (!empty(self::$result->Result)) {
-            $_SESSION["estado"] = $_POST["estado"];
-        }
-        header('Content-Type: application/json');
-        echo json_encode(self::$result);
-    }
-
     static public function loadUser()
     {
         if (isset($_POST['id'])) {
@@ -81,6 +64,19 @@ class UsuarioController extends BaseController
             header('Content-Type: application/json');
             echo json_encode(self::$result);
         }
+    }
+
+    static public function getAuditores()
+    {
+        parent::setModel(new UsuarioModel());
+        return parent::getCondition("rol = 'Auditor'", "id, usuario");
+    }
+
+    static public function getInfo($id, $field)
+    {
+        parent::setModel(new UsuarioModel());
+        $result = parent::getCondition("id = {$id}", $field);
+        return $result[0][$field];
     }
 }
 
