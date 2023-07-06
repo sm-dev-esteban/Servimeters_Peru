@@ -225,7 +225,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2" class="text-right" id="total_<?= $i ?>"><strong>Total</strong></td>
-                                                    <td contenteditable="true"><strong>$550,000</strong></td>
+                                                    <td contenteditable="true"><strong></strong></td>
                                                 </tr>
                                             </tfoot>
                                         </table>

@@ -36,7 +36,7 @@ function replaceMaster($search, $replace, $folder = "./*", $config = [])
         }
     }
     return $config["returnCount"] ? array_merge($change, [
-        "count" => count($change) - 1
+        "count" => count($change) - (isset($change["count"]) ? 1 : 0)
     ]) : $change;
 }
 
