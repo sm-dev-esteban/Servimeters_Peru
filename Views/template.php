@@ -107,9 +107,9 @@
         $.widget.bridge('uibutton', $.ui.button);
 
         // QUITAR ESTO
-        $(document).ready(function() {
-            $('input').removeAttr('required');
-        });
+        // $(document).ready(function() {
+        //     $('input').removeAttr('required');
+        // });
     </script>
     <!-- Constantes -->
     <script src="<?= SERVERSIDE ?>config.min.js"></script>
