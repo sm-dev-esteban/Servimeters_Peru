@@ -51,7 +51,7 @@ $process = ProcessController::getProcessAsign();
                                             <td><?= $p['id'] ?></td>
                                             <td><?= $p['fechaRegistro'] ?></td>
                                             <td><?= ESTADOS[$p['estado']] ?></td>
-                                            <td><?php if ($p['auditor'] === 'null') { ?>
+                                            <td><?php if ($p['auditor'] === 'null' || strlen($p['auditor']) <= 0) { ?>
                                                     <span class="text-warning">Pendiente</span>
                                                 <?php } else { ?>
                                                     <ul class="list-inline">

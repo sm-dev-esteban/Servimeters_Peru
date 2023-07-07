@@ -50,6 +50,21 @@
         button {
             cursor: pointer;
         }
+
+        input[type="checkbox"]:disabled:checked::after {
+            /* Estilos para el checkbox deshabilitado y marcado */
+            content: 'x';
+            display: block;
+            position: absolute;
+            top: auto;
+            left: auto;
+            width: 15px;
+            height: 15px;
+            background-color: tomato;
+            color: white;
+            text-align: center;
+            line-height: 12px;
+        }
     </style>
 
     <!-- jQuery -->

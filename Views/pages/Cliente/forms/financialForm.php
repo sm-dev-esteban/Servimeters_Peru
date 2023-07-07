@@ -204,7 +204,7 @@
                                     <form id="financial_sell_form_<?= $i ?>" class="validatable-form form_1">
                                         <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                                         <!-- <label>Información adicional</label> -->
-                                        <table id="financial_table<?= $i ?>" data-table="finance" class="table table-bordered table-form">
+                                        <table id="financial_table<?= $i ?>" data-index="<?= $i ?>" data-table="finance" class="table table-bordered table-form">
                                             <thead>
                                                 <tr>
                                                     <th>Año <?= $i ?></th>
@@ -216,16 +216,16 @@
                                                 <tr>
                                                     <td> <input type="text" class="form-control form-control-border" name="data[anno][]" placeholder="2023" required> </td>
                                                     <td> <input type="text" class="form-control form-control-border" name="data[sector][]" placeholder="Sector A" required> </td>
-                                                    <td> <input type="number" class="form-control form-control-border" step="0.01" name="data[ventas][]" placeholder="$100" required> </td>
+                                                    <td> <input type="number" class="form-control form-control-border sum" data-total="<?= $i ?>" step="0.01" name="data[ventas][]" placeholder="$100" required> </td>
                                                 </tr>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td> <button type="button" class="btn btn-secondary addRow" data-row="2" data-id="financial_table<?= $i ?>">Agregar Fila <i class="fas fa-plus"></i></button> </td>
+                                                    <td> <button type="button" class="btn btn-secondary addRow" data-id="financial_table<?= $i ?>">Agregar Fila <i class="fas fa-plus"></i></button> </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2" class="text-right" id="total_<?= $i ?>"><strong>Total</strong></td>
-                                                    <td contenteditable="true"><strong></strong></td>
+                                                    <td colspan="2" class="text-right"><strong>Total</strong></td>
+                                                    <td><strong><input type="text" class="form-control form-control-border" id="total_<?= $i ?>" disabled></strong></td>
                                                 </tr>
                                             </tfoot>
                                         </table>

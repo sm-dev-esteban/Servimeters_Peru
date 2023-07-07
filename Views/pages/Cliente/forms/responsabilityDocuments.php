@@ -4,12 +4,16 @@
         <div class="card-header">
             <h3 class="card-title"><em>Adjuntar la siguiente información:</em></h3><br>
         </div>
-        <form id="responsability_documents_form" class="validatable-form form_4">
+        <form id="responsability_documents_form" class="validatable-form form_4 documents">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                         <label for="adjunto1">1. Documento asociado a la protección de datos de carácter personal.</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
@@ -20,9 +24,13 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label for="adjunto2">2. Certificación del Sistema Gestión de Seguridad y Salud en el Trabajo
                             (ISO 45001).</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
@@ -33,8 +41,12 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label for="adjunto3">3. Certificación del Sistema Gestión de Ambiental (ISO 14001).</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">

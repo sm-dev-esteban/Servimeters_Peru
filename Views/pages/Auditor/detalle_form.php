@@ -310,13 +310,18 @@ if (empty($data) || empty($dataDocs)) {
         if (value !== undefined) {
             value = value.toString().split('|/|');
             var countRows = value.length
-            console.log(countRows);
             if (countRows >= 1) {
                 // console.log('Tiene mas de una fila: ' + countRows + ' -- ', elements[1].name);
                 var table = $(`#${key}`).children('table');
                 await addRows(table, values, (countRows - 1));
                 var elements = await getElements(key);
                 await printDataTable(values, elements);
+                //Sumar valores
+                if (['financial_sell_form_1', 'financial_sell_form_2', 'financial_sell_form_3'].includes(key)) {
+                    var id = $(table).attr('id');
+                    ValidationForms.sumTotal(id);
+                }
+
                 $('input, select, checkbox').prop('disabled', true);
                 return;
             }
@@ -377,10 +382,12 @@ if (empty($data) || empty($dataDocs)) {
                 }
             })
             var span = $(form).find('.loadFile');
+            var checks = $(form).find('input[type="checkbox"]');
             var values = dataDocs[key];
 
             for (var i = 0; i < span.length; i++) {
-                span[i].dataset.file = values[`adjunto${i + 1}`];
+                var value = values[`adjunto${i + 1}`];
+                (value === undefined || value.length <= 0) ? checks[i].checked = true: span[i].dataset.file = value;
             }
         }
     }
@@ -391,6 +398,7 @@ if (empty($data) || empty($dataDocs)) {
             $('.hideForm').prop('hidden', false);
             loadDocs(ejecutar);
             seeDoc();
+            $('input[type="checkbox"]').prop('disabled', true);
             ejecutar = false;
         });
 

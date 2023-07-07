@@ -4,13 +4,17 @@
         <div class="card-header">
             <h3 class="card-title">Adjuntar los siguientes documentos:</h3>
         </div>
-        <form id="sgc_documents_form" class="validatable-form form_3">
+        <form id="sgc_documents_form" class="validatable-form form_3 documents">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                         <label for="adjunto1">1. Certificado de Sistema de Gestión de Calidad (ISO 9001) que relacione el
                             servicio o producto a homologar.</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
@@ -21,8 +25,12 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label for="adjunto2">2. Ficha técnica del servicio o producto a homologar.</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
@@ -33,8 +41,12 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label for="adjunto3">3. Documento con el cual gestiona y analizan las acciones correctivas.</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
@@ -45,9 +57,13 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label for="adjunto4">4. Documento en el cual se han definido las competencias del personal que
                             incluyan Cargo y Educación.</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
@@ -58,10 +74,14 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label for="adjunto5">5. Plan o programa de mantenimiento y calibración de los equipos relacionados
                             en la sección de capacidad operativa y que influyen en la calidad del servicio o producto a
                             homologar.</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
@@ -72,8 +92,12 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label for="adjunto6">6. Procedimiento de evaluación de proveedores.</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
@@ -84,9 +108,13 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label for="adjunto7">7. Procedimiento de inspección de productos, materiales o insumos
                             comprados.</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
@@ -97,10 +125,14 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label for="adjunto8">8. Procedimiento utilizado para realizar el control de calidad una vez
                             finalizado el servicio el cual indique como afrontar retrasos en la fabricación de productos
                             o servicios.</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
@@ -111,9 +143,13 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label for="adjunto9">9. Resultado del análisis de los resultados de las evaluaciones de
                             satisfacción del cliente.</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
@@ -124,8 +160,12 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label for="adjunto10">10. Procedimiento de quejas.</label>
+                    </div>
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox" class="custom-no-file">
+                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
                     </div>
                     <div class="col-md-4">
                         <div class="custom-file">
