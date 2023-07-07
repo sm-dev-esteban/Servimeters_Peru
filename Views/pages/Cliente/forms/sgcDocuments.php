@@ -12,14 +12,16 @@
                         <label for="adjunto1">1. Certificado de Sistema de Gestión de Calidad (ISO 9001) que relacione el
                             servicio o producto a homologar.</label>
                     </div>
+
                     <div class="col-md-2 pt-1 text-center">
-                        <input type="checkbox" class="custom-no-file">
-                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
+                        <input type="checkbox">
+                        <span class="custom-file-no-label" for="check1">No subir archivo</span>
                     </div>
+
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto1]" id="adjunto1" accept=".pdf">
-                            <label class="custom-file-label" for="adjunto1">Subir archivo</label>
+                            <input type="file" class="custom-file-input" name="file[adjunto1]" id="adjunto9" accept=".pdf">
+                            <label class="custom-file-label" for="adjunto9">Subir archivo</label>
                         </div>
                     </div>
                 </div>
@@ -28,14 +30,16 @@
                     <div class="col-md-6">
                         <label for="adjunto2">2. Ficha técnica del servicio o producto a homologar.</label>
                     </div>
+
                     <div class="col-md-2 pt-1 text-center">
-                        <input type="checkbox" class="custom-no-file">
-                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
+                        <input type="checkbox">
+                        <span class="custom-file-no-label" for="check2">No subir archivo</span>
                     </div>
+
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto2]" id="adjunto2" accept=".pdf">
-                            <label class="custom-file-label" for="adjunto2">Subir archivo</label>
+                            <input type="file" class="custom-file-input" name="file[adjunto2]" id="adjunto10" accept=".pdf">
+                            <label class="custom-file-label" for="adjunto10">Subir archivo</label>
                         </div>
                     </div>
                 </div>
@@ -44,14 +48,16 @@
                     <div class="col-md-6">
                         <label for="adjunto3">3. Documento con el cual gestiona y analizan las acciones correctivas.</label>
                     </div>
+
                     <div class="col-md-2 pt-1 text-center">
-                        <input type="checkbox" class="custom-no-file">
-                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
+                        <input type="checkbox">
+                        <span class="custom-file-no-label" for="check2">No subir archivo</span>
                     </div>
+
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto3]" id="adjunto3" accept=".pdf">
-                            <label class="custom-file-label" for="adjunto3">Subir archivo</label>
+                            <input type="file" class="custom-file-input" name="file[adjunto3]" id="adjunto11" accept=".pdf">
+                            <label class="custom-file-label" for="adjunto11">Subir archivo</label>
                         </div>
                     </div>
                 </div>
@@ -61,14 +67,16 @@
                         <label for="adjunto4">4. Documento en el cual se han definido las competencias del personal que
                             incluyan Cargo y Educación.</label>
                     </div>
+
                     <div class="col-md-2 pt-1 text-center">
-                        <input type="checkbox" class="custom-no-file">
-                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
+                        <input type="checkbox">
+                        <span class="custom-file-no-label" for="check2">No subir archivo</span>
                     </div>
+
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto4]" id="adjunto4" accept=".pdf">
-                            <label class="custom-file-label" for="adjunto4">Subir archivo</label>
+                            <input type="file" class="custom-file-input" name="file[adjunto4]" id="adjunto12" accept=".pdf">
+                            <label class="custom-file-label" for="adjunto12">Subir archivo</label>
                         </div>
                     </div>
                 </div>
@@ -79,14 +87,16 @@
                             en la sección de capacidad operativa y que influyen en la calidad del servicio o producto a
                             homologar.</label>
                     </div>
+
                     <div class="col-md-2 pt-1 text-center">
-                        <input type="checkbox" class="custom-no-file">
-                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
+                        <input type="checkbox">
+                        <span class="custom-file-no-label" for="check2">No subir archivo</span>
                     </div>
+
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto5]" id="adjunto5" accept=".pdf">
-                            <label class="custom-file-label" for="adjunto5">Subir archivo</label>
+                            <input type="file" class="custom-file-input" name="file[adjunto5]" id="adjunto13" accept=".pdf">
+                            <label class="custom-file-label" for="adjunto13">Subir archivo</label>
                         </div>
                     </div>
                 </div>
@@ -95,14 +105,16 @@
                     <div class="col-md-6">
                         <label for="adjunto6">6. Procedimiento de evaluación de proveedores.</label>
                     </div>
+
                     <div class="col-md-2 pt-1 text-center">
-                        <input type="checkbox" class="custom-no-file">
-                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
+                        <input type="checkbox">
+                        <span class="custom-file-no-label" for="check2">No subir archivo</span>
                     </div>
+
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto6]" id="adjunto6" accept=".pdf">
-                            <label class="custom-file-label" for="adjunto6">Subir archivo</label>
+                            <input type="file" class="custom-file-input" name="file[adjunto6]" id="adjunto14" accept=".pdf">
+                            <label class="custom-file-label" for="adjunto14">Subir archivo</label>
                         </div>
                     </div>
                 </div>
@@ -112,14 +124,16 @@
                         <label for="adjunto7">7. Procedimiento de inspección de productos, materiales o insumos
                             comprados.</label>
                     </div>
+
                     <div class="col-md-2 pt-1 text-center">
-                        <input type="checkbox" class="custom-no-file">
-                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
+                        <input type="checkbox">
+                        <span class="custom-file-no-label" for="check2">No subir archivo</span>
                     </div>
+
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto7]" id="adjunto7" accept=".pdf">
-                            <label class="custom-file-label" for="adjunto7">Subir archivo</label>
+                            <input type="file" class="custom-file-input" name="file[adjunto7]" id="adjunto15" accept=".pdf">
+                            <label class="custom-file-label" for="adjunto15">Subir archivo</label>
                         </div>
                     </div>
                 </div>
@@ -130,14 +144,16 @@
                             finalizado el servicio el cual indique como afrontar retrasos en la fabricación de productos
                             o servicios.</label>
                     </div>
+
                     <div class="col-md-2 pt-1 text-center">
-                        <input type="checkbox" class="custom-no-file">
-                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
+                        <input type="checkbox">
+                        <span class="custom-file-no-label" for="check2">No subir archivo</span>
                     </div>
+
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto8]" id="adjunto8" accept=".pdf">
-                            <label class="custom-file-label" for="adjunto8">Subir archivo</label>
+                            <input type="file" class="custom-file-input" name="file[adjunto8]" id="adjunto16" accept=".pdf">
+                            <label class="custom-file-label" for="adjunto16">Subir archivo</label>
                         </div>
                     </div>
                 </div>
@@ -147,14 +163,16 @@
                         <label for="adjunto9">9. Resultado del análisis de los resultados de las evaluaciones de
                             satisfacción del cliente.</label>
                     </div>
+
                     <div class="col-md-2 pt-1 text-center">
-                        <input type="checkbox" class="custom-no-file">
-                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
+                        <input type="checkbox">
+                        <span class="custom-file-no-label" for="check2">No subir archivo</span>
                     </div>
+
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto9]" id="adjunto9" accept=".pdf">
-                            <label class="custom-file-label" for="adjunto9">Subir archivo</label>
+                            <input type="file" class="custom-file-input" name="file[adjunto9]" id="adjunto17" accept=".pdf">
+                            <label class="custom-file-label" for="adjunto17">Subir archivo</label>
                         </div>
                     </div>
                 </div>
@@ -163,14 +181,16 @@
                     <div class="col-md-6">
                         <label for="adjunto10">10. Procedimiento de quejas.</label>
                     </div>
+
                     <div class="col-md-2 pt-1 text-center">
-                        <input type="checkbox" class="custom-no-file">
-                        <span class="custom-file-no-label" for="check7">No subir archivo</span>
+                        <input type="checkbox">
+                        <span class="custom-file-no-label" for="check2">No subir archivo</span>
                     </div>
+
                     <div class="col-md-4">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file[adjunto10]" id="adjunto10" accept=".pdf">
-                            <label class="custom-file-label" for="adjunto10">Subir archivo</label>
+                            <input type="file" class="custom-file-input" name="file[adjunto10]" id="adjunto18" accept=".pdf">
+                            <label class="custom-file-label" for="adjunto18">Subir archivo</label>
                         </div>
                     </div>
                 </div>

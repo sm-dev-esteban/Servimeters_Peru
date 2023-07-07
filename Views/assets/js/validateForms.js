@@ -294,11 +294,11 @@ $(document).ready(function(e) {
 
     ValidationForms.totalSales();
     // Validar inputs
-    // const forms = document.querySelectorAll('.validatable-form');
+    const forms = document.querySelectorAll('.validatable-form');
     
-    // forms.forEach((form) => {
-    //    object.validateErrors(form);
-    // });
+    //forms.forEach((form) => {
+     //   object.validateErrors(form);
+     //});
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------
     // Tooltip
