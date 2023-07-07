@@ -13,7 +13,7 @@
                             <!-- Campo Responsable -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
+                                    <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                                     <label>Escriba el nombre del responsable de Gestión de Calidad y el cargo.</label>
                                     <input type="text" class="form-control" name="data[responsable]" required>
                                 </div>

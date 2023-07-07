@@ -21,16 +21,16 @@ class ValidationForms {
             });
 
             
-            let userData = new FormData();
-            userData.append('id', $('#sendForm').data('user'));
-            userData.append('estado', 'auditando');
+            let processData = new FormData();
+            processData.append('id', $('#sendForm').data('process'));
+            processData.append('estado', 'revision');
 
             try {
-                let result = await requestController('Usuario', 'updateStateUser', userData);
+                let result = await requestController('proceso', 'update', processData);
                 if (result.Result) {
                     showToast(`Guardado con exito...`, 'success');
                 }
-                window.location.href = SERVERSIDE;
+                window.location.href = SERVERSIDE + 'Cliente/list_procesos';
             } catch (error) {
                 showToast(`${error}`, 'error');
                 console.error(error);
@@ -48,10 +48,10 @@ class ValidationForms {
     //     });
     //     var counter = 2;
     //     $('#addRowPolicies').on('click', function(e) {
-    //       t.row.add([`<input type="text" class="form-control form-control-border" name="data[entity_${counter}]" placeholder="Entidad A" required>`, 
-    //       `<input type="text" class="form-control form-control-border" name="data[number_${counter}]" placeholder="00${counter}" required>`, 
-    //       `<input type="text" class="form-control form-control-border" name="data[dateValidity_${counter}]" placeholder="${moment(new Date()).format('DD-MM-yyyy')}" required>`, 
-    //       `<input type="text" class="form-control form-control-border" name="data[details_${counter}]" placeholder="..." required>`]).draw(false);
+    //       t.row.add([`<input type="text" class="form-control form-control-border" name="data[entity_${counter}]" placeholder="Entidad A" >`, 
+    //       `<input type="text" class="form-control form-control-border" name="data[number_${counter}]" placeholder="00${counter}" >`, 
+    //       `<input type="text" class="form-control form-control-border" name="data[dateValidity_${counter}]" placeholder="${moment(new Date()).format('DD-MM-yyyy')}" >`, 
+    //       `<input type="text" class="form-control form-control-border" name="data[details_${counter}]" placeholder="..." >`]).draw(false);
     //       counter++;
     //     });
     // }
@@ -65,9 +65,9 @@ class ValidationForms {
     //     });
     //     var counter = 2;
     //     $('#addRowBanks').on('click', function(e) {
-    //       t.row.add([`<input type="text" class="form-control form-control-border" name="data[nameBank_${counter}]" placeholder="Banco A" required>`, 
-    //       `<input type="text" class="form-control form-control-border" name="data[subsidiary_${counter}]" placeholder="Sucursal ${counter}" required>`, 
-    //       `<input type="text" class="form-control form-control-border" name="data[accountNumber_${counter}]" placeholder="${counter.toString().repeat(5)}" required>`
+    //       t.row.add([`<input type="text" class="form-control form-control-border" name="data[nameBank_${counter}]" placeholder="Banco A" >`, 
+    //       `<input type="text" class="form-control form-control-border" name="data[subsidiary_${counter}]" placeholder="Sucursal ${counter}" >`, 
+    //       `<input type="text" class="form-control form-control-border" name="data[accountNumber_${counter}]" placeholder="${counter.toString().repeat(5)}" >`
     //     ]).draw(false);
     //       counter++;
     //     });
@@ -81,6 +81,8 @@ class ValidationForms {
             searching: false,
         });
 
+        // ValidationForms.totalSales();
+
         $('.addRow').on('click', function(e) {
             var btn = $(this); 
             var id = btn.data('id');
@@ -88,39 +90,41 @@ class ValidationForms {
             ValidationForms.printRows(id);
             // btn.data('row', (count + 1));
         });
+        
     }
 
     static printRows(id, iterate = 1){
         var t = $(`#${id}`).DataTable();
         var row = $(`#${id}`).data('table');
+        var index = $(`#${id}`).data('index');
 
         const tables = {
-            'finance': `<input type="text" class="form-control form-control-border" name="data[anno][]" placeholder="2023" required>,
-                                <input type="text" class="form-control form-control-border" name="data[sector][]" placeholder="Sector A" required>, 
-                                <input type="number" class="form-control form-control-border" step="0.01" name="data[ventas][]" placeholder="$100" required>`,
-            'service_prov': `<input type="text" class="form-control form-control-border" name="data[hd][]" placeholder="..." required>,
-                                <input type="text" class="form-control form-control-border" name="data[marca][]" placeholder="..." required>,
-                                <input type="text" class="form-control form-control-border" name="data[anno][]" placeholder="001" required>,
+            'finance': `<input type="text" class="form-control form-control-border" name="data[anno][]" placeholder="2023" >,
+                                <input type="text" class="form-control form-control-border" name="data[sector][]" placeholder="Sector A" >, 
+                                <input type="number" class="form-control form-control-border sum" step="0.01" data-total="${index}" name="data[ventas][]" placeholder="$100" >`,
+            'service_prov': `<input type="text" class="form-control form-control-border" name="data[hd][]" placeholder="..." >,
+                                <input type="text" class="form-control form-control-border" name="data[marca][]" placeholder="..." >,
+                                <input type="text" class="form-control form-control-border" name="data[anno][]" placeholder="001" >,
                                 <select class="form-control form-control-border" name="data[propietario][]">
                                     <option>Propio</option>
                                     <option>alquilado</option>
                                 </select>`,
-            'service_prov_prod': `<input type="text" class="form-control form-control-border" name="data[customer][]" placeholder="..." required>,
-                                <input type="text" class="form-control form-control-border" name="data[activity][]" placeholder="..." required>,
-                                <input type="text" class="form-control form-control-border" name="data[contact][]" placeholder="001" required>,
-                                <input type="text" class="form-control form-control-border" name="data[phone][]" placeholder="2329829" required>,
-                                <input type="text" class="form-control form-control-border" name="data[details][]" placeholder="..." required>`,
-            'contracting_service': `<input type="text" class="form-control form-control-border" name="data[product][]" placeholder="..." required>,
-                                <input type="text" class="form-control form-control-border" name="data[capacity][]" placeholder="..." required>,
-                                <input type="text" class="form-control form-control-border" name="data[production][]" placeholder="..." required>,
-                                <input type="text" class="form-control form-control-border" name="data[details][]" placeholder="..." required>`,
-            'policies': `<input type="text" class="form-control form-control-border" name="data[entity][]" placeholder="Entidad A" required>,
-                        <input type="text" class="form-control form-control-border" name="data[number][]" placeholder="001" required>,
-                        <input type="text" class="form-control form-control-border" name="data[dateValidity][]" placeholder="${moment(new Date()).format('DD-MM-yyyy')}" required>,
-                        <input type="text" class="form-control form-control-border" name="data[details][]" placeholder="..." required>`,
-            'bank': `<input type="text" class="form-control form-control-border" name="data[nameBank][]" placeholder="Banco A" required>,
-                    <input type="text" class="form-control form-control-border" name="data[subsidiary][]" placeholder="Sucursal 1" required>,
-                    <input type="text" class="form-control form-control-border" name="data[accountNumber][]" placeholder="11111" required>`
+            'service_prov_prod': `<input type="text" class="form-control form-control-border" name="data[customer][]" placeholder="..." >,
+                                <input type="text" class="form-control form-control-border" name="data[activity][]" placeholder="..." >,
+                                <input type="text" class="form-control form-control-border" name="data[contact][]" placeholder="001" >,
+                                <input type="text" class="form-control form-control-border" name="data[phone][]" placeholder="2329829" >,
+                                <input type="text" class="form-control form-control-border" name="data[details][]" placeholder="..." >`,
+            'contracting_service': `<input type="text" class="form-control form-control-border" name="data[product][]" placeholder="..." >,
+                                <input type="text" class="form-control form-control-border" name="data[capacity][]" placeholder="..." >,
+                                <input type="text" class="form-control form-control-border" name="data[production][]" placeholder="..." >,
+                                <input type="text" class="form-control form-control-border" name="data[details][]" placeholder="..." >`,
+            'policies': `<input type="text" class="form-control form-control-border" name="data[entity][]" placeholder="Entidad A" >,
+                        <input type="text" class="form-control form-control-border" name="data[number][]" placeholder="001" >,
+                        <input type="text" class="form-control form-control-border" name="data[dateValidity][]" placeholder="${moment(new Date()).format('DD-MM-yyyy')}" >,
+                        <input type="text" class="form-control form-control-border" name="data[details][]" placeholder="..." >`,
+            'bank': `<input type="text" class="form-control form-control-border" name="data[nameBank][]" placeholder="Banco A" >,
+                    <input type="text" class="form-control form-control-border" name="data[subsidiary][]" placeholder="Sucursal 1" >,
+                    <input type="text" class="form-control form-control-border" name="data[accountNumber][]" placeholder="11111" >`
             
         };
 
@@ -136,55 +140,36 @@ class ValidationForms {
         });
     }
 
-    validateCheckFile() {
-        const forms = document.querySelectorAll('#financial_documents_form, #sgc_documents_form');
-        let counter = 1;
-      
-        forms.forEach(form => {
-          const checkboxes = form.querySelectorAll('input[type="checkbox"]');
-          checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('click', () => {
-              if (checkbox.checked) {
-                const inputId = `adjunto${counter}`;
-                const inputElement = document.getElementById(inputId);
-                inputElement.required = false;
-                counter++; // Incrementar el contador solo cuando el checkbox está marcado
-              } else {
-                const inputId = `adjunto${counter}`;
-                const inputElement = document.getElementById(inputId);
-                inputElement.required = true;
-              }
-            });
-          });
-        });
-      }
-      
-      
+    validateCheckFile(){
 
-    totalSales(){
+         $('.documents').on('click', 'input[type="checkbox"]', function(e) {
+            const input = $(this).closest('div').next().find('input[type="file"]');
+            $(this).prop('checked') ? input.prop('required', false) : input.prop('required', true);
+         })
+    }
 
-        $(document).ready(function() {
-          $('.addRow').click(function() {
-            let idTabla = $(this).data('id');
-            let suma = sumarValores('#' + idTabla);
-            $('#' + idTabla + ' tfoot tr:last-child td:last-child strong').text(suma);
-            
-            // Actualizar el atributo 'contenteditable' del <td> con la suma total
-            $('#' + idTabla + ' tfoot tr:last-child td:last-child').attr('contenteditable', 'true').text('$' + suma.toFixed(2));
-          });
-        });
-        
-        function sumarValores(tabla) {
-          let suma = 0;
-          $(tabla + ' tbody tr td:last-child input[type="number"]').each(function() {
-            let valor = parseFloat($(this).val());
+    static totalSales(){
+
+        $('tbody').on('blur', 'td .sum', function(e) {
+            var id = $(this).data('total');
+            var table = `financial_table${id}`;
+            ValidationForms.sumTotal(table);
+
+        })
+    }
+
+    static sumTotal(table){
+        var id = $(`#${table}`).data('index');
+        var sum = 0;
+        $(`#${table} td input.sum`).each(function() {
+            var valor = parseFloat($(this).val());
             if (!isNaN(valor)) {
-              suma += valor;
+              sum += valor;
             }
           });
-          return suma; // Devolver el valor de suma
-        }
-      }
+
+          $(`tfoot #total_${id}`).val(sum.toFixed(2));
+    }
 
     static addValuesToLabelInputForms(idForm = 'form'){
             
@@ -307,7 +292,7 @@ $(document).ready(function(e) {
     //Validar check de los input file
     object.validateCheckFile();
 
-    object.totalSales();
+    ValidationForms.totalSales();
     // Validar inputs
     const forms = document.querySelectorAll('.validatable-form');
     

@@ -50,6 +50,21 @@
         button {
             cursor: pointer;
         }
+
+        input[type="checkbox"]:disabled:checked::after {
+            /* Estilos para el checkbox deshabilitado y marcado */
+            content: 'x';
+            display: block;
+            position: absolute;
+            top: auto;
+            left: auto;
+            width: 15px;
+            height: 15px;
+            background-color: tomato;
+            color: white;
+            text-align: center;
+            line-height: 12px;
+        }
     </style>
 
     <!-- jQuery -->
@@ -92,10 +107,12 @@
         $.widget.bridge('uibutton', $.ui.button);
 
         // QUITAR ESTO
-        //$(document).ready(function() {
-          //  $('input').removeAttr('required');
-        //})
+        // $(document).ready(function() {
+        //     $('input').removeAttr('required');
+        // });
     </script>
+    <!-- Constantes -->
+    <script src="<?= SERVERSIDE ?>config.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- jquery-validation -->
@@ -144,7 +161,6 @@
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="<?= SERVERSIDE ?>Views/resources/dist/js/demo.js"></script> -->
     <!-- prueba -->
-    <script src="<?= SERVERSIDE ?>config.min.js"></script>
     <script src="<?= SERVERSIDE ?>Views/assets/js/request.js"></script>
     <!-- Loguin/Logout -->
     <script src="<?= SERVERSIDE ?>Views\assets\js\loguin.js"></script>

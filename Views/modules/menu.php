@@ -5,7 +5,7 @@ $menu =  json_decode(ControladorTemplate::menu());
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?= SERVERSIDE ?>Views/resources/index3.html" class="brand-link">
-        <img src="<?= SERVERSIDE ?>Views/resources/dist/img/Logo servimeters.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="<?= SERVERSIDE ?>Views/resources/dist/img/logo.webp" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Homologación</span>
     </a>
 
@@ -63,12 +63,12 @@ $menu =  json_decode(ControladorTemplate::menu());
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="<?= SERVERSIDE ?>test/form" class="nav-link">
                         <i class="nav-icon fa fa-question"></i>
                         <p>Prueba de formulario</p>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

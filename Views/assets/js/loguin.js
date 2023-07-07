@@ -10,7 +10,7 @@ $(document).ready(function() {
             showToast(`${result.Error}.`, 'error');
         }else if(result.Success){
             showToast(`${result.Success}.`, 'success');
-            window.location.href = SERVERSIDE;
+            window.location.href = SERVERSIDE + `${result.Cli ? 'Cliente/list_procesos' : ''}`;
         }
         return false;
     })
@@ -20,7 +20,7 @@ $(document).ready(function() {
         localStorage.clear();
         var result = await requestController('session', 'sessionOff');
         showToast(`${result.Success}.` | 'Gracias por su visita.', 'success');
-        window.location.href = SERVERSIDE;
+        window.location.href = SERVERSIDE ;
         return false;
     })
 }); 

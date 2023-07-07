@@ -46,6 +46,14 @@ class ProcesoModel extends BaseModel
         return $objectArray;
     }
 
+    /**
+     * @return [type]
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /*function addProcessColumn($processNumber, $idClient, $status= 'homologado') {
                 $arrayProcess = array(
                     'numero_proceso' => $processNumber,

@@ -81,11 +81,12 @@ class BaseController
 
     /**
      * @param mixed $condition
+     * @param string $return
      * 
-     * @return array
+     * @return [type]
      */
-    public static function getCondition($condition)
+    public static function getCondition($condition, $return = "*")
     {
-        return self::$model->getCondition($condition);
+        return self::$model->getCondition($condition, $return);
     }
 }
