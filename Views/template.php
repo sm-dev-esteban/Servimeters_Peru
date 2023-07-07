@@ -92,9 +92,9 @@
         $.widget.bridge('uibutton', $.ui.button);
 
         // QUITAR ESTO
-        $(document).ready(function() {
-            $('input').removeAttr('required');
-        })
+        //$(document).ready(function() {
+          //  $('input').removeAttr('required');
+        //})
     </script>
     <!-- Bootstrap 4 -->
     <script src="<?= SERVERSIDE ?>Views/resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

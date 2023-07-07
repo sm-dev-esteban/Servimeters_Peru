@@ -136,27 +136,30 @@ class ValidationForms {
         });
     }
 
-    validateCheckFile(){
-         const checkboxes = document.querySelectorAll('#financial_documents_form input[type="checkbox"]');
-
-         checkboxes.forEach((checkbox,index) =>{
-
-            checkbox.addEventListener('click',() => {
-
-                if(checkbox.checked){
-
-                    const inputId = `adjunto${index+1}`;
-                    document.getElementById(inputId).required = true;
-                }else{
-
-                    const inputId = `adjunto${index+1}`;
-                    document.getElementById(inputId).required = false;
-                }
-
+    validateCheckFile() {
+        const forms = document.querySelectorAll('#financial_documents_form, #sgc_documents_form');
+        let counter = 1;
+      
+        forms.forEach(form => {
+          const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+          checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('click', () => {
+              if (checkbox.checked) {
+                const inputId = `adjunto${counter}`;
+                const inputElement = document.getElementById(inputId);
+                inputElement.required = false;
+                counter++; // Incrementar el contador solo cuando el checkbox está marcado
+              } else {
+                const inputId = `adjunto${counter}`;
+                const inputElement = document.getElementById(inputId);
+                inputElement.required = true;
+              }
             });
-
-         });
-    }
+          });
+        });
+      }
+      
+      
 
     totalSales(){
 
@@ -306,11 +309,11 @@ $(document).ready(function(e) {
 
     object.totalSales();
     // Validar inputs
-    // const forms = document.querySelectorAll('.validatable-form');
+    const forms = document.querySelectorAll('.validatable-form');
     
-    // forms.forEach((form) => {
-    //    object.validateErrors(form);
-    // });
+    //forms.forEach((form) => {
+     //   object.validateErrors(form);
+     //});
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------
     // Tooltip

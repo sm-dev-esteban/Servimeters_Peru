@@ -11,6 +11,12 @@
                         <input type="text" name="data[usuario]" value="<?= $_SESSION['id'] ?>" hidden>
                         <label for="adjunto1">1. Documento asociado a la protección de datos de carácter personal.</label>
                     </div>
+                    
+                    <div class="col-md-2 pt-1 text-center">
+                        <input type="checkbox">
+                        <span class="custom-file-no-label" for="check1">No subir archivo</span>
+                    </div>
+                    
                     <div class="col-md-4">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" name="file[adjunto1]" id="adjunto1" accept=".pdf" >
