@@ -1,0 +1,7 @@
+{
+"FROM_EMAIL": "soportesm@servimeters.net",
+"USERNAME_EMAIL": "soportesm@servimeters.net",
+"HOST_EMAIL": "smtp.office365.com",
+"PASS_EMAIL": "Sm-123456*",
+"PORT_EMAIL": "587"
+}

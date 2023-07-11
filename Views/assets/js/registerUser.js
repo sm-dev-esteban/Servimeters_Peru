@@ -1,3 +1,4 @@
+
 class RegisterUser{
 
     constructor(){
@@ -11,7 +12,6 @@ class RegisterUser{
     }
 
     validateForm(){
-        
         $('.sendUser').on('click', function(e) {
             $('form').find(':valid').removeClass('is-invalid').addClass('is-valid');
             var count = $('form').find(':invalid').removeClass('is-valid').addClass('is-invalid').length ;
@@ -21,6 +21,11 @@ class RegisterUser{
             }
         })
     }
+
+  
+    
+      // Rest of the class methods...
+    
 
     validatePasswords(){
         $('form').on('blur', '#confirm_password', function(e) {
@@ -105,6 +110,7 @@ class RegisterUser{
         })
     }
 }
+
 
 $(document).ready(function() {
     let registerObject = new RegisterUser();

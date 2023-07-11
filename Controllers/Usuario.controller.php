@@ -1,5 +1,6 @@
 <?php
 require_once 'Base.controller.php';
+require_once FOLDERSIDE . 'Models/Email.model.php';
 
 if (isset($_GET['path'])) {
     $path = $_GET['path'];
@@ -30,15 +31,39 @@ class UsuarioController extends BaseController
      */
     static public function saveUser()
     {
+
         if (isset($_GET['action']) && strcmp($_GET['action'], 'insert') == 0) {
             parent::setModel(new UsuarioModel($_POST));
             parent::insert();
-            echo "<script>
-                window.location.href = '" . SERVERSIDE . "Admin/register';
-            </script>";
+
+            // Código para enviar el correo electrónico utilizando la clase Email
+            $email = new Email();
+            $to =  $_POST['email'];
+            $cc = 'duvan.sanabriam@gmail.com';
+            $subject = 'Nuevo usuario registrado';
+
+            // Crear el cuerpo del correo con las credenciales del cliente
+            $username = $_POST['usuario'];
+            $password = $_POST['password'];
+            $body = "<html>
+            <body>
+                <h2>¡Bienvenido al software de homologación de servimeters!</h2>
+                <p>Se ha registrado un nuevo usuario en el sistema.</p>
+                <p>Usuario: $username</p>
+                <p>Contraseña: $password</p>
+                <p>Utiliza estas credenciales para iniciar sesión en el software.</p>
+            </body>
+            </html>";
+            $result = $email->sendEmail($to, $cc, $subject, $body);
+
+            if ($result['status']) {
+                echo 'Correo electrónico enviado correctamente.';
+            } else {
+                echo 'Error en el envío del correo: ' . $result['error'];
+            }
         }
     }
-
+    
     /**
      * @return string
      */
