@@ -24,7 +24,7 @@ require_once 'Controllers/Usuario.controller.php';
         </form>
       </div>
     </div>
-    <?php UsuarioController::saveUser(); ?>
+    <?php UsuarioController::saveUser();?>
   </div>
 </div>
 </div>
