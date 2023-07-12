@@ -16,7 +16,7 @@
     <section id="hero-animated" class="hero-animated d-flex align-items-center">
     <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
     <img src="<?= SERVERSIDE ?>Views/resources/dist/img/servimeters.png" class="img-fluid animated" style="margin: auto; object-fit: fill; max-width: 25%; max-height: 25%;" loading="lazy" >
-      <h2>Homologación de proveedores<span>Perú</span></h2>
+      <h2>Homologación de proveedores<span>&nbsp;Perú</span></h2>
       <p>Garantizamos la calidad de los proveedores para empresas del sector público y privado mediante un proceso de evaluación exhaustivo.</p>
       <div class="d-flex">
         <a href="<?= SERVERSIDE ?>Cliente/form" class="btn-get-started scrollto">Iniciar proceso</a>
