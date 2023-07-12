@@ -47,12 +47,14 @@ class UsuarioController extends BaseController
             $password = $_POST['password'];
             $body = "<html>
             <body>
-                <h2>¡Bienvenido al software de homologación de servimeters!</h2>
-                <p>Se ha registrado un nuevo usuario en el sistema.</p>
-                <p>Usuario: $username</p>
-                <p>Contraseña: $password</p>
-                <p>Utiliza estas credenciales para iniciar sesión en el software.</p>
-            </body>
+                <div class='card'>
+                    <div class='card-body'>
+                        <h3 class='card-title'>¡Bienvenido al software de homologación de servimeters!</h3>
+                        <p class='card-text'>Usuario: <strong>$username</strong></p>
+                        <p class='card-text'>Contraseña: <strong>$password</strong></p>
+                        <p class='card-text'><a href='http://peru-test.servimeters.net:86/'>Enlace de ingreso al sistema</a></p>
+                    </div>
+                </div>
             </html>";
             $result = $email->sendEmail($to, $cc, $subject, $body);
 

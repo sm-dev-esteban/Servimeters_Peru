@@ -1,17 +1,26 @@
 
 .hero-animated .animated {
-  margin-bottom: 60px;
+  margin-bottom: 10px;
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
-@media (max-width: 991px) {
+/*Responsivo*/
+@media (max-width: 1629px) {
   .hero-animated .animated {
-    max-width: 60%;
+    max-width:40%;
+  }
+  h2{font-size: 1.5rem;}
+}
+
+@media (min-width: 991px) {
+  .hero-animated .animated {
+    max-width:30%;
   }
 }
 
+
 .hero-animated h2 span {
-  color: #0471aa;
+  color: #0572ab;
 }
 
 .hero-animated .btn-get-started {
@@ -21,13 +30,22 @@
   padding: 10px 28px;
   border-radius: 4px;
   transition: 0.5s;
-  color: #0471aa;
-  background: var(--color-primary);
+  color: whitesmoke;
+  background: #0572ab;
   font-family: var(--font-secondary);
 }
 a {
   color: #0471aa;
   text-decoration: none;
 }
-b
-body{background-color: black;}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
