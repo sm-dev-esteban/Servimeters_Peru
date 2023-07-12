@@ -1,6 +1,6 @@
 <!-- Form 1 -->
 <div id="test-l-1" class="content">
-   <p class="">En el siguiente formulario se recolectará la siguiente información para comenzar el proceso de Homologación de proveedores:</p>
+   <p class="">En el siguiente formulario recolectar la información para comenzar el proceso de Homologación de proveedores:</p>
    <ol>
       <li>Situación financiera y requisitos legales</li>
       <li>Capacidad Operativa</li>

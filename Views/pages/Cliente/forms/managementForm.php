@@ -107,7 +107,7 @@
         <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">1.3 Relación de clientes a los cuales ha prestado el servicio o producto a homologar:</h3>
+                    <h3 class="card-title">1.2 Equipos que utiliza para la prestación del servicio:</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

@@ -36,6 +36,10 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/dist/css/adminlte.min.css">
 
+    <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/aos/dist/css/main.css">
+    <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/aos/dist/css/variables.css">
+
+
     <!-- Estilo global -->
     <style>
         .error {
