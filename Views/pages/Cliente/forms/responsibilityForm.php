@@ -16,7 +16,7 @@
                                 <div class="form-group">
                                     <input type="text" name="data[proceso]" value="<?= $process ?>" hidden>
                                     <label for="###">Número de Empleados(Fijos / Subcontratados)</label>
-                                    <input type="number" name="data[numero_empleados]" class="form-control" id="###" placeholder="Ingrese el número de empleados" required>
+                                    <input type="text" name="data[numero_empleados]" class="form-control" id="###" placeholder="Ingrese el número de empleados" required>
                                 </div>
                             </div>
 

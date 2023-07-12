@@ -1,0 +1,33 @@
+
+.hero-animated .animated {
+  margin-bottom: 60px;
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (max-width: 991px) {
+  .hero-animated .animated {
+    max-width: 60%;
+  }
+}
+
+.hero-animated h2 span {
+  color: #0471aa;
+}
+
+.hero-animated .btn-get-started {
+  font-size: 16px;
+  font-weight: 400;
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 4px;
+  transition: 0.5s;
+  color: #0471aa;
+  background: var(--color-primary);
+  font-family: var(--font-secondary);
+}
+a {
+  color: #0471aa;
+  text-decoration: none;
+}
+b
+body{background-color: black;}

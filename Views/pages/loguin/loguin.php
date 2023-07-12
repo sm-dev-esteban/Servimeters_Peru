@@ -21,7 +21,7 @@
     <div class="card card-outline card-primary">
         <div class="card-header">
             <div class="login-logo p-3">
-                <img src="<?= SERVERSIDE ?>/Views/resources/dist/img/sm_logo.webp" class="w-50"></img>
+                <img src="<?= SERVERSIDE ?>Views/resources/dist/img/servimeters.png"style="width:12rem" class="img-fluid"></img>
             </div>
         </div>
         <div class="login-box">

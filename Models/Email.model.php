@@ -46,7 +46,7 @@ class Email
             $this->correo->SMTPSecure = "tls";
             $this->correo->Port = $this->config->PORT_EMAIL;
 
-            $this->correo->setFrom($this->config->FROM_EMAIL, "Solicitud de Horas Extra");
+            $this->correo->setFrom($this->config->FROM_EMAIL, "Credenciales de Ingreso");
             // $this->correo->addAddress($to);
             // $this->correo->addAddress($this->config->FROM_EMAIL);
             foreach ($address as $key => $value) {
