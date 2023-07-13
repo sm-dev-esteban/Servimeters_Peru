@@ -1,6 +1,5 @@
 <?php
 require_once 'Base.controller.php';
-require_once FOLDERSIDE . 'Models/Email.model.php';
 
 if (isset($_GET['path'])) {
     $path = $_GET['path'];
@@ -9,6 +8,7 @@ if (isset($_GET['path'])) {
     require_once 'config.php';
 }
 require_once FOLDERSIDE . 'Models/Usuario.model.php';
+require_once FOLDERSIDE . 'Models/Email.model.php';
 
 class UsuarioController extends BaseController
 {
