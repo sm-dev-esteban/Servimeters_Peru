@@ -59,9 +59,9 @@ class UsuarioController extends BaseController
             $result = $email->sendEmail($to, $cc, $subject, $body);
 
             if ($result['status']) {
-                echo 'Correo electrónico enviado correctamente.';
+                echo true;
             } else {
-                echo 'Error en el envío del correo: ' . $result['error'];
+                echo false;
             }
         }
     }
