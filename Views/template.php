@@ -35,9 +35,11 @@
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/dist/css/adminlte.min.css">
-
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/aos/dist/css/main.css">
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/aos/dist/css/variables.css">
+    <!--KnightOne (Video)-->
+    <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/knightOne/css/Style.css">
+    <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/knightOne/vendor/glightbox/css/glightbox.min.css">
 
 
     <!-- Estilo global -->
@@ -168,6 +170,10 @@
     <script src="<?= SERVERSIDE ?>Views/assets/js/request.js"></script>
     <!-- Loguin/Logout -->
     <script src="<?= SERVERSIDE ?>Views\assets\js\loguin.js"></script>
+    <!--KnightOne (Video)-->
+    <script src="<?= SERVERSIDE ?>Views/resources/knightOne/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="<?= SERVERSIDE ?>Views/resources/knightOne/js/main.js"></script>
+
     <script>
         $("input[data-bootstrap-switch]").each(function() {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));

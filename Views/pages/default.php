@@ -13,7 +13,7 @@
         </div>
     </div> -->
 
-    <section id="hero-animated" class="hero-animated d-flex align-items-center">
+    <!--<section id="hero-animated" class="hero-animated d-flex align-items-center">
     <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
     <img src="<?= SERVERSIDE ?>Views/resources/dist/img/servimeters.png" class="img-fluid animated">
       <h2>Homologación de proveedores<span>&nbsp;Perú</span></h2>
@@ -22,4 +22,43 @@
         <a href="<?= SERVERSIDE ?>Cliente/form" class="btn-get-started scrollto">Iniciar proceso</a>
       </div>
     </div>
-  </section>
+  </section>-->
+
+<!--<section id="hero" class="d-flex flex-column justify-content-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-8">
+      <img src="<?= SERVERSIDE ?>Views/resources/dist/img/servimeters.png" class="img-fluid animated">
+        <h1>Homologación de proveedores</h1>
+        <h4>Garantizamos la calidad de los proveedores para empresas del sector público y privado mediante un proceso de evaluación exhaustivo.</h4>
+        <a href="https://www.youtube.com/watch?v=v8p8QwzMkMs" class="glightbox play-btn mb-4"></a>
+      </div>
+    </div>
+  </div>
+</section>-->
+
+<section id="hero" class="d-flex flex-column justify-content-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-8">
+        <img src="<?= SERVERSIDE ?>Views/resources/dist/img/servimeters.png" class="img-fluid animated">
+        <h1>Homologación de proveedores</h1>
+        <h4>Garantizamos la calidad de los proveedores para empresas del sector público y privado mediante un proceso de evaluación exhaustivo.</h4>
+        
+        <?php if ($_SESSION['rol'] === 'Admin'): ?>
+          <!-- Admin link -->
+          <a href="https://www.youtube.com/watch?v=v8p8QwzMkMs" class="glightbox play-btn mb-4"></a>
+        
+          <?php elseif ($_SESSION['rol'] === 'Cliente'): ?>
+          <!-- Cliente link -->
+          <a href="https://www.youtube.com/watch?v=Y-OhzQpsRwI" class="glightbox play-btn mb-4"></a>
+        
+          <?php elseif ($_SESSION['rol'] === 'Auditor'): ?>
+          <!-- Auditor link -->
+          <a href="https://www.youtube.com/watch?v=UUFCWmjOsrI" class="glightbox play-btn mb-4"></a>
+        <?php endif; ?>
+
+      </div>
+    </div>
+  </div>
+</section>
