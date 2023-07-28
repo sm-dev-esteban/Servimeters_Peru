@@ -40,7 +40,11 @@
     <!--KnightOne (Video)-->
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/knightOne/css/Style.css">
     <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/knightOne/vendor/glightbox/css/glightbox.min.css">
+    
 
+    <!--Estilo carrousel-->
+    <link rel="stylesheet" href="<?= SERVERSIDE ?>Views/resources/hidayah/css/hidayah.css">
+	<link rel="stylesheet" href="<?=SERVERSIDE?>Views/resources/hidayah/vendor/bootstrap-icons/bootstrap-icons.css">
 
     <!-- Estilo global -->
     <style>
@@ -191,6 +195,9 @@
     <!-- Validacion de formularios -->
     <script src="<?= SERVERSIDE ?>Views/assets/js/validateForms.js"></script>
 
+    <!--Interactividad carrousel-->
+    <script src="<?= SERVERSIDE ?>/Views/resources/bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= SERVERSIDE ?>/Views/resources/hidayah/js/main.js"></script>
 </body>
 
 </html>
