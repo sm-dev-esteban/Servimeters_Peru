@@ -23,12 +23,13 @@ class ControladorTemplate
      */
     static function router(String $router = "default")
     {
-        // $db = new DB();
-        // $con = $db->connect(); --Lo deshabilite, Perdon :(
+        $is_authorized = self::authorized($router. '/');
+        $router = $is_authorized ? $router : "default";
         $router = $router . (strpos($router, ".php") === false ? ".php" : "");
         $routerFile = SELF::PATH_VIEWS . $router;
         $router404 = str_replace($router, "Error/404.php", $routerFile);
         if (file_exists($routerFile)) {
+            //Validar permisos
             include($routerFile);
         } else {
             include($router404);
@@ -52,4 +53,20 @@ class ControladorTemplate
         }
         return json_encode($resultMenu);
     }
+
+    static function authorized(String $route){
+        if (strcmp($_SESSION['rol'], 'Admin') === 0) {
+            return true;
+        }
+
+        $itemsMenu = explode(',', self::menu[$_SESSION['rol']]);
+        foreach ($itemsMenu as $key => $value) {
+            $exists = strpos($value, explode('/', $route)[1]);
+            if ($exists) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }

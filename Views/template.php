@@ -85,18 +85,17 @@
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
-        <?php include('modules/header.php'); ?>
-
-        <?php include('modules/menu.php'); ?>
+<?php include('modules/header.php'); ?>
+<?php include('modules/menu.php'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <?php
-            if (isset($_GET['page']))
-                ControladorTemplate::router($_GET['page']);
-            else
-                ControladorTemplate::router();
-            ?>
+<?php
+if (isset($_GET['page']))
+    ControladorTemplate::router($_GET['page']);
+else
+    ControladorTemplate::router();
+?>
         </div>
         <!-- /.content-wrapper -->
 
