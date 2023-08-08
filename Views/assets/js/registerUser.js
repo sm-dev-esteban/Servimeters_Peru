@@ -3,7 +3,6 @@ class RegisterUser{
 
     constructor(){
         this.btn = $('.sendUser');
-        console.log(this.btn.data('type'));
         if (this.btn.data('type') === 'create') {
             $('#confirm_password').prop('required', true);
             $('#checkbox').val('on');
@@ -21,11 +20,8 @@ class RegisterUser{
             }
         })
     }
-
-  
     
       // Rest of the class methods...
-    
 
     validatePasswords(){
         $('form').on('blur', '#confirm_password', function(e) {
@@ -109,6 +105,16 @@ class RegisterUser{
         $('#modal-xl').on('hidden.bs.modal', function(e) {
         })
     }
+
+    deleteSpaceUser(){
+        $('#user_form').keypress(function(e){
+            var value = $(this).val();
+            if (e.keyCode === 32){
+                return false;
+            }
+            e.stopPropagation();
+        })
+    }
 }
 
 
@@ -119,6 +125,7 @@ $(document).ready(function() {
     registerObject.passChange();
     registerObject.habilitarChange();
     registerObject.loadModalData();
+    registerObject.deleteSpaceUser();
     ValidationForms.addValuesToLabelInputForms();
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------
