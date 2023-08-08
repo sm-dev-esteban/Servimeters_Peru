@@ -120,45 +120,6 @@ $usuarios = UsuarioController::index();
 <script src="<?= SERVERSIDE ?>Views/assets/js/process.js"></script>
 <script>
     $(document).ready(function() {
-        // $('#modal-xl').on('show.bs.modal', async function(e) {
-        //     var button = $(e.relatedTarget);
-        //     var id = button.data('user');
-        //     var formData = new FormData();
-        //     formData.append('id', id);
-        //     try {
-        //         const result = await requestController('Usuario', 'loadUser', formData);
-        //         if (!result.Result) {
-        //             return false;
-        //         }
 
-        //         for (const key in result.Result[0]) {
-        //             var element = document.getElementsByName(key)[0];
-        //             if (element !== undefined) {
-        //                 // if (element.type === 'checkbox') {
-        //                 //     element.checked = ;
-        //                 //     $('#checkbox').bootstrapSwitch('state', (result.Result[0][key] === 'on'));
-        //                 // }
-        //                 // element.value = result.Result[0][key];
-        //                 switch (element.type) {
-        //                     case 'checkbox':
-        //                         console.log('CHECK -->', element.type);
-        //                         $('#checkbox').bootstrapSwitch('state', (result.Result[0][key] === 'on'));
-        //                         break;
-        //                     case 'select-one':
-        //                         console.log('SELECT -->', element.type);
-        //                         $('#select').val(result.Result[0][key]).trigger('change');
-        //                         break;
-        //                     default:
-        //                         console.log('No se valida ', key);
-        //                         element.value = result.Result[0][key];
-        //                         break;
-        //                 }
-        //             }
-
-        //         }
-        //     } catch (error) {
-        //         console.error(error);
-        //     }
-        // })
     })
 </script>

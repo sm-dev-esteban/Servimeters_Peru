@@ -7,7 +7,7 @@
 <!--Campo usuario-->
 <div class="form-group">
     <label for="exampleInputPassword1">Usuario</label>
-    <input type="text" class="form-control" name="usuario" inputmode="text" autocomplete="username" placeholder="Usuario" required />
+    <input type="text" class="form-control" name="usuario" id="user_form" inputmode="text" autocomplete="username" placeholder="Usuario" data-toggle="tooltip" data-placement="bottom" title="No se permiten espacios, separe los valores con guion bajo _." required />
 </div>
 
 <!--Campo contraseña-->
