@@ -279,7 +279,6 @@ class ValidationForms {
 }
 
 $(document).ready(function(e) {
-    console.log('Validacion');
     var object  = new ValidationForms();
     // object.addRowBanks();
     // object.addRowPolicies();

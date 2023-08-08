@@ -10,7 +10,8 @@ $(document).ready(function() {
             showToast(`${result.Error}.`, 'error');
         }else if(result.Success){
             showToast(`${result.Success}.`, 'success');
-            window.location.href = SERVERSIDE + `${result.Cli ? 'Cliente/list_procesos' : ''}`;
+           // window.location.href = SERVERSIDE + `${result.Cli ? 'Cliente/list_procesos' : ''}`;
+            window.location.href = SERVERSIDE;
         }
         return false;
     })
