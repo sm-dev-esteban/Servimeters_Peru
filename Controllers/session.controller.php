@@ -32,7 +32,8 @@ class SessionController extends BaseController
             session_start();
             parent::setModel(new UsuarioModel());
             // Obtener el usuario
-            $user = parent::getCondition("usuario LIKE '%" . $_POST['user'] . "%'");
+            $userPost = filter_input(INPUT_POST, "user", FILTER_SANITIZE_SPECIAL_CHARS);
+            $user = parent::getCondition("usuario LIKE '%" . $userPost . "%'");
             if (empty($user)) {
                 self::$result->Error = 'Las credenciales no son validas';
                 header('Content-Type: application/json');

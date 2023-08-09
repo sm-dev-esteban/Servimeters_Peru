@@ -41,7 +41,7 @@ $menu =  json_decode(ControladorTemplate::menu());
                 <?php
                 foreach ($menu as $m) {
                 ?>
-                    <li class="nav-item">
+                    <li class="nav-item" <?php if (!empty($m[3])) echo 'hidden'?>>
                         <a href="<?= SERVERSIDE, $m[0] ?>" class="nav-link">
                             <i class="nav-icon fas <?= $m[1] ?>"></i>
                             <p>
