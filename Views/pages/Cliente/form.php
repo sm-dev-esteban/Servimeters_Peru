@@ -8,6 +8,11 @@ $status = $_POST['status'];
 ?>
 
 <style>
+
+    :root{
+        --duration: 1.5s;
+    }
+
     label:not(.form-check-label):not(.custom-file-label) {
         font-weight: normal;
     }
@@ -21,6 +26,44 @@ $status = $_POST['status'];
     .disabledNext {
         background-color: tomato !important;
     }
+
+    #test-l-1{
+        animation: fadeIn var(--duration);
+    }
+
+    #test-l-2{
+        animation: fadeIn var(--duration);
+    }
+
+    #test-l-3{
+        animation: fadeIn var(--duration);
+    }
+
+    #test-l-4{
+        animation: fadeIn var(--duration);
+    }
+
+    #test-l-5{
+        animation: fadeIn var(--duration);
+    }
+    
+    @keyframes fadeIn {
+        -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  }
+  @keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+    }
+
 </style>
 <!-- Form -->
 <div class="content-header">
