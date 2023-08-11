@@ -52,16 +52,17 @@ class UsuarioController extends BaseController
                         <h3 class='card-title'>¡Bienvenido al software de homologación de servimeters!</h3>
                         <p class='card-text'>Usuario: <strong>$username</strong></p>
                         <p class='card-text'>Contraseña: <strong>$password</strong></p>
-                        <p class='card-text'><a href='http://peru-test.servimeters.net:86/'>Enlace de ingreso al sistema</a></p>
+                        <p class='card-text'><a href='http://proveedores-homologacion.servimeters.net:86/'>Enlace de ingreso al sistema</a></p>
                     </div>
                 </div>
             </html>";
+            
             $result = $email->sendEmail($to, $cc, $subject, $body);
 
             if ($result['status']) {
-                echo true;
+                echo "Se envió el correo correctamente";
             } else {
-                echo false;
+                echo "Se presentarón errores al enviar el mensaje de correo";
             }
         }
     }
